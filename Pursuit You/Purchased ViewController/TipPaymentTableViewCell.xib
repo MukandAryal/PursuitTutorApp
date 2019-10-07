@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="93" id="KGk-i7-Jjw" customClass="TipPaymentTableViewCell" customModule="Pursuit_You" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="92.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AD1-Bc-vIc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="92.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paypal_ic" translatesAutoresizingMaskIntoConstraints="NO" id="d97-Ap-Krk">
+                                <rect key="frame" x="20" y="21.5" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="cMF-KK-Iii"/>
+                                    <constraint firstAttribute="height" constant="50" id="iyr-4B-4ge"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mukand Aryal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6C-yl-sz7">
+                                <rect key="frame" x="80" y="37.5" width="160" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$54" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yC-U0-c1k">
+                                <rect key="frame" x="90" y="20" width="210" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24 Sept,19" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEZ-B5-GeG">
+                                <rect key="frame" x="80" y="56.5" width="230" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0yC-U0-c1k" firstAttribute="top" secondItem="AD1-Bc-vIc" secondAttribute="top" constant="20" id="73o-vA-vM3"/>
+                            <constraint firstAttribute="trailing" secondItem="0yC-U0-c1k" secondAttribute="trailing" constant="20" id="A2w-bu-MlJ"/>
+                            <constraint firstAttribute="trailing" secondItem="G6C-yl-sz7" secondAttribute="trailing" constant="80" id="CjZ-w8-mQK"/>
+                            <constraint firstItem="d97-Ap-Krk" firstAttribute="centerY" secondItem="AD1-Bc-vIc" secondAttribute="centerY" id="EPm-b4-rFB"/>
+                            <constraint firstItem="G6C-yl-sz7" firstAttribute="centerY" secondItem="d97-Ap-Krk" secondAttribute="centerY" id="IEb-rh-trp"/>
+                            <constraint firstItem="LEZ-B5-GeG" firstAttribute="leading" secondItem="d97-Ap-Krk" secondAttribute="trailing" constant="10" id="jns-tJ-IcE"/>
+                            <constraint firstItem="d97-Ap-Krk" firstAttribute="leading" secondItem="AD1-Bc-vIc" secondAttribute="leading" constant="20" id="lg5-sC-gHc"/>
+                            <constraint firstAttribute="bottom" secondItem="LEZ-B5-GeG" secondAttribute="bottom" constant="20" id="mmJ-oz-pIK"/>
+                            <constraint firstAttribute="trailing" secondItem="LEZ-B5-GeG" secondAttribute="trailing" constant="10" id="sfV-Z0-QNW"/>
+                            <constraint firstItem="0yC-U0-c1k" firstAttribute="leading" secondItem="d97-Ap-Krk" secondAttribute="trailing" constant="20" id="tmQ-Hu-9yh"/>
+                            <constraint firstItem="G6C-yl-sz7" firstAttribute="leading" secondItem="d97-Ap-Krk" secondAttribute="trailing" constant="10" id="vJX-7y-loX"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="AD1-Bc-vIc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="53z-oA-Sn5"/>
+                    <constraint firstAttribute="bottom" secondItem="AD1-Bc-vIc" secondAttribute="bottom" id="POW-Mb-s8R"/>
+                    <constraint firstAttribute="trailing" secondItem="AD1-Bc-vIc" secondAttribute="trailing" id="SBK-ZM-8mM"/>
+                    <constraint firstItem="AD1-Bc-vIc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="vAo-f9-KZS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="136.23188405797103" y="86.71875"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="paypal_ic" width="50" height="46"/>
+    </resources>
+</document>

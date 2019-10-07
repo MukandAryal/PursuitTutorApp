@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="medium.ttf">
+            <string>GoogleSans-Medium</string>
+        </array>
+        <array key="regular.ttf">
+            <string>GoogleSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="146" id="KGk-i7-Jjw" customClass="NotificationTableViewCell" customModule="Pursuit_TutorApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="542" height="146"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="542" height="145.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="By Alex Jackson" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tj-W8-0og">
+                        <rect key="frame" x="170" y="63" width="362" height="17"/>
+                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration 6 weeks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9B-Yu-ymA">
+                        <rect key="frame" x="170" y="85" width="362" height="17"/>
+                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="13"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="development" translatesAutoresizingMaskIntoConstraints="NO" id="Koi-Qv-mSk">
+                        <rect key="frame" x="0.0" y="0.0" width="160" height="140.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="160" id="sSw-Ax-rx2"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="enrolled" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Voi-Ed-75q">
+                        <rect key="frame" x="170" y="10" width="352" height="13"/>
+                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designer for Begineer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUl-NC-pvg">
+                        <rect key="frame" x="170" y="38" width="352" height="20"/>
+                        <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 min ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OV9-s6-Xtf">
+                        <rect key="frame" x="170" y="117.5" width="362" height="18"/>
+                        <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="F9B-Yu-ymA" firstAttribute="top" secondItem="4tj-W8-0og" secondAttribute="bottom" constant="5" id="262-Vi-i0u"/>
+                    <constraint firstAttribute="trailing" secondItem="F9B-Yu-ymA" secondAttribute="trailing" constant="10" id="2Vc-yQ-sq0"/>
+                    <constraint firstAttribute="bottom" secondItem="OV9-s6-Xtf" secondAttribute="bottom" constant="10" id="4bW-AP-JFa"/>
+                    <constraint firstItem="4tj-W8-0og" firstAttribute="leading" secondItem="Koi-Qv-mSk" secondAttribute="trailing" constant="10" id="4gZ-EO-o2g"/>
+                    <constraint firstItem="F9B-Yu-ymA" firstAttribute="leading" secondItem="Koi-Qv-mSk" secondAttribute="trailing" constant="10" id="6Az-lh-jFR"/>
+                    <constraint firstAttribute="trailing" secondItem="Voi-Ed-75q" secondAttribute="trailing" constant="20" id="8eP-Oi-RWp"/>
+                    <constraint firstItem="OV9-s6-Xtf" firstAttribute="leading" secondItem="Koi-Qv-mSk" secondAttribute="trailing" constant="10" id="9zh-lk-A9v"/>
+                    <constraint firstAttribute="trailing" secondItem="4tj-W8-0og" secondAttribute="trailing" constant="10" id="EMY-bk-KLl"/>
+                    <constraint firstItem="Voi-Ed-75q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Fh5-cA-aan"/>
+                    <constraint firstAttribute="trailing" secondItem="OV9-s6-Xtf" secondAttribute="trailing" constant="10" id="Him-5K-h1q"/>
+                    <constraint firstItem="Koi-Qv-mSk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="R7X-eA-xo4"/>
+                    <constraint firstAttribute="trailing" secondItem="pUl-NC-pvg" secondAttribute="trailing" constant="20" id="VEG-V0-Yz6"/>
+                    <constraint firstItem="Koi-Qv-mSk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZVq-FO-GeN"/>
+                    <constraint firstItem="4tj-W8-0og" firstAttribute="top" secondItem="pUl-NC-pvg" secondAttribute="bottom" constant="5" id="crU-lW-vo6"/>
+                    <constraint firstAttribute="bottom" secondItem="Koi-Qv-mSk" secondAttribute="bottom" constant="5" id="eQA-1z-yoK"/>
+                    <constraint firstItem="Voi-Ed-75q" firstAttribute="leading" secondItem="Koi-Qv-mSk" secondAttribute="trailing" constant="10" id="eyt-2j-aMj"/>
+                    <constraint firstItem="pUl-NC-pvg" firstAttribute="top" secondItem="Voi-Ed-75q" secondAttribute="bottom" constant="15" id="qBe-dZ-ZzF"/>
+                    <constraint firstItem="pUl-NC-pvg" firstAttribute="leading" secondItem="Koi-Qv-mSk" secondAttribute="trailing" constant="10" id="vif-VI-gEa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="373.91304347826087" y="96.428571428571431"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="development" width="344" height="114"/>
+    </resources>
+</document>

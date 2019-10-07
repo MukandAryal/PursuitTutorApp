@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="regular.ttf">
+            <string>GoogleSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="KGk-i7-Jjw" customClass="CourseProgressTableViewCell" customModule="Pursuit_TutorApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="54.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOX-u3-l66">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="54.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="1.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6H4-9Y-dUc">
+                                <rect key="frame" x="30" y="5" width="16" height="21"/>
+                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="16"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="0Zs-i6-79v">
+                                <rect key="frame" x="66" y="8" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" id="6GY-h7-jwF"/>
+                                    <constraint firstAttribute="height" constant="15" id="n0P-df-eAI"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="System Introduction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIB-1J-pjp">
+                                <rect key="frame" x="111" y="6.5" width="179" height="18"/>
+                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9v-61-YC0">
+                                <rect key="frame" x="72.5" y="25" width="2" height="27.5"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="2" id="4we-6A-QJh"/>
+                                    <constraint firstAttribute="height" constant="27.5" id="tzR-8T-4q8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="k9v-61-YC0" firstAttribute="centerX" secondItem="0Zs-i6-79v" secondAttribute="centerX" id="Bci-Wv-vGb"/>
+                            <constraint firstItem="0Zs-i6-79v" firstAttribute="leading" secondItem="6H4-9Y-dUc" secondAttribute="trailing" constant="20" id="Buv-dZ-NKW"/>
+                            <constraint firstItem="tIB-1J-pjp" firstAttribute="leading" secondItem="0Zs-i6-79v" secondAttribute="trailing" constant="30" id="E6X-MS-EMk"/>
+                            <constraint firstItem="k9v-61-YC0" firstAttribute="top" secondItem="0Zs-i6-79v" secondAttribute="bottom" constant="2" id="HQI-TB-Co4"/>
+                            <constraint firstItem="tIB-1J-pjp" firstAttribute="centerY" secondItem="6H4-9Y-dUc" secondAttribute="centerY" id="XPh-mt-nSv"/>
+                            <constraint firstItem="0Zs-i6-79v" firstAttribute="centerY" secondItem="6H4-9Y-dUc" secondAttribute="centerY" id="Xcw-nJ-jEb"/>
+                            <constraint firstAttribute="trailing" secondItem="tIB-1J-pjp" secondAttribute="trailing" constant="30" id="beY-Z2-TVc"/>
+                            <constraint firstItem="6H4-9Y-dUc" firstAttribute="top" secondItem="JOX-u3-l66" secondAttribute="top" constant="5" id="mvv-Gy-8ZR"/>
+                            <constraint firstItem="6H4-9Y-dUc" firstAttribute="leading" secondItem="JOX-u3-l66" secondAttribute="leading" constant="30" id="vqC-21-zvV"/>
+                            <constraint firstAttribute="bottom" secondItem="k9v-61-YC0" secondAttribute="bottom" constant="2" id="yR3-7w-n9e"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="JOX-u3-l66" secondAttribute="bottom" id="Abv-us-RHx"/>
+                    <constraint firstAttribute="trailing" secondItem="JOX-u3-l66" secondAttribute="trailing" id="BE4-Dw-0we"/>
+                    <constraint firstItem="JOX-u3-l66" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bvb-1K-t1E"/>
+                    <constraint firstItem="JOX-u3-l66" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mhq-Cu-NFt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lession_nameLbl" destination="tIB-1J-pjp" id="MvW-qz-7RY"/>
+                <outlet property="lession_numberLbl" destination="6H4-9Y-dUc" id="Nmh-3g-TVf"/>
+                <outlet property="lession_readIcon" destination="0Zs-i6-79v" id="Vmo-gd-cfX"/>
+            </connections>
+            <point key="canvasLocation" x="140.57971014492756" y="122.87946428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="tick" width="24" height="24"/>
+    </resources>
+</document>

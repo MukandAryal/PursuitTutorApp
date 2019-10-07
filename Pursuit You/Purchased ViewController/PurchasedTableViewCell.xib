@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="medium.ttf">
+            <string>GoogleSans-Medium</string>
+        </array>
+        <array key="regular.ttf">
+            <string>GoogleSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="127" id="KGk-i7-Jjw" customClass="PurchasedTableViewCell" customModule="Pursuit_You" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="372" height="123"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="372" height="122.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designer for Begineer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SaN-aQ-g8u">
+                        <rect key="frame" x="10" y="10" width="352" height="19.5"/>
+                        <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="By Alex Jackson" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFU-Na-Sa6">
+                        <rect key="frame" x="10" y="31.5" width="352" height="12.5"/>
+                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration 6 weeks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRQ-CS-A8p">
+                        <rect key="frame" x="10" y="46" width="101" height="17"/>
+                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$150" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1l-A4-Tnj">
+                        <rect key="frame" x="318.5" y="45" width="33.5" height="19.5"/>
+                        <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 Aug,2019" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPa-nM-NDJ">
+                        <rect key="frame" x="277.5" y="87.5" width="84.5" height="19.5"/>
+                        <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paypal_ic" translatesAutoresizingMaskIntoConstraints="NO" id="2R5-ke-c9B">
+                        <rect key="frame" x="20" y="72.5" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="OUa-2P-422"/>
+                            <constraint firstAttribute="height" constant="40" id="Wjc-Uj-1CX"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="purchased Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pho-ST-w7B">
+                        <rect key="frame" x="110" y="69.5" width="252" height="13"/>
+                        <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="VPa-nM-NDJ" secondAttribute="trailing" constant="10" id="0T9-c4-wDX"/>
+                    <constraint firstAttribute="trailing" secondItem="Pho-ST-w7B" secondAttribute="trailing" constant="10" id="1aX-6W-Gqs"/>
+                    <constraint firstAttribute="trailing" secondItem="E1l-A4-Tnj" secondAttribute="trailing" constant="20" id="6TO-wC-X3p"/>
+                    <constraint firstItem="fRQ-CS-A8p" firstAttribute="top" secondItem="JFU-Na-Sa6" secondAttribute="bottom" constant="2" id="EgR-eo-0sS"/>
+                    <constraint firstItem="2R5-ke-c9B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="FQZ-zV-yCe"/>
+                    <constraint firstItem="E1l-A4-Tnj" firstAttribute="centerY" secondItem="fRQ-CS-A8p" secondAttribute="centerY" id="HOe-Zg-MfA"/>
+                    <constraint firstAttribute="bottom" secondItem="2R5-ke-c9B" secondAttribute="bottom" constant="10" id="HWU-bJ-qc8"/>
+                    <constraint firstItem="fRQ-CS-A8p" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="O0H-a5-RBD"/>
+                    <constraint firstItem="SaN-aQ-g8u" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="QRZ-zi-ygu"/>
+                    <constraint firstItem="Pho-ST-w7B" firstAttribute="leading" secondItem="2R5-ke-c9B" secondAttribute="trailing" constant="50" id="VM9-p6-Rer"/>
+                    <constraint firstItem="2R5-ke-c9B" firstAttribute="top" secondItem="fRQ-CS-A8p" secondAttribute="bottom" constant="9.5" id="Vli-gu-udN"/>
+                    <constraint firstAttribute="trailing" secondItem="JFU-Na-Sa6" secondAttribute="trailing" constant="10" id="d6C-f4-ojV"/>
+                    <constraint firstAttribute="trailing" secondItem="SaN-aQ-g8u" secondAttribute="trailing" constant="10" id="g38-5D-u2d"/>
+                    <constraint firstItem="VPa-nM-NDJ" firstAttribute="top" secondItem="Pho-ST-w7B" secondAttribute="bottom" constant="5" id="hga-1K-c2y"/>
+                    <constraint firstItem="SaN-aQ-g8u" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="iLi-3o-s4N"/>
+                    <constraint firstAttribute="bottom" secondItem="VPa-nM-NDJ" secondAttribute="bottom" constant="15.5" id="oNv-BK-0op"/>
+                    <constraint firstItem="JFU-Na-Sa6" firstAttribute="top" secondItem="SaN-aQ-g8u" secondAttribute="bottom" constant="2" id="pPO-bd-f1r"/>
+                    <constraint firstItem="JFU-Na-Sa6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="sI2-8e-RZ2"/>
+                    <constraint firstItem="Pho-ST-w7B" firstAttribute="top" secondItem="E1l-A4-Tnj" secondAttribute="bottom" constant="5" id="v1Y-qs-lYE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="94.20289855072464" y="69.977678571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="paypal_ic" width="50" height="46"/>
+    </resources>
+</document>

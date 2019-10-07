@@ -1,0 +1,38 @@
+{
+  "DVTSourceControlWorkspaceBlueprintLocationsKey" : {
+    "46466D636A947573C1355D1B89EAB4125F6705C9" : {
+      "DVTSourceControlBranchIdentifierKey" : "master",
+      "DVTSourceControlLocationRevisionKey" : "cf80dfc94c49d69359d801c392bd4aab36f4fc86",
+      "DVTSourceControlBranchOptionsKey" : 0,
+      "DVTSourceControlWorkspaceBlueprintLocationTypeKey" : "DVTSourceControlBranch"
+    },
+    "EC8D965483AC065C408501E3CC05D3E3CCA78670" : {
+      "DVTSourceControlBranchIdentifierKey" : "latest",
+      "DVTSourceControlLocationRevisionKey" : "2fa1227e804f0c6f45739f9f0e536203c07b613b",
+      "DVTSourceControlBranchOptionsKey" : 4,
+      "DVTSourceControlBranchRemoteNameKey" : "origin",
+      "DVTSourceControlWorkspaceBlueprintLocationTypeKey" : "DVTSourceControlBranch"
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "46466D636A947573C1355D1B89EAB4125F6705C9",
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "AE7916B2-B24D-43C3-8ED8-D0BF5CA70532",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "46466D636A947573C1355D1B89EAB4125F6705C9" : "Pursuit-You\/",
+    "EC8D965483AC065C408501E3CC05D3E3CCA78670" : "..\/Documents\/BookLover"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Pursuit You",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Pursuit You.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/MukandAryal\/Pursuit-You.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "46466D636A947573C1355D1B89EAB4125F6705C9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/192.168.0.17\/birisingh\/booklover-IOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EC8D965483AC065C408501E3CC05D3E3CCA78670"
+    }
+  ]
+}
