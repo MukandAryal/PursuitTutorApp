@@ -31,7 +31,7 @@ class ProfileViewController: BaseClassViewController {
     func userProfileApi(){
         showCustomProgress()
         WebserviceSigleton.shared.GETService(urlString: ApiEndPoints.user) { (response, error) in
-            if error == nil { //success
+            if error == nil {
                 let resultDict = response as NSDictionary?
                 print("resultDict>>>>>",resultDict as Any)
                 if let userName = resultDict?.object(forKey: "name") as? String{

@@ -30,7 +30,6 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Development" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ho-ba-BuM">
                         <rect key="frame" x="0.0" y="63.5" width="345" height="28"/>
                         <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="22"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -46,6 +45,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="category_imgView" destination="SKN-KD-iru" id="vqH-bR-Kx0"/>
+                <outlet property="category_nameLbl" destination="5ho-ba-BuM" id="rMf-4C-kcb"/>
+            </connections>
             <point key="canvasLocation" x="148.55072463768118" y="95.758928571428569"/>
         </tableViewCell>
     </objects>

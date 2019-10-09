@@ -80,6 +80,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="courseComplete_lbl" destination="OyG-J4-giC" id="xvH-T2-TKw"/>
+                <outlet property="courseComplete_progressBar" destination="oNh-oX-Z0Q" id="lL1-W0-ris"/>
+                <outlet property="course_Img" destination="qfW-vU-tCA" id="MJW-MY-kci"/>
+                <outlet property="course_title" destination="pbo-oK-cbn" id="kec-Og-M59"/>
+            </connections>
             <point key="canvasLocation" x="127.53623188405798" y="126.5625"/>
         </tableViewCell>
     </objects>

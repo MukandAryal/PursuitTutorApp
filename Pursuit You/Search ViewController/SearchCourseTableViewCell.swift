@@ -9,7 +9,8 @@
 import UIKit
 
 class SearchCourseTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var category_imgView: UIImageView!
+    @IBOutlet weak var category_nameLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

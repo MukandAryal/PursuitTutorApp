@@ -58,6 +58,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="course_reviewLbl" destination="5Lc-qA-HHl" id="tKQ-f3-Sqo"/>
+                <outlet property="lession_noLbl" destination="HdZ-vn-JD2" id="aEU-Hy-owV"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="108.48214285714285"/>
         </tableViewCell>
     </objects>

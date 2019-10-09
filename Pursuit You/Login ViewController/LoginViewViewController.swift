@@ -144,7 +144,7 @@ class LoginViewViewController: BaseClassViewController {
                     self.showAlert(title: "Alert", message: "Email is already in use")
             }else{
               let obj = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewViewController") as! LoginViewViewController
-             self.navigationController?.pushViewController(obj, animated: true)
+              self.navigationController?.pushViewController(obj, animated: true)
             }
             self.stopProgress()
         }

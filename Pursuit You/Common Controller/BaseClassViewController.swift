@@ -35,6 +35,16 @@ class BaseClassViewController: UIViewController {
          ANLoader.hide()
     }
     
+    func convertDateFormater(_ date: String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss z"
+        let date = dateFormatter.date(from: date)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return  dateFormatter.string(from: date!)
+        
+    }
+    
     //MARK:- Email Validation
     func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

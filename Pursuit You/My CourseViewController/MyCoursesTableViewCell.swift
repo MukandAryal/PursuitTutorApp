@@ -9,7 +9,11 @@
 import UIKit
 
 class MyCoursesTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var course_Img: UIImageView!
+    @IBOutlet weak var course_title: UILabel!
+    @IBOutlet weak var courseComplete_progressBar: UIProgressView!
+    @IBOutlet weak var courseComplete_lbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

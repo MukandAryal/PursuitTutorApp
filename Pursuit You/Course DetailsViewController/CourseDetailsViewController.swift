@@ -8,19 +8,24 @@
 
 import UIKit
 
-class CourseDetailsViewController: UIViewController {
+class CourseDetailsViewController: BaseClassViewController {
 
     @IBOutlet weak var courseDetails_Tblview: UITableView!
-    
     @IBOutlet weak var description_textView: UITextView!
-    @IBOutlet weak var courseDetails_heightConstrains: NSLayoutConstraint!
-//    let section = ["lession 1", "Lession 2", "Lession 3"]
-//
-//    let items = [["System Introdution", "System Introdution", "Assigment","Assigment"],["System Introdution", "System Introdution", "Assigment","Assigment"],["System Introdution", "System Introdution", "Assigment","Assigment"]]
+    @IBOutlet weak var courseDetails_heightConstrains:
+    NSLayoutConstraint!
+    @IBOutlet weak var title_course: UILabel!
+    @IBOutlet weak var priceEnroll_lbl: UILabel!
+    @IBOutlet weak var durationWeek_lbl: UILabel!
+    @IBOutlet weak var endDate_lbl: UILabel!
     
     let sectionTitles = ["lession 1", "Lession 2", "Lession 3"]
-    
     let foodItems = [["System Introdution", "System Introdution", "Assigment","Assigment"],["System Introdution", "System Introdution", "Assigment","Assigment"],["System Introdution", "System Introdution", "Assigment","Assigment"]]
+    var courseName = String()
+    var courseDescription = String()
+    var courseId = Int()
+    var coursePrice = String()
+    var syllabusArr = [getAllCourse.syllabusInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +39,15 @@ class CourseDetailsViewController: UIViewController {
         
         courseDetails_Tblview.register(UINib(nibName: "CourseDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "CourseDetailsTableViewCell")
         courseDetails_Tblview.reloadData()
-        description_textView.text = "We've been working with NSLayoutConstraint and the AutoSize system to dynamically set sizes. There are not many tutorials about using this system programmatically... and definitely not much explanation with autosizing cells.I spent a few hours today and figured out the bare minimum you need to make UITableViewCell's dynamically set their height based on a UILabel's content.If you search online, you'll likely encounter this Stackoverflow article that discusses the topic in detail. The corresponding code example for iOS7 is extremely heavy weight. I took what was done there, reverse engineered it, and pared it back to the core library. You can get this functionality with a few lines of code. Yay!"
-         //self.courseDetails_heightConstrains.constant = 30*4+30
-       // viewHeight_constraints.constant = 500
-        
+        description_textView.text = courseDescription
+        title_course.text = courseName
+        priceEnroll_lbl.text = coursePrice
+        syllabusApi()
     }
     
     override func viewDidLayoutSubviews() {
-        courseDetails_Tblview.frame.size = courseDetails_Tblview.contentSize
-        courseDetails_heightConstrains.constant = 300
+       // courseDetails_Tblview.frame.size = courseDetails_Tblview.contentSize
+        courseDetails_heightConstrains.constant = CGFloat(syllabusArr.count*100)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,70 +62,62 @@ class CourseDetailsViewController: UIViewController {
         arg.isScrollEnabled = false
     }
     
+    //  MARK: - Get All Course Api
+    func syllabusApi(){
+        showCustomProgress()
+        let urlApi = ApiEndPoints.syllabus +  "?course_id=\(courseId)"
+        print("urlApi>",urlApi)
+        WebserviceSigleton.shared.GETService(urlString: urlApi) { (response, error) in
+            if error == nil{
+                let resultDict = response as NSDictionary?
+                if (resultDict?["success"]) != nil{
+                    if let sucessDict = resultDict?["success"] as? [AnyObject]{
+                        if sucessDict.count == 0 {
+                            
+                        }
+                        for obj in sucessDict{
+                            let course = getAllCourse.syllabusInfo(
+                                id: obj["id"] as? Int,
+                                course_id: obj["course_id"] as? Int,
+                                title: obj["title"] as? String,
+                                description: obj["description"] as? String,
+                                status: obj["status"] as? String,
+                                created_at: obj["created_at"] as? String,
+                                updated_at: obj["created_at"] as? String)
+                            self.syllabusArr.append(course)
+                            print(self.syllabusArr)
+                            self.courseDetails_Tblview.reloadData()
+                            self.courseDetails_heightConstrains.constant = CGFloat(self.syllabusArr.count*100)
+                        }
+                    }
+                }
+            }else{
+                self.showAlert(title: "Alert", message: "server issue please try again")
+            }
+            self.stopProgress()
+        }
+    }
+    
     @IBAction func actionBackBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
 }
 
 extension CourseDetailsViewController : UITableViewDataSource{
-    
-    //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //
-    //        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CourseProgressHeaderView") as! CourseProgressHeaderView
-    //
-    //        return headerView
-    //    }
-    //
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CourseProgressFooterView") as! CourseProgressFooterView
-//        
-//        return footerView
-//    }
-//    
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 150
-//    }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 5
+        return syllabusArr.count
     }
-    
-//    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 30
-//    }
-    
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//
-//        return self.section[section]
-//
-//    }
-    
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return self.section.count
-//
-//    }
-    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//
-//        return self.items[section].count
-//
-//    }
-//
+
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CourseDetailsTableViewCell") as! CourseDetailsTableViewCell
-        //cell.lession_nameLbl.text = self.items[indexPath.section][indexPath.row]
-      //  cell.lession_nameLbl?.text = foodItems[indexPath.section][indexPath.row]
-
-        
+        cell.lession_noLbl.text = "Lesson" + " " + syllabusArr[indexPath.row].id!.description
+        cell.course_reviewLbl.text = syllabusArr[indexPath.row].title
         return cell
     }
 }

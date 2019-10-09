@@ -11,7 +11,7 @@ import Alamofire
 
 class Configurator: NSObject {
     static let baseURL = "http://3.83.153.192/pursuit/public/api/"
-    static let imageBaseUrl = "https://web7.staging02.com/booklover/"
+    static let imageBaseUrl = "http://3.83.153.192/pursuit/public/uploads/"
     static let tokenBearer = "Bearer "
 }
 
@@ -19,5 +19,11 @@ class ApiEndPoints: NSObject {
     static let login = "login"
     static let register = "register"
     static let user = "user"
+    static let getAllCourse = "Courses"
+    static let tutorCourses = "TutorCourses"
+    static let category = "category"
+    static let tutorCoursesByCategory = "TutorCoursesByCategory"
+    static let coursesByCategory = "CoursesByCategory"
+    static let syllabus = "syllabus"
 }
 

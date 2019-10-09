@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		909A21ADE543332FEE7781D5 /* Pods_Pursuit_You.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56381A1E51A7E0E1A50EE268 /* Pods_Pursuit_You.framework */; };
+		34501DB2389B28C608EA0340 /* Pods_Pursuit_TutorApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70973C081B421939993570AD /* Pods_Pursuit_TutorApp.framework */; };
 		BC07D6C22346FBB000AC813D /* CourseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07D6C12346FBB000AC813D /* CourseDetailsViewController.swift */; };
 		BC07D6C52346FC4600AC813D /* CourseDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07D6C32346FC4600AC813D /* CourseDetailsTableViewCell.swift */; };
 		BC07D6C62346FC4600AC813D /* CourseDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC07D6C42346FC4600AC813D /* CourseDetailsTableViewCell.xib */; };
@@ -24,7 +24,6 @@
 		BC2219EB233B495F0044A88B /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2219EA233B495F0044A88B /* Validator.swift */; };
 		BC221A0E233B4B890044A88B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC221A0C233B4B890044A88B /* Localizable.strings */; };
 		BC221A0F233B4B890044A88B /* LocalizedKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC221A0D233B4B890044A88B /* LocalizedKeys.swift */; };
-		BC221A11233B4BB20044A88B /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC221A10233B4BB20044A88B /* GlobalFunctions.swift */; };
 		BC221A13233B50AB0044A88B /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC221A12233B50AB0044A88B /* CustomAlertController.swift */; };
 		BC221A15233B687D0044A88B /* BaseClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC221A14233B687C0044A88B /* BaseClassViewController.swift */; };
 		BC221A17233B705F0044A88B /* ApiEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC221A16233B705F0044A88B /* ApiEndPoints.swift */; };
@@ -43,6 +42,8 @@
 		BC28D7BC2339DB9500DF94B9 /* SecondDashBroadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28D7BA2339DB9500DF94B9 /* SecondDashBroadCollectionViewCell.swift */; };
 		BC28D7BD2339DB9500DF94B9 /* SecondDashBroadCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC28D7BB2339DB9500DF94B9 /* SecondDashBroadCollectionViewCell.xib */; };
 		BC28D7C4233A297E00DF94B9 /* LoginViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28D7C3233A297E00DF94B9 /* LoginViewViewController.swift */; };
+		BC3F0061234D9F0A005E1E83 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F0060234D9F0A005E1E83 /* Model.swift */; };
+		BC3F0064234DE4FC005E1E83 /* CategoryDetailsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F0063234DE4FC005E1E83 /* CategoryDetailsListViewController.swift */; };
 		BC5918DC233E1A9A003E2ACE /* Disaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5918CC233E1A99003E2ACE /* Disaster.swift */; };
 		BC5918DD233E1A9A003E2ACE /* Hints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5918CE233E1A99003E2ACE /* Hints.swift */; };
 		BC5918DE233E1A9A003E2ACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC5918CF233E1A99003E2ACE /* Assets.xcassets */; };
@@ -157,7 +158,9 @@
 
 /* Begin PBXFileReference section */
 		4A636D10142E43F07D5CB724 /* Pods-Pursuit You.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuit You.release.xcconfig"; path = "Target Support Files/Pods-Pursuit You/Pods-Pursuit You.release.xcconfig"; sourceTree = "<group>"; };
-		56381A1E51A7E0E1A50EE268 /* Pods_Pursuit_You.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pursuit_You.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		648F6989FF8CEC758CD21937 /* Pods-Pursuit TutorApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuit TutorApp.debug.xcconfig"; path = "Target Support Files/Pods-Pursuit TutorApp/Pods-Pursuit TutorApp.debug.xcconfig"; sourceTree = "<group>"; };
+		70973C081B421939993570AD /* Pods_Pursuit_TutorApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pursuit_TutorApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		945152321A7E124DA3B53699 /* Pods-Pursuit TutorApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuit TutorApp.release.xcconfig"; path = "Target Support Files/Pods-Pursuit TutorApp/Pods-Pursuit TutorApp.release.xcconfig"; sourceTree = "<group>"; };
 		BC07D6C12346FBB000AC813D /* CourseDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailsViewController.swift; sourceTree = "<group>"; };
 		BC07D6C32346FC4600AC813D /* CourseDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		BC07D6C42346FC4600AC813D /* CourseDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseDetailsTableViewCell.xib; sourceTree = "<group>"; };
@@ -174,7 +177,6 @@
 		BC2219EA233B495F0044A88B /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		BC221A0C233B4B890044A88B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		BC221A0D233B4B890044A88B /* LocalizedKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedKeys.swift; sourceTree = "<group>"; };
-		BC221A10233B4BB20044A88B /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		BC221A12233B50AB0044A88B /* CustomAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
 		BC221A14233B687C0044A88B /* BaseClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseClassViewController.swift; sourceTree = "<group>"; };
 		BC221A16233B705F0044A88B /* ApiEndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiEndPoints.swift; sourceTree = "<group>"; };
@@ -199,6 +201,8 @@
 		BC28D7BA2339DB9500DF94B9 /* SecondDashBroadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondDashBroadCollectionViewCell.swift; sourceTree = "<group>"; };
 		BC28D7BB2339DB9500DF94B9 /* SecondDashBroadCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondDashBroadCollectionViewCell.xib; sourceTree = "<group>"; };
 		BC28D7C3233A297E00DF94B9 /* LoginViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewController.swift; sourceTree = "<group>"; };
+		BC3F0060234D9F0A005E1E83 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		BC3F0063234DE4FC005E1E83 /* CategoryDetailsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailsListViewController.swift; sourceTree = "<group>"; };
 		BC5918CC233E1A99003E2ACE /* Disaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disaster.swift; sourceTree = "<group>"; };
 		BC5918CE233E1A99003E2ACE /* Hints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hints.swift; sourceTree = "<group>"; };
 		BC5918CF233E1A99003E2ACE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -290,7 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCFE39EC233CB31B0058D176 /* ESTabBarController_swift.framework in Frameworks */,
-				909A21ADE543332FEE7781D5 /* Pods_Pursuit_You.framework in Frameworks */,
+				34501DB2389B28C608EA0340 /* Pods_Pursuit_TutorApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +320,8 @@
 			children = (
 				C7F990BA57FF25E6862ECADE /* Pods-Pursuit You.debug.xcconfig */,
 				4A636D10142E43F07D5CB724 /* Pods-Pursuit You.release.xcconfig */,
+				648F6989FF8CEC758CD21937 /* Pods-Pursuit TutorApp.debug.xcconfig */,
+				945152321A7E124DA3B53699 /* Pods-Pursuit TutorApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -325,7 +331,7 @@
 			children = (
 				BCFE39EB233CB31B0058D176 /* ESTabBarController_swift.framework */,
 				BCFE39E4233CA3C60058D176 /* ESTabBarController_swift.framework */,
-				56381A1E51A7E0E1A50EE268 /* Pods_Pursuit_You.framework */,
+				70973C081B421939993570AD /* Pods_Pursuit_TutorApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -369,13 +375,13 @@
 		BC2219E5233B45EE0044A88B /* Common Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BC221A10233B4BB20044A88B /* GlobalFunctions.swift */,
 				BC221A12233B50AB0044A88B /* CustomAlertController.swift */,
 				BC221A14233B687C0044A88B /* BaseClassViewController.swift */,
 				BC221A16233B705F0044A88B /* ApiEndPoints.swift */,
 				BC2219E8233B47110044A88B /* Constants.swift */,
 				BC2219EA233B495F0044A88B /* Validator.swift */,
 				BC221A18233B72FE0044A88B /* WebserviceSigleton.swift */,
+				BC3F0060234D9F0A005E1E83 /* Model.swift */,
 			);
 			path = "Common Controller";
 			sourceTree = "<group>";
@@ -422,6 +428,7 @@
 				BC5918E7233E1E94003E2ACE /* ExampleViewController.swift */,
 				BC5918E9233E1EAC003E2ACE /* EmbedContainerViewController.swift */,
 				BC28D7862339D94D00DF94B9 /* Main.storyboard */,
+				BC3F0062234DE496005E1E83 /* Category DetailsListViewController */,
 				BC204B55234B349E009E99AC /* Rewards ViewController */,
 				BC07D6D22347614C00AC813D /* ForgotPassword ViewController */,
 				BC07D6CF2347494000AC813D /* AboutUs ViewController */,
@@ -483,6 +490,14 @@
 				BC28D7C3233A297E00DF94B9 /* LoginViewViewController.swift */,
 			);
 			path = "Login ViewController";
+			sourceTree = "<group>";
+		};
+		BC3F0062234DE496005E1E83 /* Category DetailsListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC3F0063234DE4FC005E1E83 /* CategoryDetailsListViewController.swift */,
+			);
+			path = "Category DetailsListViewController";
 			sourceTree = "<group>";
 		};
 		BC5918CB233E1A99003E2ACE /* Models */ = {
@@ -889,15 +904,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pursuit You/Pods-Pursuit You-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Pursuit TutorApp/Pods-Pursuit TutorApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pursuit You/Pods-Pursuit You-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Pursuit TutorApp/Pods-Pursuit TutorApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pursuit You/Pods-Pursuit You-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pursuit TutorApp/Pods-Pursuit TutorApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6074714877DA3D79FFDE47C7 /* [CP] Check Pods Manifest.lock */ = {
@@ -915,7 +930,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Pursuit You-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Pursuit TutorApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -934,6 +949,7 @@
 				BCF241482345D982000658F6 /* UIImageView+Calculations.swift in Sources */,
 				BC221A1C233B8FE90044A88B /* HomeViewController.swift in Sources */,
 				BCFE3A19233CD43C0058D176 /* ExampleIrregularityContentView.swift in Sources */,
+				BC3F0061234D9F0A005E1E83 /* Model.swift in Sources */,
 				BC221A13233B50AB0044A88B /* CustomAlertController.swift in Sources */,
 				BC5918EF233E35C3003E2ACE /* ProfileViewController.swift in Sources */,
 				BCF2414A2345D982000658F6 /* PopupDialogDefaultView.swift in Sources */,
@@ -960,6 +976,7 @@
 				BC28D78B2339D94D00DF94B9 /* Pursuit_You.xcdatamodeld in Sources */,
 				BCF58101233DD27600238D07 /* MyCourseViewController.swift in Sources */,
 				BCFE3A14233CD43C0058D176 /* ExampleBouncesContentView.swift in Sources */,
+				BC3F0064234DE4FC005E1E83 /* CategoryDetailsListViewController.swift in Sources */,
 				BCF241602345D9BE000658F6 /* CGContext+CGImage.swift in Sources */,
 				BCF241332345D7CF000658F6 /* ProfileVerificationView.swift in Sources */,
 				BCF58104233DD37F00238D07 /* MyCoursesTableViewCell.swift in Sources */,
@@ -1000,7 +1017,6 @@
 				BC28D7B82339DB7800DF94B9 /* FirstDashBroadCollectionViewCell.swift in Sources */,
 				BC28D7B52339D9D000DF94B9 /* DashBroadViewController.swift in Sources */,
 				BCF036CC234200BB000703A2 /* SearchViewController.swift in Sources */,
-				BC221A11233B4BB20044A88B /* GlobalFunctions.swift in Sources */,
 				BCF241502345D982000658F6 /* PopupDialog+Keyboard.swift in Sources */,
 				BC5918E0233E1A9A003E2ACE /* SegmentioBuilder.swift in Sources */,
 				BC07D6C923471EF800AC813D /* CourseProgressTopCell.swift in Sources */,
@@ -1193,7 +1209,7 @@
 		};
 		BC28D7AB2339D95000DF94B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7F990BA57FF25E6862ECADE /* Pods-Pursuit You.debug.xcconfig */;
+			baseConfigurationReference = 648F6989FF8CEC758CD21937 /* Pods-Pursuit TutorApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1223,7 +1239,7 @@
 		};
 		BC28D7AC2339D95000DF94B9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A636D10142E43F07D5CB724 /* Pods-Pursuit You.release.xcconfig */;
+			baseConfigurationReference = 945152321A7E124DA3B53699 /* Pods-Pursuit TutorApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

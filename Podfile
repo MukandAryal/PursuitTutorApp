@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'Pursuit You' do
+target 'Pursuit TutorApp' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
@@ -13,5 +13,6 @@ target 'Pursuit You' do
   pod 'Segmentio'
   pod 'BetterSegmentedControl'
   pod 'Cosmos'
+  pod 'SDWebImage'
 
 end

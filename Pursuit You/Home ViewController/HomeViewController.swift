@@ -7,27 +7,21 @@
 //
 
 import UIKit
-import ESTabBarController_swift
-import DropDown
 
-
-class HomeViewController: UIViewController {
+class HomeViewController: BaseClassViewController {
     
     @IBOutlet weak var categoryTbl_view: UITableView!
-    @IBOutlet weak var develompent_btn: UIButton!
-    @IBOutlet weak var develompent_lbl: UILabel!
     
-    let dropDownSingle = DropDown()
     static var index = 0
     let cellSpacingHeight: CGFloat = 20
     var develompentArr = [String]()
+    var courseArr = [getAllCourse.course]()
     
-    
+    // MARK: - App Life Cycle Method
     public override func viewDidLoad() {
-        
         categoryTbl_view.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
         self.tabBarController?.tabBar.isHidden = false
-        develompentArr = ["Develompent","Digital Marketing","SCO","Content Writing","Business","IT Solutions"]
+        tutorCourseApi()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,79 +33,82 @@ class HomeViewController: UIViewController {
         
     }
     
-    func configureDropDown(tag:Int) {
-        self.dropDownSingle.backgroundColor = UIColor.white
-        self.dropDownSingle.dismissMode  = .automatic
-        dropDownSingle.selectionBackgroundColor = UIColor(red: 234/255, green: 245/255, blue: 255/255, alpha: 1.0)
-        
-        if tag == 1 {
-            dropDownSingle.anchorView = self.develompent_lbl
-            dropDownSingle.dataSource = develompentArr
-            dropDownSingle.width = self.develompent_lbl.frame.size.width
-            dropDownSingle.selectionBackgroundColor = UIColor.clear
-        }
-        dropDownSingle.selectionAction = { [unowned self] (index: Int, item: String) in
-            if tag == 1 {
-                self.develompent_lbl.text = item
-                //self.gender_textFld.textColor = .black
+   //  MARK: - Get All Course Api
+    func tutorCourseApi(){
+        showCustomProgress()
+        WebserviceSigleton.shared.GETService(urlString: ApiEndPoints.getAllCourse) { (response, error) in
+            if error == nil{
+                let resultDict = response as NSDictionary?
+                if (resultDict?["success"]) != nil{
+                    if let sucessDict = resultDict?["success"] as? NSDictionary{
+                        let dataArr = sucessDict["data"] as? [AnyObject]
+                        for obj in dataArr!{
+                            let course = getAllCourse.course(
+                                id: obj["id"] as? Int,
+                                name: obj["name"] as? String,
+                                des: obj["description"] as? String,
+                                fee: obj["fee"] as? Int,
+                                category_id: obj["category_id"] as? Int,
+                                status: obj["status"] as? String,
+                                created_at: obj["created_at"] as? String,
+                                updated_at: obj["created_at"] as? String)
+                            self.courseArr.append(course)
+                            print(self.courseArr)
+                            self.categoryTbl_view.reloadData()
+                        }
+                    }
+                }
+            }else{
+                self.showAlert(title: "Alert", message: "server issue please try again")
             }
+            self.stopProgress()
         }
     }
     
     
-    @objc public func homePageAction() {
-        //        let vc = WebViewController.instanceFromStoryBoard()
-        //        vc.hidesBottomBarWhenPushed = true
-        //        if let navigationController = navigationController {
-        //            navigationController.pushViewController(vc, animated: true)
-        //            return
-        //        }
-        //        present(vc, animated: true, completion: nil)
-    }
-    
-    @IBAction func actionDevelopmentBtn(_ sender: Any) {
-        self.view.endEditing(true)
-        self.configureDropDown(tag: 1)
-        self.dropDownSingle.show()
-    }
+    // MARK: - Button Action
     @IBAction func actionNotification_btn(_ sender: Any) {
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "NotifcationViewController") as! NotifcationViewController
         self.navigationController?.pushViewController(obj, animated: true)
     }
 }
 
+// MARK: - UITableView DataSource
 extension HomeViewController : UITableViewDataSource{
-    
-//    // Set the spacing between sections
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return cellSpacingHeight
-//    }
-//    
-//    // Make the background color show through
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView()
-//        headerView.backgroundColor = UIColor.clear
-//        return headerView
-//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 230
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return courseArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
-        cell.description_lbl.text = "Php is a server side scripting language.that usse the develop static websites."
+        cell.title_lbl.text = courseArr[indexPath.row].name
+        cell.description_lbl.text = courseArr[indexPath.row].des
+        cell.price_lbl.text = courseArr[indexPath.row].fee?.description
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "dd MMMM yyyy hh:mm aa"
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "dd MMMM yyyy"
+        if let date = dateFormatterGet.date(from:  courseArr[indexPath.row].created_at!) {
+            cell.date_lbl.text = dateFormatterPrint.string(from: date)
+        } else {
+        }
         return cell
     }
 }
 
+// MARK: - UITableView Delegate
 extension HomeViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseDetailsViewController") as! CourseDetailsViewController
+        obj.courseName = courseArr[indexPath.row].name!
+        obj.courseDescription = courseArr[indexPath.row].des!
+        obj.courseId = courseArr[indexPath.row].id!
+        obj.coursePrice = "$" + " " + courseArr[indexPath.row].fee!.description
         self.navigationController?.pushViewController(obj, animated: true)
     }
 }
