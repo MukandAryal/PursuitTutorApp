@@ -17,6 +17,10 @@
 		BC07D6CE23471F1000AC813D /* CourseProgressBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC07D6CC23471F1000AC813D /* CourseProgressBottomCell.xib */; };
 		BC07D6D12347496300AC813D /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07D6D02347496300AC813D /* AboutUsViewController.swift */; };
 		BC07D6D42347616A00AC813D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07D6D32347616A00AC813D /* ForgotPasswordViewController.swift */; };
+		BC1A75ED234EED9D00DB181B /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1A75EC234EED9D00DB181B /* HelpViewController.swift */; };
+		BC1A75F0234F078A00DB181B /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1A75EE234F078A00DB181B /* SearchTableViewCell.swift */; };
+		BC1A75F1234F078A00DB181B /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1A75EF234F078A00DB181B /* SearchTableViewCell.xib */; };
+		BC1A75F4234F3E2C00DB181B /* BatchCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1A75F3234F3E2C00DB181B /* BatchCreationViewController.swift */; };
 		BC204B57234B34F4009E99AC /* RewardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC204B56234B34F4009E99AC /* RewardsViewController.swift */; };
 		BC204B5A234B350F009E99AC /* RewardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC204B58234B350F009E99AC /* RewardsTableViewCell.swift */; };
 		BC204B5B234B350F009E99AC /* RewardsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC204B59234B350F009E99AC /* RewardsTableViewCell.xib */; };
@@ -170,6 +174,10 @@
 		BC07D6CC23471F1000AC813D /* CourseProgressBottomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseProgressBottomCell.xib; sourceTree = "<group>"; };
 		BC07D6D02347496300AC813D /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		BC07D6D32347616A00AC813D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		BC1A75EC234EED9D00DB181B /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		BC1A75EE234F078A00DB181B /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		BC1A75EF234F078A00DB181B /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		BC1A75F3234F3E2C00DB181B /* BatchCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchCreationViewController.swift; sourceTree = "<group>"; };
 		BC204B56234B34F4009E99AC /* RewardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsViewController.swift; sourceTree = "<group>"; };
 		BC204B58234B350F009E99AC /* RewardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsTableViewCell.swift; sourceTree = "<group>"; };
 		BC204B59234B350F009E99AC /* RewardsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RewardsTableViewCell.xib; sourceTree = "<group>"; };
@@ -362,6 +370,22 @@
 			path = "ForgotPassword ViewController";
 			sourceTree = "<group>";
 		};
+		BC1A75EB234EED6300DB181B /* Help ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC1A75EC234EED9D00DB181B /* HelpViewController.swift */,
+			);
+			path = "Help ViewController";
+			sourceTree = "<group>";
+		};
+		BC1A75F2234F3CCA00DB181B /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				BC1A75F3234F3E2C00DB181B /* BatchCreationViewController.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		BC204B55234B349E009E99AC /* Rewards ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,6 +452,8 @@
 				BC5918E7233E1E94003E2ACE /* ExampleViewController.swift */,
 				BC5918E9233E1EAC003E2ACE /* EmbedContainerViewController.swift */,
 				BC28D7862339D94D00DF94B9 /* Main.storyboard */,
+				BC1A75F2234F3CCA00DB181B /* New Group */,
+				BC1A75EB234EED6300DB181B /* Help ViewController */,
 				BC3F0062234DE496005E1E83 /* Category DetailsListViewController */,
 				BC204B55234B349E009E99AC /* Rewards ViewController */,
 				BC07D6D22347614C00AC813D /* ForgotPassword ViewController */,
@@ -620,6 +646,8 @@
 				BCF036CB234200BB000703A2 /* SearchViewController.swift */,
 				BCE4DE6123436498009A435B /* SearchCourseTableViewCell.swift */,
 				BCE4DE6223436498009A435B /* SearchCourseTableViewCell.xib */,
+				BC1A75EE234F078A00DB181B /* SearchTableViewCell.swift */,
+				BC1A75EF234F078A00DB181B /* SearchTableViewCell.xib */,
 			);
 			path = "Search ViewController";
 			sourceTree = "<group>";
@@ -873,6 +901,7 @@
 				BC221A0E233B4B890044A88B /* Localizable.strings in Resources */,
 				BCF58115233DECB400238D07 /* CityTableViewCell.xib in Resources */,
 				BC28D7882339D94D00DF94B9 /* Main.storyboard in Resources */,
+				BC1A75F1234F078A00DB181B /* SearchTableViewCell.xib in Resources */,
 				BC07D6CE23471F1000AC813D /* CourseProgressBottomCell.xib in Resources */,
 				BC5918DE233E1A9A003E2ACE /* Assets.xcassets in Resources */,
 				BC07D6CA23471EF800AC813D /* CourseProgressTopCell.xib in Resources */,
@@ -974,10 +1003,12 @@
 				BC221A19233B72FE0044A88B /* WebserviceSigleton.swift in Sources */,
 				BC07D6C52346FC4600AC813D /* CourseDetailsTableViewCell.swift in Sources */,
 				BC28D78B2339D94D00DF94B9 /* Pursuit_You.xcdatamodeld in Sources */,
+				BC1A75F4234F3E2C00DB181B /* BatchCreationViewController.swift in Sources */,
 				BCF58101233DD27600238D07 /* MyCourseViewController.swift in Sources */,
 				BCFE3A14233CD43C0058D176 /* ExampleBouncesContentView.swift in Sources */,
 				BC3F0064234DE4FC005E1E83 /* CategoryDetailsListViewController.swift in Sources */,
 				BCF241602345D9BE000658F6 /* CGContext+CGImage.swift in Sources */,
+				BC1A75F0234F078A00DB181B /* SearchTableViewCell.swift in Sources */,
 				BCF241332345D7CF000658F6 /* ProfileVerificationView.swift in Sources */,
 				BCF58104233DD37F00238D07 /* MyCoursesTableViewCell.swift in Sources */,
 				BCF2416B2345ED32000658F6 /* CourseProgressTableViewCell.swift in Sources */,
@@ -993,6 +1024,7 @@
 				BCF241462345D982000658F6 /* InteractiveTransition.swift in Sources */,
 				BCE4DE70234373AC009A435B /* NotificationTableViewCell.swift in Sources */,
 				BC5918EB233E1EAC003E2ACE /* EmbedContainerViewController.swift in Sources */,
+				BC1A75ED234EED9D00DB181B /* HelpViewController.swift in Sources */,
 				BC5918E2233E1A9A003E2ACE /* String+Convenience.swift in Sources */,
 				BCF2414E2345D982000658F6 /* UIViewController+Visibility.swift in Sources */,
 				BC204B57234B34F4009E99AC /* RewardsViewController.swift in Sources */,

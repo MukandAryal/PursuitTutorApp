@@ -41,7 +41,7 @@ class CourseDetailsViewController: BaseClassViewController {
         courseDetails_Tblview.reloadData()
         description_textView.text = courseDescription
         title_course.text = courseName
-        priceEnroll_lbl.text = coursePrice
+        priceEnroll_lbl.text = "$" + " " + coursePrice
         syllabusApi()
     }
     
@@ -101,6 +101,10 @@ class CourseDetailsViewController: BaseClassViewController {
     @IBAction func actionBackBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    @IBAction func actionHelp_btn(_ sender: Any) {
+        let obj = self.storyboard?.instantiateViewController(withIdentifier: "HelpViewController") as! HelpViewController
+          self.navigationController?.pushViewController(obj, animated: true)
+    }
 }
 
 extension CourseDetailsViewController : UITableViewDataSource{
@@ -112,7 +116,6 @@ extension CourseDetailsViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return syllabusArr.count
     }
-
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CourseDetailsTableViewCell") as! CourseDetailsTableViewCell

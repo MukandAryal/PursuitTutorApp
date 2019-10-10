@@ -11,6 +11,7 @@ import UIKit
 class RewardsViewController: UIViewController {
 
     @IBOutlet weak var rewardsTbl_view: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

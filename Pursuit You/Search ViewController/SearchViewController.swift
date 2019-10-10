@@ -9,24 +9,33 @@
 import UIKit
 import SDWebImage
 
-class SearchViewController: BaseClassViewController,UISearchBarDelegate {
-
-    @IBOutlet weak var search_bar: UISearchBar!
+class SearchViewController: BaseClassViewController,UITextFieldDelegate {
+    
     @IBOutlet weak var searchTblView: UITableView!
     var categroyArr = [getAllCourse.allCategory]()
+    var searchcourseArr = [getAllCourse.course]()
+    var filteredArr = [getAllCourse.allCategory]()
+    @IBOutlet weak var search_txtFld: UITextField!
+    
+    var isSearching = Bool()
     
     // MARK: - App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        search_bar.backgroundImage = UIImage()
-          searchTblView.register(UINib(nibName: "SearchCourseTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchCourseTableViewCell")
-        searchBarSearchButtonClicked(search_bar)
+        searchTblView.register(UINib(nibName: "SearchCourseTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchCourseTableViewCell")
+        searchTblView.allowsSelectionDuringEditing = false
+        search_txtFld.delegate = self
+       // isSearching = false
         tutorCourseApi()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //tutorCourseApi()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
-        self.search_bar.endEditing(true)
+        // self.search_bar.endEditing(true)
     }
     
     // MARK: - Get All Course Api
@@ -58,6 +67,23 @@ class SearchViewController: BaseClassViewController,UISearchBarDelegate {
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        isSearching = true
+        if textField.text! == "" {
+            filteredArr = categroyArr
+        } else {
+            filteredArr.removeAll()
+        
+            for filteredName in categroyArr {
+                if filteredName.name!.lowercased().contains(textField.text!.lowercased()){
+                    print("filteredName>>>>>>>",filteredName)
+                    filteredArr.append(filteredName)
+                   }
+                }
+                self.searchTblView.reloadData()
+            }
+        return true
+    }
     
     @IBAction func actionNotification_btn(_ sender: Any) {
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "NotifcationViewController") as! NotifcationViewController
@@ -65,32 +91,63 @@ class SearchViewController: BaseClassViewController,UISearchBarDelegate {
     }
 }
 
+
+extension SearchViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        // TODO
+    }
+}
+
 extension SearchViewController : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categroyArr.count
+        if isSearching == true {
+            return filteredArr.count
+        }else{
+            return categroyArr.count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if isSearching == true {
+            return 155
+        }else{
             return 155
         }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCourseTableViewCell") as! SearchCourseTableViewCell
-        cell.category_nameLbl.text = categroyArr[indexPath.row].name
-        let img =  categroyArr[indexPath.row].image
-        let imageStr = Configurator.imageBaseUrl + img!
-        cell.category_imgView.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "user_pic"))
-        return cell
+        if isSearching == true {
+            cell.category_nameLbl.text = filteredArr[indexPath.row].name
+            let img =  filteredArr[indexPath.row].image
+            let imageStr = Configurator.imageBaseUrl + img!
+            cell.category_imgView.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "user_pic"))
+            return cell
+        }else{
+            cell.category_nameLbl.text = categroyArr[indexPath.row].name
+            let img =  categroyArr[indexPath.row].image
+            let imageStr = Configurator.imageBaseUrl + img!
+            cell.category_imgView.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "user_pic"))
+            return cell
+        }
     }
 }
 
 extension SearchViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isSearching == true {
+            let obj = self.storyboard?.instantiateViewController(withIdentifier: "CategoryDetailsListViewController") as? CategoryDetailsListViewController
+            obj?.categoryId = filteredArr[indexPath.row].id!
+            obj?.categoryName = filteredArr[indexPath.row].name!
+            search_txtFld.text = ""
+            self.navigationController?.pushViewController(obj!, animated: true)
+        }else{
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "CategoryDetailsListViewController") as? CategoryDetailsListViewController
         obj?.categoryId = categroyArr[indexPath.row].id!
         obj?.categoryName = categroyArr[indexPath.row].name!
         self.navigationController?.pushViewController(obj!, animated: true)
+        }
     }
 }
 

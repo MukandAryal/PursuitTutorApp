@@ -106,7 +106,7 @@ extension CategoryDetailsListViewController : UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
         cell.title_lbl.text = courseArr[indexPath.row].name
         cell.description_lbl.text = courseArr[indexPath.row].des
-        cell.price_lbl.text = courseArr[indexPath.row].fee?.description
+        cell.price_lbl.text = "$" + " " + courseArr[indexPath.row].fee!.description
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "dd MMMM yyyy hh:mm aa"
         let dateFormatterPrint = DateFormatter()
@@ -121,8 +121,13 @@ extension CategoryDetailsListViewController : UITableViewDataSource{
 
 // MARK: - UITableView Delegate
 extension CategoryDetailsListViewController : UITableViewDelegate{
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseDetailsViewController") as! CourseDetailsViewController
-        self.navigationController?.pushViewController(obj, animated: true)
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseDetailsViewController") as! CourseDetailsViewController
+            obj.courseId = courseArr[indexPath.row].id!
+            obj.courseDescription = courseArr[indexPath.row].des!
+            obj.coursePrice = courseArr[indexPath.row].fee!.description
+            obj.courseName = courseArr[indexPath.row].name!
+            self.navigationController?.pushViewController(obj, animated: true)
+        }
     }
-}
+

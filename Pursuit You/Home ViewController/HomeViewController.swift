@@ -68,7 +68,7 @@ class HomeViewController: BaseClassViewController {
     
     // MARK: - Button Action
     @IBAction func actionNotification_btn(_ sender: Any) {
-        let obj = self.storyboard?.instantiateViewController(withIdentifier: "NotifcationViewController") as! NotifcationViewController
+        let obj = self.storyboard?.instantiateViewController(withIdentifier: "BatchCreationViewController") as! BatchCreationViewController
         self.navigationController?.pushViewController(obj, animated: true)
     }
 }
@@ -88,7 +88,7 @@ extension HomeViewController : UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
         cell.title_lbl.text = courseArr[indexPath.row].name
         cell.description_lbl.text = courseArr[indexPath.row].des
-        cell.price_lbl.text = courseArr[indexPath.row].fee?.description
+        cell.price_lbl.text = "$" + " " + courseArr[indexPath.row].fee!.description
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "dd MMMM yyyy hh:mm aa"
         let dateFormatterPrint = DateFormatter()
@@ -108,7 +108,7 @@ extension HomeViewController : UITableViewDelegate{
         obj.courseName = courseArr[indexPath.row].name!
         obj.courseDescription = courseArr[indexPath.row].des!
         obj.courseId = courseArr[indexPath.row].id!
-        obj.coursePrice = "$" + " " + courseArr[indexPath.row].fee!.description
+        obj.coursePrice = courseArr[indexPath.row].fee!.description
         self.navigationController?.pushViewController(obj, animated: true)
     }
 }

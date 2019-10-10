@@ -50,6 +50,11 @@ class CourseProgressViewController: UIViewController {
     @IBAction func actionBackBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func actionHelp_btn(_ sender: Any) {
+      let obj = self.storyboard?.instantiateViewController(withIdentifier: "HelpViewController") as! HelpViewController
+        self.navigationController?.pushViewController(obj, animated: true)
+    }
 }
 
 extension CourseProgressViewController : UITableViewDataSource{
