@@ -16,11 +16,17 @@ class MyCourseViewController: BaseClassViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         myCourse_tblView.register(UINib(nibName: "MyCoursesTableViewCell", bundle: nil), forCellReuseIdentifier: "MyCoursesTableViewCell")
-        allCourseApi()
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        if Connectivity.isConnectedToInternet() {
+            tutorCourseArr.removeAll()
+            allCourseApi()
+        } else {
+            showAlert(title: "No Internet!", message: "Please check your internet connection")
+        }
     }
     
     // MARK: - Get All Course Api

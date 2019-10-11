@@ -48,8 +48,8 @@ class LoginViewViewController: BaseClassViewController {
     // MARK: - Set Up UIInterFace
     func SetUpUiInterFace(){
          //login view UiInterface
-        emailAddress_txtFld.text = "tutor@mail.com"
-        password_txtFld.text = "1234"
+       // emailAddress_txtFld.text = "tutor@mail.com"
+       // password_txtFld.text = "1234"
         appLogo_imgView.layer.cornerRadius = appLogo_imgView.frame.height/2
         appLogo_imgView.clipsToBounds = true
         // singIn view UiInterface
@@ -106,7 +106,7 @@ class LoginViewViewController: BaseClassViewController {
             "password" : password_txtFld.text!,
             "type" : "1"
         ]
-        WebserviceSigleton.shared.POSTServiceWithParameters(urlString: ApiEndPoints.login, params: param as Dictionary<String, AnyObject>) { (response, error) in
+        WebserviceSigleton.shared.POSTServiceWithParametersWithOutToken(urlString: ApiEndPoints.login, params: param as Dictionary<String, AnyObject>) { (response, error) in
             let resultDict = response as NSDictionary?
             if let error = resultDict?.object(forKey: "error") as? String{//error
                 self.showAlert(title: "Alert", message: error)
@@ -137,7 +137,7 @@ class LoginViewViewController: BaseClassViewController {
             "c_password" : signUpConfirmPassword_txtFld.text!,
             "type" : "1"
         ]
-        WebserviceSigleton.shared.POSTServiceWithParameters(urlString: ApiEndPoints.register, params: param as Dictionary<String, AnyObject>) { (response, error) in
+        WebserviceSigleton.shared.POSTServiceWithParametersWithOutToken(urlString: ApiEndPoints.register, params: param as Dictionary<String, AnyObject>) { (response, error) in
             let resultDict = response as NSDictionary?
             if let errorDict = resultDict!["error"] as? NSDictionary { //error
                print("errorDict>>>>",errorDict)

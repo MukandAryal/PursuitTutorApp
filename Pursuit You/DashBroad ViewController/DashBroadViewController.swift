@@ -72,7 +72,7 @@ extension DashBroadViewController : UICollectionViewDataSource,UICollectionViewD
             cell.backgroundColor = appThemeColor
             cell.skipView.backgroundColor = appThemeColor
             cell.next_view.backgroundColor = appThemeColor
-            cell.description_lbl.text = "Pursuit You Provides\n lot of courses which is\n affordabe and contrain\n excellent content"
+            cell.description_lbl.text = "Pursuit You provides the \n platform to choose any\n course of your choice and\n Start Teaching"
             cell.skip_btn.addTarget(self, action:#selector(self.skipButtonClicked), for: .touchUpInside)
             cell.next_btn.addTarget(self, action:#selector(self.nextButtonClicked), for: .touchUpInside)
             page_controller.currentPageIndicatorTintColor = appThemeColor
@@ -82,8 +82,8 @@ extension DashBroadViewController : UICollectionViewDataSource,UICollectionViewD
             cell.backgroundColor = secondDashBroadThemeColor
             cell.skipView.backgroundColor = secondDashBroadThemeColor
             cell.next_view.backgroundColor = secondDashBroadThemeColor
-            cell.title_lbl.text = "Watch and learn via Live\nsession"
-            cell.description_lbl.text = "Ask questions in Chat Bot"
+            cell.title_lbl.text = "Teach and answer queries via\n Live Sessions"
+            cell.description_lbl.text = "Answer the questions in Chat\n Bot"
             let yourImage: UIImage = UIImage(named: "chats_ic.png")!
             cell.appLogo_imgView.image = yourImage
             cell.appLogo_imgView.tintColor = UIColor.white
@@ -98,11 +98,12 @@ extension DashBroadViewController : UICollectionViewDataSource,UICollectionViewD
             cell.backgroundColor = thirdDashBroadThemeColor
             cell.skipView.backgroundColor = thirdDashBroadThemeColor
             cell.next_view.backgroundColor = thirdDashBroadThemeColor
-            cell.title_lbl.text = "Like the Course!!"
-            cell.description_lbl.text = "Give the tips to tutor,review\n the course with nice rating and\n comments"
+            cell.title_lbl.text = "Earn while Teaching!!"
+            cell.description_lbl.text = "Get the Tips from Students side by\n side while Teaching them"
             let yourImage: UIImage = UIImage(named: "smile_ic.png")!
             cell.appLogo_imgView.image = yourImage
             cell.appLogo_imgView.tintColor = UIColor.white
+            cell.next_btn.setTitle("GOT IT", for: .normal)
             cell.skip_btn.isHidden = true
             cell.skipView.isHidden = true
             page_controller.currentPageIndicatorTintColor = thirdDashBroadThemeColor

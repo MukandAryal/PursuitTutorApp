@@ -26,11 +26,16 @@ class SearchViewController: BaseClassViewController,UITextFieldDelegate {
         searchTblView.allowsSelectionDuringEditing = false
         search_txtFld.delegate = self
        // isSearching = false
-        tutorCourseApi()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //tutorCourseApi()
+        if Connectivity.isConnectedToInternet() {
+            categroyArr.removeAll()
+            tutorCourseApi()
+        } else {
+            showAlert(title: "No Internet!", message: "Please check your internet connection")
+        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
@@ -69,8 +74,10 @@ class SearchViewController: BaseClassViewController,UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         isSearching = true
-        if textField.text! == "" {
-            filteredArr = categroyArr
+         if string.count < 1 {
+            //filteredArr = categroyArr
+             isSearching = false
+             searchTblView.reloadData()
         } else {
             filteredArr.removeAll()
         
@@ -82,6 +89,12 @@ class SearchViewController: BaseClassViewController,UITextFieldDelegate {
                 }
                 self.searchTblView.reloadData()
             }
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {  //delegate method
+       // isSearching = false
+       // searchTblView.reloadData()
         return true
     }
     

@@ -17,7 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="FirstDashBroadCollectionViewCell" id="gTV-IL-0wX" customClass="FirstDashBroadCollectionViewCell" customModule="Pursuit_You" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="FirstDashBroadCollectionViewCell" id="gTV-IL-0wX" customClass="FirstDashBroadCollectionViewCell" customModule="Pursuit_TutorApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="337" height="534"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -32,7 +32,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moon" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zap-ef-knc">
-                        <rect key="frame" x="142.5" y="240" width="52.5" height="25.5"/>
+                        <rect key="frame" x="50" y="240" width="237" height="25.5"/>
                         <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -99,7 +99,9 @@
                 <constraint firstItem="Zap-ef-knc" firstAttribute="top" secondItem="C2K-xA-iDl" secondAttribute="bottom" constant="20" id="0R7-gH-sOu"/>
                 <constraint firstItem="C2K-xA-iDl" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="0.45" id="3d8-A0-QiV"/>
                 <constraint firstAttribute="trailing" secondItem="HG1-mv-mJW" secondAttribute="trailing" id="AYs-6u-8Kq"/>
+                <constraint firstItem="Zap-ef-knc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="50" id="E7M-DX-gfi"/>
                 <constraint firstItem="C2K-xA-iDl" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="PND-vT-IR3"/>
+                <constraint firstAttribute="trailing" secondItem="Zap-ef-knc" secondAttribute="trailing" constant="50" id="Wik-BA-gdZ"/>
                 <constraint firstItem="HG1-mv-mJW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Wxz-vL-yBy"/>
                 <constraint firstItem="Zap-ef-knc" firstAttribute="centerX" secondItem="C2K-xA-iDl" secondAttribute="centerX" id="pe0-t7-5g2"/>
                 <constraint firstAttribute="bottom" secondItem="HG1-mv-mJW" secondAttribute="bottom" constant="-50" id="tVI-ir-mbR"/>

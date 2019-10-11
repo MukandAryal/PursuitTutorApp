@@ -18,7 +18,8 @@ class WebserviceSigleton {
         manager.session.configuration.timeoutIntervalForResource = 120
         
         let url =  "\(baseUrl)\(urlString)"
-        let headers = ["Content-Type": "application/x-www-form-urlencoded"]
+        let token = Configurator.tokenBearer + (userDefault.string(forKey: userDefualtKeys.user_Token.rawValue))!
+        let headers = ["Content-Type": "application/x-www-form-urlencoded","Accept":"application/json","Authorization":token]
         
        // let headers = ["Content-Type": "application/json"]
         
@@ -44,6 +45,42 @@ class WebserviceSigleton {
             }
         }
 }
+    
+    
+    func POSTServiceWithParametersWithOutToken(urlString : String , params : Dictionary<String, AnyObject> , callback:@escaping ( _ data: Dictionary<String, AnyObject>?,  _ error: NSError? ) -> Void)  {
+        
+        let manager = Alamofire.SessionManager.default
+        manager.session.configuration.timeoutIntervalForRequest = 120
+        manager.session.configuration.timeoutIntervalForResource = 120
+        
+        let url =  "\(baseUrl)\(urlString)"
+       // let token = Configurator.tokenBearer + (userDefault.string(forKey: userDefualtKeys.user_Token.rawValue))!
+        let headers = ["Content-Type": "application/x-www-form-urlencoded"]
+        
+        // let headers = ["Content-Type": "application/json"]
+        
+        print("Request POST URL:\(url) PARAMS:\(params) HEADER: ")
+        
+        manager.request(url, method: .post, parameters: params, encoding:  URLEncoding.default, headers: headers).responseJSON { response in
+            
+            
+            print(response)
+            
+            guard response.result.error == nil else {
+                print("Error for POST :\(urlString):\(response.result.error!)")
+                callback(nil , response.result.error! as NSError? )
+                return
+            }
+            
+            if let value = response.result.value {
+                print("JSON: \(value)")
+                if let result = value as? Dictionary<String, AnyObject> {
+                    print("Response for POST in DICTIONARY :\(urlString):\(value)")
+                    callback(result , nil )
+                }
+            }
+        }
+    }
  
     
     //GET SERVICE
@@ -78,8 +115,8 @@ class WebserviceSigleton {
         let manager = Alamofire.SessionManager.default
         manager.session.configuration.timeoutIntervalForRequest = 120
         manager.session.configuration.timeoutIntervalForResource = 120
-        
-        let headers = ["Content-Type": "application/x-www-form-urlencoded","Authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImM4ZjQxN2ViZGJiZWM1NTQ2ZTgxZjAwNzA3MWExZjJkYzM3MGUwN2IxMjhlNTllOWEzZWYwMGY3NzYxYTBlNzM3NmUzOWZiMmVlZjFjMDczIn0.eyJhdWQiOiIxIiwianRpIjoiYzhmNDE3ZWJkYmJlYzU1NDZlODFmMDA3MDcxYTFmMmRjMzcwZTA3YjEyOGU1OWU5YTNlZjAwZjc3NjFhMGU3Mzc2ZTM5ZmIyZWVmMWMwNzMiLCJpYXQiOjE1NzAwODA3NTgsIm5iZiI6MTU3MDA4MDc1OCwiZXhwIjoxNjAxNzAzMTU4LCJzdWIiOiIyMiIsInNjb3BlcyI6W119.Kk5shxJUi6OwSak-oaRm65lekM6YHE2m0r2__Spb6TzlT-nahxKkR2KKEl3cbcN4f4ywFigS2Qs3CbuMEBE97cyDENt5oygzIWxud1XwZmExtgy_2ReuM3ISrTRKWBtMfEnEQ9ykHzTrdlQ6M9U7o2rC-scHOca6nzqogSbJa839xztLsApRJs6SCfOgH_9ApG-vyRxTh1qtwg_abMZMbf5huB_R-MEzOTnmoua7WzonSC9umgqrvi51cBoh3tJFDOy2hFfDBOYubBERMc0weQEUB9UvXgm7mMAkUU0VpVgcLvTus9ABpWq9dalRgXKqS73BfXXm4Il4ufkHu5oAsXrJg9R2pf1ZKjEIFaOY8KjgbDf3VzlFUr4OM_2zFojaYsS4rC5U68bn-dg-lrPMqS0IbXKn5c3ydOK_-doQKJwcA3fUaM7EuAMxRrb8LpQNTyVkLSmjX1w8ImdpE0Yg82--5R1QdEcUWN9l3SdpuTPIEJV_ixMINccgDpbhHDHv7w-5kZ5F4dbsvgtDNe9XobS5pfWwQtDRwloJcSJsj4UdGBjO79noSc2LOVDE2G6MLwNJ28eb64KVVnxf6nieuAvzpYjIjUwcy-Q7bo8Ic1LMqFtHMXf9vXkG8uMIOgQKd8gcyetPBnc7CwR0vp0ZP4E13wPoddQZZ4_LIj7S1UQ"]
+        let token = Configurator.tokenBearer + userDefault.string(forKey: userDefualtKeys.user_Token.rawValue)!
+        let headers = ["Content-Type": "application/x-www-form-urlencoded","Authorization":token]
         
         let url =  "\(baseUrl)\(urlString)"
         

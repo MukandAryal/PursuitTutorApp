@@ -18,6 +18,7 @@ class CourseDetailsViewController: BaseClassViewController {
     @IBOutlet weak var priceEnroll_lbl: UILabel!
     @IBOutlet weak var durationWeek_lbl: UILabel!
     @IBOutlet weak var endDate_lbl: UILabel!
+    @IBOutlet weak var startEnroll_btn: UIButton!
     
     let sectionTitles = ["lession 1", "Lession 2", "Lession 3"]
     let foodItems = [["System Introdution", "System Introdution", "Assigment","Assigment"],["System Introdution", "System Introdution", "Assigment","Assigment"],["System Introdution", "System Introdution", "Assigment","Assigment"]]
@@ -42,7 +43,11 @@ class CourseDetailsViewController: BaseClassViewController {
         description_textView.text = courseDescription
         title_course.text = courseName
         priceEnroll_lbl.text = "$" + " " + coursePrice
+        self.startEnroll_btn.setTitle("Start for tutoring",for: .normal)
+        self.startEnroll_btn.addTarget(self, action: #selector(self.startForTutringAction), for: .touchUpInside)
+        //courseId = 8
         syllabusApi()
+        allCourseApi()
     }
     
     override func viewDidLayoutSubviews() {
@@ -62,10 +67,41 @@ class CourseDetailsViewController: BaseClassViewController {
         arg.isScrollEnabled = false
     }
     
+    // MARK: - Get All Course Api
+    func allCourseApi(){
+        //showCustomProgress()
+        WebserviceSigleton.shared.GETService(urlString: ApiEndPoints.tutorCourses) { (response, error) in
+            print(response)
+            if error == nil{
+                let resultDict = response as NSDictionary?
+                if (resultDict?["success"]) != nil{
+                    if let sucessDict = resultDict?["success"] as? NSDictionary{
+                        let dataArr = sucessDict["data"] as? [AnyObject]
+                        for obj in dataArr!{
+                            let course = getAllCourse.allTutorCourse(
+                                course_id: obj["course_id"] as? Int,
+                                course_name: obj["course_name"] as? String)
+                            if obj["course_id"] as? Int == self.courseId{
+                               print("already enroll>>>>>>>>>")
+                                self.startEnroll_btn.removeTarget(nil, action: nil, for: .allEvents)
+
+                                self.startEnroll_btn.setTitle("Contiune",for: .normal)
+                                self.startEnroll_btn.addTarget(self, action: #selector(self.buttonAction), for: .touchUpInside)
+                            }
+                        }
+                    }
+                }
+            }else{
+                self.showAlert(title: "Alert", message: "server issue please try again")
+            }
+           // self.stopProgress()
+        }
+    }
+    
     //  MARK: - Get All Course Api
     func syllabusApi(){
         showCustomProgress()
-        let urlApi = ApiEndPoints.syllabus +  "?course_id=\(courseId)"
+        let urlApi = ApiEndPoints.syllabus +  "?course_id=\(8)"
         print("urlApi>",urlApi)
         WebserviceSigleton.shared.GETService(urlString: urlApi) { (response, error) in
             if error == nil{
@@ -98,9 +134,98 @@ class CourseDetailsViewController: BaseClassViewController {
         }
     }
     
+    // MARK: - Start for enroll Api
+    func tutorEnrollApi(){
+        showCustomProgress()
+        let param: [String: String] = [
+            "course_id" : "\(courseId)",
+        ]
+        WebserviceSigleton.shared.POSTServiceWithParameters(urlString: ApiEndPoints.addCourseToTutor, params: param as Dictionary<String, AnyObject>) { (response, error) in
+            let resultDict = response as NSDictionary?
+            print("resultDict>>>>>>>>",resultDict)
+            if let errorDict = resultDict?["error"] as? NSDictionary{
+                print(errorDict)
+                self.showCustomErrorDialog()
+            }else{
+                self.showCustomSucessDialog()
+            }
+            self.stopProgress()
+        }
+    }
+    
+    
+    // MARK: - Enroll Sucess View
+    func showCustomSucessDialog(animated: Bool = true) {
+        
+        // Create a custom view controller
+        let exitVc = self.storyboard?.instantiateViewController(withIdentifier: "EnrollSucessView") as? EnrollSucessView
+        
+        
+        
+        // Create the dialog
+        let popup = PopupDialog(viewController: exitVc!,
+                                buttonAlignment: .horizontal,
+                                transitionStyle: .bounceDown,
+                                tapGestureDismissal: true,
+                                panGestureDismissal: true)
+        
+        exitVc?.msg_lbl.text = "Course Enrolled Successfully"
+        exitVc?.ok_btn.addTargetClosure { _ in
+            popup.dismiss()
+            self.exitBtn()
+        }
+        present(popup, animated: animated, completion: nil)
+    }
+    
+    func exitBtn(){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - Enroll Sucess View
+    func showCustomErrorDialog(animated: Bool = true) {
+        
+        // Create a custom view controller
+        let exitVc = self.storyboard?.instantiateViewController(withIdentifier: "EnrollSucessView") as? EnrollSucessView
+        
+        
+        
+        // Create the dialog
+        let popup = PopupDialog(viewController: exitVc!,
+                                buttonAlignment: .horizontal,
+                                transitionStyle: .bounceDown,
+                                tapGestureDismissal: true,
+                                panGestureDismissal: true)
+        
+        exitVc?.msg_lbl.text = "You Already Enrolled the course"
+        let yourImage: UIImage = UIImage(named: "alert.png")!
+        exitVc?.suceess_imgView.image = yourImage
+        exitVc?.ok_btn.addTargetClosure { _ in
+            popup.dismiss()
+            self.exitBtn()
+        }
+        present(popup, animated: animated, completion: nil)
+    }
+    
+    // MARK: - Button Action
+    @IBAction func actionStartForTutoring_btn(_ sender: Any) {
+      //  tutorEnrollApi()
+    }
+    
+    @objc func buttonAction(sender: UIButton!) {
+        print("Button tapped")
+        let obj = self.storyboard?.instantiateViewController(withIdentifier: "BatchCreationViewController") as! BatchCreationViewController
+        self.navigationController?.pushViewController(obj, animated: true)
+    }
+    
+    @objc func startForTutringAction(sender: UIButton!) {
+       tutorEnrollApi()
+    }
+    
+    
     @IBAction func actionBackBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func actionHelp_btn(_ sender: Any) {
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "HelpViewController") as! HelpViewController
           self.navigationController?.pushViewController(obj, animated: true)
