@@ -22,7 +22,7 @@ class DashBroadViewController: UIViewController {
         
         let nibSecond = UINib(nibName: "SecondDashBroadCollectionViewCell", bundle: nil)
         dashBroad_CollectionView?.register(nibSecond, forCellWithReuseIdentifier: "SecondDashBroadCollectionViewCell")
-        page_controller.hidesForSinglePage = true
+      //  page_controller.hidesForSinglePage = true
         self.navigationController?.isNavigationBarHidden = true
     }
     
@@ -59,7 +59,7 @@ extension DashBroadViewController : UICollectionViewDataSource,UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        self.page_controller.currentPage = indexPath.row
+        self.page_controller.currentPage = indexPath.item
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -67,7 +67,7 @@ extension DashBroadViewController : UICollectionViewDataSource,UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0{
+        if indexPath.item == 0{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FirstDashBroadCollectionViewCell", for: indexPath) as! FirstDashBroadCollectionViewCell
             cell.backgroundColor = appThemeColor
             cell.skipView.backgroundColor = appThemeColor
@@ -77,7 +77,7 @@ extension DashBroadViewController : UICollectionViewDataSource,UICollectionViewD
             cell.next_btn.addTarget(self, action:#selector(self.nextButtonClicked), for: .touchUpInside)
             page_controller.currentPageIndicatorTintColor = appThemeColor
             return cell
-        }else if indexPath.row == 1{
+        }else if indexPath.item == 1{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SecondDashBroadCollectionViewCell", for: indexPath) as! SecondDashBroadCollectionViewCell
             cell.backgroundColor = secondDashBroadThemeColor
             cell.skipView.backgroundColor = secondDashBroadThemeColor
@@ -91,7 +91,7 @@ extension DashBroadViewController : UICollectionViewDataSource,UICollectionViewD
             cell.next_btn.addTarget(self, action:#selector(self.nextButtonClicked), for: .touchUpInside)
             cell.skip_btn.isHidden = false
             cell.skipView.isHidden = false
-            page_controller.currentPageIndicatorTintColor = UIColor.red
+            page_controller.currentPageIndicatorTintColor = secondDashBroadThemeColor
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SecondDashBroadCollectionViewCell", for: indexPath) as! SecondDashBroadCollectionViewCell

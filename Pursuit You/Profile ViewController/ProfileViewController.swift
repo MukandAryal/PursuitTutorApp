@@ -17,9 +17,6 @@ class ProfileViewController: BaseClassViewController {
     // MARK: - App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         if Connectivity.isConnectedToInternet() {
             userProfileApi()
         } else {
@@ -27,10 +24,16 @@ class ProfileViewController: BaseClassViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+       
+    }
+    
       // MARK: - User Profile Api
     func userProfileApi(){
-        showCustomProgress()
+       // showCustomProgress()
+       LoadingIndicatorView.show()
         WebserviceSigleton.shared.GETService(urlString: ApiEndPoints.user) { (response, error) in
+            LoadingIndicatorView.hide()
             if error == nil {
                 let resultDict = response as NSDictionary?
                 print("resultDict>>>>>",resultDict as Any)
@@ -50,7 +53,7 @@ class ProfileViewController: BaseClassViewController {
                    self.showAlert(message: errorMsg)
                 }
             }
-            self.stopProgress()
+           // self.stopProgress()
         }
     }
     
@@ -83,6 +86,10 @@ class ProfileViewController: BaseClassViewController {
     
     func exitBtn(){
         self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func actionEdit_btn(_ sender: Any) {
+        let obj = self.storyboard?.instantiateViewController(withIdentifier: "ProfileEditViewController") as! ProfileEditViewController
+        self.navigationController?.pushViewController(obj, animated: true)
     }
     
     // MARK: - Button Action

@@ -43,11 +43,13 @@ class CategoryDetailsListViewController: BaseClassViewController {
     
     //  MARK: - Get All Course Api
     func tutorCoursesByCategoryApi(){
-        showCustomProgress()
+      //  showCustomProgress()
+        LoadingIndicatorView.show()
         let urlApi = ApiEndPoints.coursesByCategory +  "?category_id=\(categoryId)"
         print("urlApi>",urlApi)
         WebserviceSigleton.shared.GETService(urlString: urlApi) { (response, error) in
             if error == nil{
+                LoadingIndicatorView.hide()
                 let resultDict = response as NSDictionary?
                 if (resultDict?["success"]) != nil{
                     if let sucessDict = resultDict?["success"] as? NSDictionary{
@@ -76,7 +78,7 @@ class CategoryDetailsListViewController: BaseClassViewController {
             }else{
                 self.showAlert(title: "Alert", message: "server issue please try again")
             }
-            self.stopProgress()
+           // self.stopProgress()
         }
     }
     

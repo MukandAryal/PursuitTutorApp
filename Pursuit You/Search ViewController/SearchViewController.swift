@@ -22,6 +22,12 @@ class SearchViewController: BaseClassViewController,UITextFieldDelegate {
     // MARK: - App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        if Connectivity.isConnectedToInternet() {
+           // categroyArr.removeAll()
+            tutorCourseApi()
+        } else {
+            showAlert(title: "No Internet!", message: "Please check your internet connection")
+        }
         searchTblView.register(UINib(nibName: "SearchCourseTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchCourseTableViewCell")
         searchTblView.allowsSelectionDuringEditing = false
         search_txtFld.delegate = self
@@ -30,12 +36,7 @@ class SearchViewController: BaseClassViewController,UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if Connectivity.isConnectedToInternet() {
-            categroyArr.removeAll()
-            tutorCourseApi()
-        } else {
-            showAlert(title: "No Internet!", message: "Please check your internet connection")
-        }
+      
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
@@ -45,8 +46,10 @@ class SearchViewController: BaseClassViewController,UITextFieldDelegate {
     
     // MARK: - Get All Course Api
     func tutorCourseApi(){
-        showCustomProgress()
+      //  showCustomProgress()
+        LoadingIndicatorView.show()
         WebserviceSigleton.shared.GETService(urlString: ApiEndPoints.category) { (response, error) in
+            LoadingIndicatorView.hide()
             if error == nil{
                 let resultDict = response as NSDictionary?
                 if (resultDict?["success"]) != nil{

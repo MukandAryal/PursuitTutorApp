@@ -27,20 +27,38 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="development" translatesAutoresizingMaskIntoConstraints="NO" id="SKN-KD-iru">
                         <rect key="frame" x="0.0" y="0.0" width="345" height="149.5"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Development" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ho-ba-BuM">
-                        <rect key="frame" x="0.0" y="63.5" width="345" height="28"/>
-                        <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="22"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISC-4w-zci">
+                        <rect key="frame" x="94" y="62.5" width="157.5" height="30"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Development" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ho-ba-BuM">
+                                <rect key="frame" x="10" y="0.0" width="137.5" height="30"/>
+                                <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5ho-ba-BuM" firstAttribute="top" secondItem="ISC-4w-zci" secondAttribute="top" id="RIv-ye-rh1"/>
+                            <constraint firstAttribute="trailing" secondItem="5ho-ba-BuM" secondAttribute="trailing" constant="10" id="Xlu-ua-2vZ"/>
+                            <constraint firstAttribute="height" constant="30" id="glJ-Wk-CLA"/>
+                            <constraint firstItem="5ho-ba-BuM" firstAttribute="leading" secondItem="ISC-4w-zci" secondAttribute="leading" constant="10" id="gmh-8s-BWb"/>
+                            <constraint firstAttribute="bottom" secondItem="5ho-ba-BuM" secondAttribute="bottom" id="lS5-Pq-noh"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="SKN-KD-iru" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8A4-07-LRw"/>
+                    <constraint firstItem="ISC-4w-zci" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8ON-HN-9az"/>
                     <constraint firstAttribute="bottom" secondItem="SKN-KD-iru" secondAttribute="bottom" constant="5" id="ExA-Ba-9od"/>
-                    <constraint firstItem="5ho-ba-BuM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Q0r-WG-zCi"/>
                     <constraint firstItem="SKN-KD-iru" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bhb-mN-oX2"/>
-                    <constraint firstItem="5ho-ba-BuM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="c7C-a5-K57"/>
-                    <constraint firstAttribute="trailing" secondItem="5ho-ba-BuM" secondAttribute="trailing" id="iLv-b5-jVn"/>
-                    <constraint firstItem="5ho-ba-BuM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="sQl-nw-dF7"/>
+                    <constraint firstItem="ISC-4w-zci" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ltB-rc-5M3"/>
                     <constraint firstAttribute="trailing" secondItem="SKN-KD-iru" secondAttribute="trailing" id="to3-fD-9VC"/>
                 </constraints>
             </tableViewCellContentView>

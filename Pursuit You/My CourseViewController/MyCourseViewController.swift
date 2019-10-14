@@ -15,25 +15,28 @@ class MyCourseViewController: BaseClassViewController {
     // MARK: - App Life Cycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
+        if Connectivity.isConnectedToInternet() {
+            //tutorCourseArr.removeAll()
+            allCourseApi()
+        } else {
+            showAlert(title: "No Internet!", message: "Please check your internet connection")
+        }
         myCourse_tblView.register(UINib(nibName: "MyCoursesTableViewCell", bundle: nil), forCellReuseIdentifier: "MyCoursesTableViewCell")
        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-        if Connectivity.isConnectedToInternet() {
-            tutorCourseArr.removeAll()
-            allCourseApi()
-        } else {
-            showAlert(title: "No Internet!", message: "Please check your internet connection")
-        }
+       
     }
     
     // MARK: - Get All Course Api
     func allCourseApi(){
-        showCustomProgress()
+       // showCustomProgress()
+        LoadingIndicatorView.show()
         WebserviceSigleton.shared.GETService(urlString: ApiEndPoints.tutorCourses) { (response, error) in
-            print(response)
+            LoadingIndicatorView.hide()
+            //print(response)
             if error == nil{
                 let resultDict = response as NSDictionary?
                 if (resultDict?["success"]) != nil{

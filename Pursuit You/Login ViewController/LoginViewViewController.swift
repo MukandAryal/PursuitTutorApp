@@ -44,11 +44,12 @@ class LoginViewViewController: BaseClassViewController {
     override func viewDidDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
     }
+  
     
     // MARK: - Set Up UIInterFace
     func SetUpUiInterFace(){
          //login view UiInterface
-       // emailAddress_txtFld.text = "tutor@mail.com"
+        //emailAddress_txtFld.text = "tutor@mail.com"
        // password_txtFld.text = "1234"
         appLogo_imgView.layer.cornerRadius = appLogo_imgView.frame.height/2
         appLogo_imgView.clipsToBounds = true
@@ -100,13 +101,16 @@ class LoginViewViewController: BaseClassViewController {
     
     // MARK: - Login Api Implement
     func loginApi(){
-        showCustomProgress()
+      //  showCustomProgress()
+       // indicator.startAnimating()
+        LoadingIndicatorView.show()
         let param: [String: String] = [
             "email" : emailAddress_txtFld.text!,
             "password" : password_txtFld.text!,
             "type" : "1"
         ]
         WebserviceSigleton.shared.POSTServiceWithParametersWithOutToken(urlString: ApiEndPoints.login, params: param as Dictionary<String, AnyObject>) { (response, error) in
+            LoadingIndicatorView.hide()
             let resultDict = response as NSDictionary?
             if let error = resultDict?.object(forKey: "error") as? String{//error
                 self.showAlert(title: "Alert", message: error)
@@ -123,13 +127,16 @@ class LoginViewViewController: BaseClassViewController {
                 self.window?.rootViewController = tabBarController
                 self.window?.makeKeyAndVisible()
             }
-            self.stopProgress()
+          //  self.stopProgress()
+            //self.indicator.stopAnimating()
+
         }
     }
     
     // MARK: - signUp Api Implement
     func signUpApi(){
-        showCustomProgress()
+      //  showCustomProgress()
+        LoadingIndicatorView.show()
         let param: [String: String] = [
             "name" : signUpFullName_txtFld.text!,
             "email" : signUpEmailAddress_txtFld.text!,
@@ -138,6 +145,7 @@ class LoginViewViewController: BaseClassViewController {
             "type" : "1"
         ]
         WebserviceSigleton.shared.POSTServiceWithParametersWithOutToken(urlString: ApiEndPoints.register, params: param as Dictionary<String, AnyObject>) { (response, error) in
+            LoadingIndicatorView.hide()
             let resultDict = response as NSDictionary?
             if let errorDict = resultDict!["error"] as? NSDictionary { //error
                print("errorDict>>>>",errorDict)
@@ -146,7 +154,7 @@ class LoginViewViewController: BaseClassViewController {
               let obj = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewViewController") as! LoginViewViewController
               self.navigationController?.pushViewController(obj, animated: true)
             }
-            self.stopProgress()
+            //self.stopProgress()
         }
     }
     

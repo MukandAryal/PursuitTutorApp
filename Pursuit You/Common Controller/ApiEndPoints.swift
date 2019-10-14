@@ -26,5 +26,7 @@ class ApiEndPoints: NSObject {
     static let coursesByCategory = "CoursesByCategory"
     static let syllabus = "syllabus"
     static let addCourseToTutor = "addCourseToTutor"
+    static let updateProfile = "updateProfile"
+    static let createBatch = "addClass"
 }
 

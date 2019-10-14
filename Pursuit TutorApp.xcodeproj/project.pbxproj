@@ -119,6 +119,9 @@
 		BCF58116233DECB400238D07 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF5810F233DECB400238D07 /* CityTableViewCell.swift */; };
 		BCF58117233DECB400238D07 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58110233DECB400238D07 /* City.swift */; };
 		BCF58118233DECB400238D07 /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF58111233DECB400238D07 /* CityListViewController.swift */; };
+		BCF8A31723542BBD0065F38D /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF8A31623542BBD0065F38D /* LoadingIndicatorView.swift */; };
+		BCF8A31923544A560065F38D /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF8A31823544A560065F38D /* ProfileEditViewController.swift */; };
+		BCF8A31C23544C850065F38D /* PaymentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF8A31B23544C850065F38D /* PaymentDetailsViewController.swift */; };
 		BCFE39B3233C9E0E0058D176 /* ExampleNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFE39B2233C9E0E0058D176 /* ExampleNavigationController.swift */; };
 		BCFE39EC233CB31B0058D176 /* ESTabBarController_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCFE39EB233CB31B0058D176 /* ESTabBarController_swift.framework */; };
 		BCFE3A0A233CCEE20058D176 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFE3A09233CCEE20058D176 /* TabBarController.swift */; };
@@ -179,7 +182,7 @@
 		BC1A75EC234EED9D00DB181B /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		BC1A75EE234F078A00DB181B /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		BC1A75EF234F078A00DB181B /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
-		BC1A75F3234F3E2C00DB181B /* BatchCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchCreationViewController.swift; sourceTree = "<group>"; };
+		BC1A75F3234F3E2C00DB181B /* BatchCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BatchCreationViewController.swift; path = "New Group/BatchCreationViewController.swift"; sourceTree = "<group>"; };
 		BC204B56234B34F4009E99AC /* RewardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsViewController.swift; sourceTree = "<group>"; };
 		BC204B58234B350F009E99AC /* RewardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsTableViewCell.swift; sourceTree = "<group>"; };
 		BC204B59234B350F009E99AC /* RewardsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RewardsTableViewCell.xib; sourceTree = "<group>"; };
@@ -284,6 +287,9 @@
 		BCF5810F233DECB400238D07 /* CityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		BCF58110233DECB400238D07 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		BCF58111233DECB400238D07 /* CityListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
+		BCF8A31623542BBD0065F38D /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
+		BCF8A31823544A560065F38D /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		BCF8A31B23544C850065F38D /* PaymentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsViewController.swift; sourceTree = "<group>"; };
 		BCFE39B2233C9E0E0058D176 /* ExampleNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleNavigationController.swift; path = ../ExampleNavigationController.swift; sourceTree = "<group>"; };
 		BCFE39E4233CA3C60058D176 /* ESTabBarController_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ESTabBarController_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFE39EB233CB31B0058D176 /* ESTabBarController_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ESTabBarController_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -381,14 +387,6 @@
 			path = "Help ViewController";
 			sourceTree = "<group>";
 		};
-		BC1A75F2234F3CCA00DB181B /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				BC1A75F3234F3E2C00DB181B /* BatchCreationViewController.swift */,
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		BC204B55234B349E009E99AC /* Rewards ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,8 +452,10 @@
 				BC28D7912339D94F00DF94B9 /* Info.plist */,
 				BC5918E7233E1E94003E2ACE /* ExampleViewController.swift */,
 				BC5918E9233E1EAC003E2ACE /* EmbedContainerViewController.swift */,
+				BCF8A31623542BBD0065F38D /* LoadingIndicatorView.swift */,
 				BC28D7862339D94D00DF94B9 /* Main.storyboard */,
-				BC1A75F2234F3CCA00DB181B /* New Group */,
+				BC1A75F3234F3E2C00DB181B /* BatchCreationViewController.swift */,
+				BCF8A31B23544C850065F38D /* PaymentDetailsViewController.swift */,
 				BC1A75EB234EED6300DB181B /* Help ViewController */,
 				BC3F0062234DE496005E1E83 /* Category DetailsListViewController */,
 				BC204B55234B349E009E99AC /* Rewards ViewController */,
@@ -579,6 +579,7 @@
 			isa = PBXGroup;
 			children = (
 				BC5918EE233E35C3003E2ACE /* ProfileViewController.swift */,
+				BCF8A31823544A560065F38D /* ProfileEditViewController.swift */,
 				BCF241322345D7CF000658F6 /* ProfileVerificationView.swift */,
 			);
 			path = "Profile ViewController";
@@ -977,6 +978,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC221A0F233B4B890044A88B /* LocalizedKeys.swift in Sources */,
+				BCF8A31923544A560065F38D /* ProfileEditViewController.swift in Sources */,
 				BCE4DE5B234308E3009A435B /* HomeTableViewCell.swift in Sources */,
 				BCF241482345D982000658F6 /* UIImageView+Calculations.swift in Sources */,
 				BC221A1C233B8FE90044A88B /* HomeViewController.swift in Sources */,
@@ -1029,6 +1031,7 @@
 				BCE4DE70234373AC009A435B /* NotificationTableViewCell.swift in Sources */,
 				BC5918EB233E1EAC003E2ACE /* EmbedContainerViewController.swift in Sources */,
 				BC1A75ED234EED9D00DB181B /* HelpViewController.swift in Sources */,
+				BCF8A31723542BBD0065F38D /* LoadingIndicatorView.swift in Sources */,
 				BC5918E2233E1A9A003E2ACE /* String+Convenience.swift in Sources */,
 				BCF2414E2345D982000658F6 /* UIViewController+Visibility.swift in Sources */,
 				BC204B57234B34F4009E99AC /* RewardsViewController.swift in Sources */,
@@ -1038,6 +1041,7 @@
 				BC2219E9233B47110044A88B /* Constants.swift in Sources */,
 				BCF241492345D982000658F6 /* UIView+Animations.swift in Sources */,
 				BCF241542345D982000658F6 /* PresentationManager.swift in Sources */,
+				BCF8A31C23544C850065F38D /* PaymentDetailsViewController.swift in Sources */,
 				BCF2414C2345D982000658F6 /* PopupDialogOverlayView.swift in Sources */,
 				BC5918E5233E1A9A003E2ACE /* UIColor+RGB.swift in Sources */,
 				BCF241652345D9BE000658F6 /* DynamicBlurView.swift in Sources */,

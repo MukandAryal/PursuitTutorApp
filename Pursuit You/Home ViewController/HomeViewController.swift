@@ -23,6 +23,12 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
     
     // MARK: - App Life Cycle Method
     public override func viewDidLoad() {
+        if Connectivity.isConnectedToInternet() {
+           // courseArr.removeAll()
+            tutorCourseApi()
+        } else {
+            showAlert(title: "No Internet!", message: "Please check your internet connection")
+        }
         categoryTbl_view.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
         self.tabBarController?.tabBar.isHidden = false
         search_txtFld.delegate = self
@@ -30,12 +36,7 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-        if Connectivity.isConnectedToInternet() {
-            courseArr.removeAll()
-            tutorCourseApi()
-        } else {
-            showAlert(title: "No Internet!", message: "Please check your internet connection")
-        }
+        
     }
     
     public override func viewDidLayoutSubviews() {
@@ -45,9 +46,11 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
     
     //  MARK: - Get All Course Api
     func tutorCourseApi(){
-        showCustomProgress()
+       // showCustomProgress()
+        LoadingIndicatorView.show()
         WebserviceSigleton.shared.GETService(urlString: ApiEndPoints.getAllCourse) { (response, error) in
             if error == nil{
+                LoadingIndicatorView.hide()
                 let resultDict = response as NSDictionary?
                 if (resultDict?["success"]) != nil{
                     if let sucessDict = resultDict?["success"] as? NSDictionary{
@@ -69,9 +72,9 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
                     }
                 }
             }else{
-                self.showAlert(title: "Alert", message: "server issue please try again")
+                self.showAlert(title: "Alert", message: "Server issue please try again")
             }
-            self.stopProgress()
+           // self.stopProgress()
         }
     }
     

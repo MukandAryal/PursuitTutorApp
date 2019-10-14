@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BatchCreationViewController: UIViewController,UITextFieldDelegate {
+class BatchCreationViewController: BaseClassViewController,UITextFieldDelegate {
     @IBOutlet weak var selectStartDate_txfFld: UITextField!
     @IBOutlet weak var selectEndDate_txtFld: UITextField!
     @IBOutlet weak var selectStartTime_txtFld: UITextField!
@@ -59,11 +59,13 @@ class BatchCreationViewController: UIViewController,UITextFieldDelegate {
         if selectStartDate_txfFld.isFirstResponder {
             dateFormatter.dateStyle = .medium
             dateFormatter.timeStyle = .none
+            dateFormatter.dateFormat = "yyyy-MM-dd"
             selectStartDate_txfFld.text = dateFormatter.string(from: datePicker.date)
         }
         if selectEndDate_txtFld.isFirstResponder {
             dateFormatter.dateStyle = .medium
             dateFormatter.timeStyle = .none
+            dateFormatter.dateFormat = "yyyy-MM-dd"
             selectEndDate_txtFld.text = dateFormatter.string(from: datePicker.date)
         }
         if selectStartTime_txtFld.isFirstResponder {
@@ -78,7 +80,62 @@ class BatchCreationViewController: UIViewController,UITextFieldDelegate {
         }
         self.view.endEditing(true)
     }
-
+    
+    // MARK: - Login Validation
+    func isValiadCreatBatch(){
+        if selectStartDate_txfFld.text! == ""{
+            self.showAlert(title: "Alert", message: "Please enter start date of course!")
+        }else if selectEndDate_txtFld.text! == "" {
+            self.showAlert(title: "Alert", message: "Please enter end date of course!")
+        }else if selectEndDate_txtFld.text! == "" {
+            self.showAlert(title: "Alert", message: "Please enter start time!")
+        }else if selectEndDate_txtFld.text! == "" {
+            self.showAlert(title: "Alert", message: "Please enter end time!")
+        }else{
+            if Connectivity.isConnectedToInternet() {
+                createBatchApi()
+            } else {
+                showAlert(title: "No Internet!", message: "Please check your internet connection")
+            }
+        }
+    }
+    
+    // MARK: - Login Api Implement
+    func createBatchApi(){
+        //  showCustomProgress()
+        // indicator.startAnimating()
+        LoadingIndicatorView.show()
+        let param: [String: String] = [
+            "start_date" : selectStartDate_txfFld.text!,
+            "end_date" : selectEndDate_txtFld.text!,
+            "class_start_time" : selectStartTime_txtFld.text!,
+            "class_end_time" : selectEndTime_txtFld.text!,
+            "relation_tutor_id" : "5",
+            "relation_tutor_id" : "Test Class",
+            "relation_tutor_id" : "description"
+        ]
+        WebserviceSigleton.shared.POSTServiceWithParametersWithOutToken(urlString: ApiEndPoints.login, params: param as Dictionary<String, AnyObject>) { (response, error) in
+            LoadingIndicatorView.hide()
+            let resultDict = response as NSDictionary?
+            if let error = resultDict?.object(forKey: "error") as? String{//error
+                self.showAlert(title: "Alert", message: error)
+            }else { //sucess
+                let successDict = resultDict!["success"] as! NSDictionary
+//                if let token = successDict["token"] as? String{
+//                    print("token>>>..",token)
+//                    userDefault.set(token, forKey: userDefualtKeys.user_Token.rawValue)
+//                }
+            }
+            //  self.stopProgress()
+            //self.indicator.stopAnimating()
+            
+        }
+    }
+    
+    @IBAction func actionSubmit_btn(_ sender: Any) {
+        isValiadCreatBatch()
+    }
+    
     @IBAction func actionBackBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
