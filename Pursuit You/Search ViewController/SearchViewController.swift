@@ -143,7 +143,7 @@ extension SearchViewController : UITableViewDataSource{
         }else{
             cell.category_nameLbl.text = categroyArr[indexPath.row].name
             let img =  categroyArr[indexPath.row].image
-            let imageStr = Configurator.imageBaseUrl + img!
+            let imageStr = Configurator.imageBaseUrl + (img)! 
             cell.category_imgView.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "user_pic"))
             return cell
         }

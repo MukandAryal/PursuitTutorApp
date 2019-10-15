@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		34501DB2389B28C608EA0340 /* Pods_Pursuit_TutorApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70973C081B421939993570AD /* Pods_Pursuit_TutorApp.framework */; };
 		BC06EA3D235039570074A8E4 /* EnrollSucessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC06EA3C235039570074A8E4 /* EnrollSucessView.swift */; };
 		BC07D6C22346FBB000AC813D /* CourseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07D6C12346FBB000AC813D /* CourseDetailsViewController.swift */; };
 		BC07D6C52346FC4600AC813D /* CourseDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07D6C32346FC4600AC813D /* CourseDetailsTableViewCell.swift */; };
@@ -18,6 +17,9 @@
 		BC07D6CE23471F1000AC813D /* CourseProgressBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC07D6CC23471F1000AC813D /* CourseProgressBottomCell.xib */; };
 		BC07D6D12347496300AC813D /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07D6D02347496300AC813D /* AboutUsViewController.swift */; };
 		BC07D6D42347616A00AC813D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07D6D32347616A00AC813D /* ForgotPasswordViewController.swift */; };
+		BC10923C2355E74A00F7B5A5 /* MobileRTCResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC1092392355E74A00F7B5A5 /* MobileRTCResources.bundle */; };
+		BC10923E2355EE3300F7B5A5 /* MobileRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC1092382355E74A00F7B5A5 /* MobileRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BC1092412355EF0100F7B5A5 /* Pursuit TutorApp.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1092402355EF0100F7B5A5 /* Pursuit TutorApp.m */; };
 		BC1A75ED234EED9D00DB181B /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1A75EC234EED9D00DB181B /* HelpViewController.swift */; };
 		BC1A75F0234F078A00DB181B /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1A75EE234F078A00DB181B /* SearchTableViewCell.swift */; };
 		BC1A75F1234F078A00DB181B /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1A75EF234F078A00DB181B /* SearchTableViewCell.xib */; };
@@ -152,12 +154,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		BC10922F2355E61400F7B5A5 /* Embed PlugIns */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCFE39EF233CB3320058D176 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				BC10923E2355EE3300F7B5A5 /* MobileRTC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +192,11 @@
 		BC07D6CC23471F1000AC813D /* CourseProgressBottomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseProgressBottomCell.xib; sourceTree = "<group>"; };
 		BC07D6D02347496300AC813D /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		BC07D6D32347616A00AC813D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		BC1092372355E74A00F7B5A5 /* MobileRTCScreenShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileRTCScreenShare.framework; path = "../../Downloads/zoom-sdk-ios-master 3/lib/MobileRTCScreenShare.framework"; sourceTree = "<group>"; };
+		BC1092382355E74A00F7B5A5 /* MobileRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileRTC.framework; path = "../../Downloads/zoom-sdk-ios-master 3/lib/MobileRTC.framework"; sourceTree = "<group>"; };
+		BC1092392355E74A00F7B5A5 /* MobileRTCResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MobileRTCResources.bundle; path = "../../Downloads/zoom-sdk-ios-master 3/lib/MobileRTCResources.bundle"; sourceTree = "<group>"; };
+		BC10923F2355EF0100F7B5A5 /* Pursuit TutorApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pursuit TutorApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		BC1092402355EF0100F7B5A5 /* Pursuit TutorApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Pursuit TutorApp.m"; sourceTree = "<group>"; };
 		BC1A75EC234EED9D00DB181B /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		BC1A75EE234F078A00DB181B /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		BC1A75EF234F078A00DB181B /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -310,7 +328,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCFE39EC233CB31B0058D176 /* ESTabBarController_swift.framework in Frameworks */,
-				34501DB2389B28C608EA0340 /* Pods_Pursuit_TutorApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +362,9 @@
 		51112F4BF7894BE82B387058 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC1092382355E74A00F7B5A5 /* MobileRTC.framework */,
+				BC1092392355E74A00F7B5A5 /* MobileRTCResources.bundle */,
+				BC1092372355E74A00F7B5A5 /* MobileRTCScreenShare.framework */,
 				BCFE39EB233CB31B0058D176 /* ESTabBarController_swift.framework */,
 				BCFE39E4233CA3C60058D176 /* ESTabBarController_swift.framework */,
 				70973C081B421939993570AD /* Pods_Pursuit_TutorApp.framework */,
@@ -424,6 +444,8 @@
 		BC28D7762339D94D00DF94B9 = {
 			isa = PBXGroup;
 			children = (
+				BC10923F2355EF0100F7B5A5 /* Pursuit TutorApp-Bridging-Header.h */,
+				BC1092402355EF0100F7B5A5 /* Pursuit TutorApp.m */,
 				BC28D7812339D94D00DF94B9 /* Pursuit You */,
 				BC28D7992339D94F00DF94B9 /* Pursuit YouTests */,
 				BC28D7A42339D95000DF94B9 /* Pursuit YouUITests */,
@@ -792,6 +814,7 @@
 				BC28D77D2339D94D00DF94B9 /* Resources */,
 				141BF68F93FEF15F67E5C183 /* [CP] Embed Pods Frameworks */,
 				BCFE39EF233CB3320058D176 /* Embed Frameworks */,
+				BC10922F2355E61400F7B5A5 /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
@@ -850,6 +873,7 @@
 				TargetAttributes = {
 					BC28D77E2339D94D00DF94B9 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 					BC28D7952339D94F00DF94B9 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -868,6 +892,12 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				"zh-Hans",
+				ja,
+				es,
+				"zh-Hant",
+				fr,
 			);
 			mainGroup = BC28D7762339D94D00DF94B9;
 			productRefGroup = BC28D7802339D94D00DF94B9 /* Products */;
@@ -899,6 +929,7 @@
 				BCF2416C2345ED32000658F6 /* CourseProgressTableViewCell.xib in Resources */,
 				BCF2417423460C49000658F6 /* CourseProgressFooterView.xib in Resources */,
 				BC28D78D2339D94F00DF94B9 /* Assets.xcassets in Resources */,
+				BC10923C2355E74A00F7B5A5 /* MobileRTCResources.bundle in Resources */,
 				BCE4DE6423436498009A435B /* SearchCourseTableViewCell.xib in Resources */,
 				BCE4DE60234362CC009A435B /* regular.ttf in Resources */,
 				BCF58114233DECB400238D07 /* AlternativeCityTableViewCell.xib in Resources */,
@@ -1033,6 +1064,7 @@
 				BC1A75ED234EED9D00DB181B /* HelpViewController.swift in Sources */,
 				BCF8A31723542BBD0065F38D /* LoadingIndicatorView.swift in Sources */,
 				BC5918E2233E1A9A003E2ACE /* String+Convenience.swift in Sources */,
+				BC1092412355EF0100F7B5A5 /* Pursuit TutorApp.m in Sources */,
 				BCF2414E2345D982000658F6 /* UIViewController+Visibility.swift in Sources */,
 				BC204B57234B34F4009E99AC /* RewardsViewController.swift in Sources */,
 				BCFE3A17233CD43C0058D176 /* ExampleHighlightableContentView.swift in Sources */,
@@ -1183,6 +1215,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE_SPECIFIER = development_pursuitProfile;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1239,6 +1272,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE_SPECIFIER = development_pursuitProfile;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1252,6 +1286,7 @@
 			baseConfigurationReference = 648F6989FF8CEC758CD21937 /* Pods-Pursuit TutorApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 8Z93NLXT6X;
@@ -1261,6 +1296,11 @@
 					"$(PROJECT_DIR)/Pursuit\\ You/Lottie",
 					"$(PROJECT_DIR)/Pursuit\\ You/Framework",
 					"$(PROJECT_DIR)/Pursuit\\ You/Framework",
+					"$(PROJECT_DIR)/Pursuit\\ You/Zoom\\ Sdk\\ /lib",
+					"$(PROJECT_DIR)/Pursuit\\ You/Zoom\\ Sdk\\ /lib",
+					"$(PROJECT_DIR)/Pursuit\\ You/Zoom\\ Sdk\\ /lib",
+					"$(PROJECT_DIR)/Pursuit\\ You/Zoom\\ Sdk\\ /lib",
+					"$(PROJECT_DIR)/lib",
 				);
 				INFOPLIST_FILE = "Pursuit You/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1268,10 +1308,43 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"ANLoader\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"BetterSegmentedControl\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Cosmos\"",
+					"-framework",
+					"\"DropDown\"",
+					"-framework",
+					"\"ESTabBarController_swift\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"IQKeyboardManagerSwift\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"Segmentio\"",
+					"-framework",
+					"\"UIKit\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ks.PursuitYou.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = Pursuit_development;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/applessd2/Desktop/PursuitTutorApp/Pursuit TutorApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1282,6 +1355,7 @@
 			baseConfigurationReference = 945152321A7E124DA3B53699 /* Pods-Pursuit TutorApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 8Z93NLXT6X;
@@ -1291,6 +1365,11 @@
 					"$(PROJECT_DIR)/Pursuit\\ You/Lottie",
 					"$(PROJECT_DIR)/Pursuit\\ You/Framework",
 					"$(PROJECT_DIR)/Pursuit\\ You/Framework",
+					"$(PROJECT_DIR)/Pursuit\\ You/Zoom\\ Sdk\\ /lib",
+					"$(PROJECT_DIR)/Pursuit\\ You/Zoom\\ Sdk\\ /lib",
+					"$(PROJECT_DIR)/Pursuit\\ You/Zoom\\ Sdk\\ /lib",
+					"$(PROJECT_DIR)/Pursuit\\ You/Zoom\\ Sdk\\ /lib",
+					"$(PROJECT_DIR)/lib",
 				);
 				INFOPLIST_FILE = "Pursuit You/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1298,10 +1377,42 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"ANLoader\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"BetterSegmentedControl\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Cosmos\"",
+					"-framework",
+					"\"DropDown\"",
+					"-framework",
+					"\"ESTabBarController_swift\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"IQKeyboardManagerSwift\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"Segmentio\"",
+					"-framework",
+					"\"UIKit\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ks.PursuitYou.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = Pursuit_development;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/applessd2/Desktop/PursuitTutorApp/Pursuit TutorApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

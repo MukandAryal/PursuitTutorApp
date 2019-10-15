@@ -49,8 +49,8 @@ class LoginViewViewController: BaseClassViewController {
     // MARK: - Set Up UIInterFace
     func SetUpUiInterFace(){
          //login view UiInterface
-        //emailAddress_txtFld.text = "tutor@mail.com"
-       // password_txtFld.text = "1234"
+        emailAddress_txtFld.text = "tutor@mail.com"
+        password_txtFld.text = "1234"
         appLogo_imgView.layer.cornerRadius = appLogo_imgView.frame.height/2
         appLogo_imgView.clipsToBounds = true
         // singIn view UiInterface
