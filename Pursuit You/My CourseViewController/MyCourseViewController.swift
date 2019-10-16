@@ -36,7 +36,7 @@ class MyCourseViewController: BaseClassViewController {
         LoadingIndicatorView.show()
         WebserviceSigleton.shared.GETService(urlString: ApiEndPoints.tutorCourses) { (response, error) in
             LoadingIndicatorView.hide()
-            //print(response)
+            print(response)
             if error == nil{
                 let resultDict = response as NSDictionary?
                 if (resultDict?["success"]) != nil{

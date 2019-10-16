@@ -16,8 +16,10 @@ class ProfileEditViewController: BaseClassViewController,UIImagePickerController
     var viewController: UIViewController?
     var pickImageCallback : ((UIImage) -> ())?
     var imgToUpload = Data()
-
-
+    var window: UIWindow?
+    var userDetails = getAllCourse.UserDetails()
+    
+    
     @IBOutlet weak var name_txtFld: UITextField!
     @IBOutlet weak var dateOfBirth_txtFld: UITextField!
     @IBOutlet weak var organization_txtFld: UITextField!
@@ -25,9 +27,18 @@ class ProfileEditViewController: BaseClassViewController,UIImagePickerController
     override func viewDidLoad() {
         super.viewDidLoad()
         showDatePicker()
+        name_txtFld.text = userDetails.name
+        organization_txtFld.text = userDetails.Organization
+        dateOfBirth_txtFld.text = userDetails.email_verified_at
+        let imageStr = Configurator.imageBaseUrl + userDetails.profileImage!
+        self.profile_imgView.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "demo_icon"))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        print(profile_imgView.frame)
         profile_imgView.layer.cornerRadius = profile_imgView.frame.height/2
         profile_imgView.clipsToBounds = true
-        // Do any additional setup after loading the view.
     }
     
     func showDatePicker(){
@@ -72,7 +83,7 @@ class ProfileEditViewController: BaseClassViewController,UIImagePickerController
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
     
     //get image from source type
     func openCamera(){
@@ -116,54 +127,67 @@ class ProfileEditViewController: BaseClassViewController,UIImagePickerController
         dismiss(animated: true, completion: nil)
     }
     
-    
     func profileUpdateApi(device_token:String,accept:String,name:String,dateOfBirth:String,Organization:String,profileImg:Data){
-      //  self.showCustomProgress()
         LoadingIndicatorView.show()
-        Alamofire.upload(
-            multipartFormData: { multipartFormData in
-
-                multipartFormData.append(accept.data(using: String.Encoding.utf8)!, withName: "application/json")
-                multipartFormData.append(device_token.data(using: String.Encoding.utf8)!, withName: "Authorization")
-                multipartFormData.append(name.data(using: String.Encoding.utf8)!, withName: "name")
-                multipartFormData.append(dateOfBirth.data(using: String.Encoding.utf8)!, withName: "dob")
-                multipartFormData.append(Organization.data(using: String.Encoding.utf8)!, withName: "Organization")
-                if let imgToUpload = self.profile_imgView.image!.jpegData(compressionQuality: 0.2) {
-                    multipartFormData.append(imgToUpload, withName: "image", fileName: "\(String(NSDate().timeIntervalSince1970).replacingOccurrences(of: ".", with: "")).jpeg", mimeType: "image/jpeg")
-                }
-                
-                print(multipartFormData)
+        let token = Configurator.tokenBearer + (userDefault.string(forKey: userDefualtKeys.user_Token.rawValue))!
+        Alamofire.upload(multipartFormData:{ multipartFormData in
+            multipartFormData.append(name.data(using: String.Encoding.utf8)!, withName: "name")
+            multipartFormData.append(dateOfBirth.data(using: String.Encoding.utf8)!, withName: "dob")
+            multipartFormData.append(Organization.data(using: String.Encoding.utf8)!, withName: "Organization")
+            if let imgToUpload = self.profile_imgView.image!.jpegData(compressionQuality: 0.2) {
+                multipartFormData.append(imgToUpload, withName: "image", fileName: "\(String(NSDate().timeIntervalSince1970).replacingOccurrences(of: ".", with: "")).jpeg", mimeType: "image/jpeg")
+            }
         },
-            to:"\(Configurator.baseURL)\(ApiEndPoints.updateProfile)",
-            encodingCompletion: { encodingResult in
-                
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    upload.responseJSON { response in
-                          print(response)
-                      //  self.stopProgress()
-                        LoadingIndicatorView.hide()
-                        var resultDict = response.value as? [String:AnyObject]
-//                        if let sucessStr = resultDict!["success"] as? Bool{
-//                            print(sucessStr)
-//                            if sucessStr{
-//                               // self.showUpdateCustomDialog()
-//                                self.showAlert(title: "Alert", message: "Profile update sucessfully")
-//                            }else{
-//                                self.showAlert(title: "Alert", message: "Sumthing wrong please try again!")
-//                                self.present(self.alert, animated: true, completion: nil)
-//                            }
-//                        }
-                        }
-                        .uploadProgress { progress in // main queue by default
-                            // print("Upload Progress: \(progress.fractionCompleted)")
-                    }
-                    return
-                case .failure(let encodingError):
-                    self.stopProgress()
-                    debugPrint(encodingError)
-                }
+                         usingThreshold:UInt64.init(),
+                         to:Configurator.baseURL + ApiEndPoints.updateProfile,
+                         method:.post,
+                         headers:["Authorization": token,"Accept":"application/json"],
+                         encodingCompletion: { encodingResult in
+                            switch encodingResult {
+                            case .success(let upload, _, _):
+                                upload.responseJSON { response in
+                                    LoadingIndicatorView.hide()
+                                    self.showCustomSucessDialog()
+                                    debugPrint(response)
+                                }
+                            case .failure(let encodingError):
+                                LoadingIndicatorView.hide()
+                                print(encodingError)
+                                self.showAlert(title: "Alert", message: "Please try again!")
+                            }
         })
+    }
+    
+    // MARK: - Enroll Sucess View
+    func showCustomSucessDialog(animated: Bool = true) {
+        
+        // Create a custom view controller
+        let exitVc = self.storyboard?.instantiateViewController(withIdentifier: "EnrollSucessView") as? EnrollSucessView
+        
+        
+        
+        // Create the dialog
+        let popup = PopupDialog(viewController: exitVc!,
+                                buttonAlignment: .horizontal,
+                                transitionStyle: .bounceDown,
+                                tapGestureDismissal: true,
+                                panGestureDismissal: true)
+        
+        exitVc?.msg_lbl.text = "Profile updated successfully"
+        exitVc?.ok_btn.addTargetClosure { _ in
+            popup.dismiss()
+            self.exitBtn()
+        }
+        present(popup, animated: animated, completion: nil)
+    }
+    
+    func exitBtn(){
+        //let obj = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+       // self.navigationController?.pushViewController(obj, animated: true)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let tabBarController = customIrregularityStyle(delegate: nil)
+        self.window?.rootViewController = tabBarController
+        self.window?.makeKeyAndVisible()
     }
     
     @IBAction func actionUpdate_btn(_ sender: Any) {
@@ -177,7 +201,7 @@ class ProfileEditViewController: BaseClassViewController,UIImagePickerController
         }else if dateOfBirth_txtFld.text == ""{
             self.showAlert(title: "Alert", message: "Please enter orgazination name!")
         }else{
-        let token = Configurator.tokenBearer + userDefault.string(forKey: userDefualtKeys.user_Token.rawValue)!
+            let token = Configurator.tokenBearer + userDefault.string(forKey: userDefualtKeys.user_Token.rawValue)!
             profileUpdateApi(device_token: token, accept: "Accept", name: name_txtFld.text!, dateOfBirth: dateOfBirth_txtFld.text!, Organization: organization_txtFld.text!, profileImg: imgToUpload)
         }
     }
@@ -191,12 +215,12 @@ class ProfileEditViewController: BaseClassViewController,UIImagePickerController
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }

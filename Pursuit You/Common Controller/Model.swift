@@ -42,6 +42,17 @@ class getAllCourse {
         var created_at : String?
         var updated_at : String?
     }
+    
+    struct UserDetails {
+         var id : Int?
+         var name : String?
+         var email : String?
+         var dob : String?
+         var profileImage : String?
+         var Organization : String?
+         var email_verified_at : String?
+         var role : Int?
+    }
 }
 
 

@@ -71,11 +71,13 @@ class BatchCreationViewController: BaseClassViewController,UITextFieldDelegate {
         if selectStartTime_txtFld.isFirstResponder {
             let formatter = DateFormatter()
             formatter.timeStyle = .short
+            formatter.dateFormat = "HH:mm"
             selectStartTime_txtFld.text = formatter.string(from: timePicker.date)
         }
         if selectEndTime_txtFld.isFirstResponder {
             let formatter = DateFormatter()
             formatter.timeStyle = .short
+            formatter.dateFormat = "HH:mm"
             selectEndTime_txtFld.text = formatter.string(from: timePicker.date)
         }
         self.view.endEditing(true)
@@ -104,32 +106,73 @@ class BatchCreationViewController: BaseClassViewController,UITextFieldDelegate {
     func createBatchApi(){
         //  showCustomProgress()
         // indicator.startAnimating()
+        print(selectStartTime_txtFld.text!)
+        let startTime = selectStartTime_txtFld.text?.dropLast(3) ?? ""+":00"
+        let startTimeStr = startTime + ":00"
+        let endTime = selectEndTime_txtFld.text?.dropLast(3) ?? ""+":00"
+        let endTimeStr = endTime + ":00"
+        print("startTimeStr>>>>>>>",startTimeStr)
+        print("endTimeStr>>>>>>",endTimeStr)
+        let startDate = selectStartDate_txfFld.text
+        let endDate = selectEndDate_txtFld.text
+        print("startDate>>>>>>",startTimeStr)
+        print("startDate>>>>>>",endTimeStr)
+        print("startDate>>>>>>",startDate)
+        print("startDate>>>>>>",endDate)
+
         LoadingIndicatorView.show()
         let param: [String: String] = [
-            "start_date" : selectStartDate_txfFld.text!,
-            "end_date" : selectEndDate_txtFld.text!,
-            "class_start_time" : selectStartTime_txtFld.text!,
-            "class_end_time" : selectEndTime_txtFld.text!,
-            "relation_tutor_id" : "5",
-            "relation_tutor_id" : "Test Class",
-            "relation_tutor_id" : "description"
+            "start_date" : String(startDate ?? ""),
+            "end_date" : String(endDate ?? ""),
+            "class_start_time" : String(startTimeStr ),
+            "class_end_time" : String(endTimeStr ),
+            "relation_tutor_id" : "42",
+            "title" : "Test Class",
+            "description" : "description"
         ]
-        WebserviceSigleton.shared.POSTServiceWithParametersWithOutToken(urlString: ApiEndPoints.login, params: param as Dictionary<String, AnyObject>) { (response, error) in
+        print("param>>>>>",param)
+        WebserviceSigleton.shared.POSTServiceWithParameters(urlString: ApiEndPoints.createBatch, params: param as Dictionary<String, AnyObject>) { (response, error) in
             LoadingIndicatorView.hide()
             let resultDict = response as NSDictionary?
             if let error = resultDict?.object(forKey: "error") as? String{//error
                 self.showAlert(title: "Alert", message: error)
             }else { //sucess
-                let successDict = resultDict!["success"] as! NSDictionary
-//                if let token = successDict["token"] as? String{
-//                    print("token>>>..",token)
-//                    userDefault.set(token, forKey: userDefualtKeys.user_Token.rawValue)
-//                }
+                let successStr = resultDict?["success"] as! String
+                print(successStr)
+                self.showCustomSucessDialog()
             }
             //  self.stopProgress()
             //self.indicator.stopAnimating()
             
         }
+    }
+    
+    // MARK: - Enroll Sucess View
+    func showCustomSucessDialog(animated: Bool = true) {
+        
+        // Create a custom view controller
+        let exitVc = self.storyboard?.instantiateViewController(withIdentifier: "EnrollSucessView") as? EnrollSucessView
+        
+        
+        
+        // Create the dialog
+        let popup = PopupDialog(viewController: exitVc!,
+                                buttonAlignment: .horizontal,
+                                transitionStyle: .bounceDown,
+                                tapGestureDismissal: true,
+                                panGestureDismissal: true)
+        
+        exitVc?.msg_lbl.text = "Class added successfully"
+        exitVc?.ok_btn.addTargetClosure { _ in
+            popup.dismiss()
+            self.exitBtn()
+        }
+        present(popup, animated: animated, completion: nil)
+    }
+    
+    func exitBtn(){
+        let obj = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        self.navigationController?.pushViewController(obj, animated: true)
     }
     
     @IBAction func actionSubmit_btn(_ sender: Any) {

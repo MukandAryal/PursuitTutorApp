@@ -19,12 +19,13 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
     var courseArr = [getAllCourse.course]()
     var filteredArr = [getAllCourse.course]()
     var isSearching = Bool()
+    private let refreshControl = UIRefreshControl()
     
     
     // MARK: - App Life Cycle Method
     public override func viewDidLoad() {
         if Connectivity.isConnectedToInternet() {
-           // courseArr.removeAll()
+            // courseArr.removeAll()
             tutorCourseApi()
         } else {
             showAlert(title: "No Internet!", message: "Please check your internet connection")
@@ -32,6 +33,15 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
         categoryTbl_view.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
         self.tabBarController?.tabBar.isHidden = false
         search_txtFld.delegate = self
+        // Add Refresh Control to Table View
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        categoryTbl_view.addSubview(refreshControl)
+    }
+    
+    @objc func refresh(sender:AnyObject) {
+        // Code to refresh table view
+        tutorCourseApi()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,11 +56,12 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
     
     //  MARK: - Get All Course Api
     func tutorCourseApi(){
-       // showCustomProgress()
+        // showCustomProgress()
         LoadingIndicatorView.show()
         WebserviceSigleton.shared.GETService(urlString: ApiEndPoints.getAllCourse) { (response, error) in
             if error == nil{
                 LoadingIndicatorView.hide()
+                self.refreshControl.endRefreshing()
                 let resultDict = response as NSDictionary?
                 if (resultDict?["success"]) != nil{
                     if let sucessDict = resultDict?["success"] as? NSDictionary{
@@ -72,14 +83,14 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
                     }
                 }
             }else{
-                self.showAlert(title: "Alert", message: "Server issue please try again")
+                self.showAlert(title: "Alert", message: "Please try again!")
             }
-           // self.stopProgress()
+            // self.stopProgress()
         }
     }
     
     // MARK: - Text Filed Should ChangeCharactersIn
-
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         isSearching = true
         if string.count < 1 {
@@ -101,7 +112,7 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {  //delegate method
         //isSearching = false
-       // categoryTbl_view.reloadData()
+        // categoryTbl_view.reloadData()
         return true
     }
     
@@ -163,11 +174,11 @@ extension HomeViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseDetailsViewController") as! CourseDetailsViewController
         if isSearching == true{
-        obj.courseName = filteredArr[indexPath.row].name!
-        obj.courseDescription = filteredArr[indexPath.row].des!
-        obj.courseId = filteredArr[indexPath.row].id!
-        obj.coursePrice = filteredArr[indexPath.row].fee!.description
-        self.navigationController?.pushViewController(obj, animated: true)
+            obj.courseName = filteredArr[indexPath.row].name!
+            obj.courseDescription = filteredArr[indexPath.row].des!
+            obj.courseId = filteredArr[indexPath.row].id!
+            obj.coursePrice = filteredArr[indexPath.row].fee!.description
+            self.navigationController?.pushViewController(obj, animated: true)
         }else{
             obj.courseName = courseArr[indexPath.row].name!
             obj.courseDescription = courseArr[indexPath.row].des!

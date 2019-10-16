@@ -115,7 +115,7 @@ class LoginViewViewController: BaseClassViewController {
             if let error = resultDict?.object(forKey: "error") as? String{//error
                 self.showAlert(title: "Alert", message: error)
             }else { //sucess
-                let successDict = resultDict!["success"] as! NSDictionary
+                let successDict = resultDict?["success"] as! NSDictionary
                 if let token = successDict["token"] as? String{
                     print("token>>>..",token)
                     userDefault.set(token, forKey: userDefualtKeys.user_Token.rawValue)
