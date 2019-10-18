@@ -10,8 +10,8 @@ import UIKit
 import Alamofire
 
 class Configurator: NSObject {
-    static let baseURL = "http://3.83.153.192/pursuit/public/api/"
-    static let imageBaseUrl = "http://3.83.153.192/pursuit/public/uploads/"
+    static let baseURL = "http://krescentglobal.in/pursuit/public/api/"
+    static let imageBaseUrl = "http://krescentglobal.in/pursuit/public/uploads/"
     static let tokenBearer = "Bearer "
 }
 

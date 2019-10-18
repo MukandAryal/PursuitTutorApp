@@ -206,7 +206,7 @@ class CourseDetailsViewController: BaseClassViewController {
         exitVc?.suceess_imgView.image = yourImage
         exitVc?.ok_btn.addTargetClosure { _ in
             popup.dismiss()
-            self.exitBtn()
+            //self.exitBtn()
         }
         present(popup, animated: animated, completion: nil)
     }

@@ -118,7 +118,7 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
     
     // MARK: - Button Action
     @IBAction func actionNotification_btn(_ sender: Any) {
-        let obj = self.storyboard?.instantiateViewController(withIdentifier: "BatchCreationViewController") as! BatchCreationViewController
+        let obj = self.storyboard?.instantiateViewController(withIdentifier: "NotifcationViewController") as! NotifcationViewController
         self.navigationController?.pushViewController(obj, animated: true)
     }
 }

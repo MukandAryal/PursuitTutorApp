@@ -63,12 +63,12 @@ class CategoryDetailsListViewController: BaseClassViewController {
                             let course = getAllCourse.course(
                                 id: obj["id"] as? Int,
                                 name: obj["name"] as? String,
-                                des: obj["description"] as? String,
+                                des: obj["des"] as? String,
                                 fee: obj["fee"] as? Int,
                                 category_id: obj["category_id"] as? Int,
                                 status: obj["status"] as? String,
                                 created_at: obj["created_at"] as? String,
-                                updated_at: obj["created_at"] as? String)
+                                updated_at: obj["updated_at"] as? String)
                             self.courseArr.append(course)
                             print(self.courseArr)
                             self.categoryTbl_view.reloadData()
@@ -109,14 +109,6 @@ extension CategoryDetailsListViewController : UITableViewDataSource{
         cell.title_lbl.text = courseArr[indexPath.row].name
         cell.description_lbl.text = courseArr[indexPath.row].des
         cell.price_lbl.text = "$" + " " + courseArr[indexPath.row].fee!.description
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "dd MMMM yyyy hh:mm aa"
-        let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "dd MMMM yyyy"
-        if let date = dateFormatterGet.date(from:  courseArr[indexPath.row].created_at!) {
-            cell.date_lbl.text = dateFormatterPrint.string(from: date)
-        } else {
-        }
         return cell
     }
 }
