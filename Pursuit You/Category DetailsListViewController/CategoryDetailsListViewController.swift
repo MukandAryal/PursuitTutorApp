@@ -64,11 +64,22 @@ class CategoryDetailsListViewController: BaseClassViewController {
                                 id: obj["id"] as? Int,
                                 name: obj["name"] as? String,
                                 des: obj["des"] as? String,
-                                fee: obj["fee"] as? Int,
+                                fee: obj["fee"] as? String,
                                 category_id: obj["category_id"] as? Int,
                                 status: obj["status"] as? String,
                                 created_at: obj["created_at"] as? String,
                                 updated_at: obj["updated_at"] as? String)
+//                                batch_id: obj["batch_id"] as? Int,
+//                                courseName: obj["batch_id"] as? Int,
+//                                courseDescription: obj["courseDescription"] as? String,
+//                                fee: obj["fee"] as? Int,
+//                                course_id: obj["course_id"] as? Int,
+//                                status: obj["status"] as? String,
+//                                tutorName: obj["tutorName"] as? String,
+//                                class_start_date: obj["class_start_date"] as? String,
+//                                class_end_date: obj["class_end_date"] as? String,
+//                                class_start_time: obj["class_start_time"] as? String,
+//                                class_end_time: obj["class_end_time"] as? String)
                             self.courseArr.append(course)
                             print(self.courseArr)
                             self.categoryTbl_view.reloadData()
@@ -76,7 +87,7 @@ class CategoryDetailsListViewController: BaseClassViewController {
                     }
                 }
             }else{
-                self.showAlert(title: "Alert", message: "server issue please try again")
+                self.showAlert(title: "Alert", message: "No Data Found!")
             }
            // self.stopProgress()
         }
@@ -108,7 +119,7 @@ extension CategoryDetailsListViewController : UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
         cell.title_lbl.text = courseArr[indexPath.row].name
         cell.description_lbl.text = courseArr[indexPath.row].des
-        cell.price_lbl.text = "$" + " " + courseArr[indexPath.row].fee!.description
+       // cell.price_lbl.text = "$" + " " + courseArr[indexPath.row].fee!.description
         return cell
     }
 }
@@ -119,7 +130,7 @@ extension CategoryDetailsListViewController : UITableViewDelegate{
             let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseDetailsViewController") as! CourseDetailsViewController
             obj.courseId = courseArr[indexPath.row].id!
             obj.courseDescription = courseArr[indexPath.row].des!
-            obj.coursePrice = courseArr[indexPath.row].fee!.description
+          //  obj.coursePrice = courseArr[indexPath.row].fee!
             obj.courseName = courseArr[indexPath.row].name!
             self.navigationController?.pushViewController(obj, animated: true)
         }

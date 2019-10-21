@@ -52,7 +52,7 @@ class MyCourseViewController: BaseClassViewController {
                     }
                 }
             }else{
-                self.showAlert(title: "Alert", message: "server issue please try again")
+                self.showAlert(title: "Alert", message: "No Data Found!")
             }
             self.stopProgress()
         }

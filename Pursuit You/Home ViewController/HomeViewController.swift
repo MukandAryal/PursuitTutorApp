@@ -71,7 +71,7 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
                                 id: obj["id"] as? Int,
                                 name: obj["name"] as? String,
                                 des: obj["description"] as? String,
-                                fee: obj["fee"] as? Int,
+                                fee: obj["fee"] as? String,
                                 category_id: obj["category_id"] as? Int,
                                 status: obj["status"] as? String,
                                 created_at: obj["created_at"] as? String,
@@ -83,7 +83,7 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
                     }
                 }
             }else{
-                self.showAlert(title: "Alert", message: "Please try again!")
+                self.showAlert(title: "Alert", message: "No Data Found!")
             }
             // self.stopProgress()
         }
@@ -143,7 +143,9 @@ extension HomeViewController : UITableViewDataSource{
         if isSearching == true{
             cell.title_lbl.text = filteredArr[indexPath.row].name
             cell.description_lbl.text = filteredArr[indexPath.row].des
-            cell.price_lbl.text = "$" + " " + filteredArr[indexPath.row].fee!.description
+            if filteredArr[indexPath.row].fee != nil{
+                cell.price_lbl.text = "$" + " " + filteredArr[indexPath.row].fee!
+            }
             let dateFormatterGet = DateFormatter()
             dateFormatterGet.dateFormat = "dd MMMM yyyy hh:mm aa"
             let dateFormatterPrint = DateFormatter()
@@ -155,15 +157,18 @@ extension HomeViewController : UITableViewDataSource{
         }else{
             cell.title_lbl.text = courseArr[indexPath.row].name
             cell.description_lbl.text = courseArr[indexPath.row].des
-            cell.price_lbl.text = "$" + " " + courseArr[indexPath.row].fee!.description
+            if courseArr[indexPath.row].fee != ""{
+              //  cell.price_lbl.text = "$" + " " + courseArr[indexPath.row].fee!
+            }
             let dateFormatterGet = DateFormatter()
             dateFormatterGet.dateFormat = "dd MMMM yyyy hh:mm aa"
             let dateFormatterPrint = DateFormatter()
             dateFormatterPrint.dateFormat = "dd MMMM yyyy"
+            if courseArr[indexPath.row].created_at != nil{
             if let date = dateFormatterGet.date(from:  courseArr[indexPath.row].created_at!) {
                 cell.date_lbl.text = dateFormatterPrint.string(from: date)
-            } else {
             }
+          }
         }
         return cell
     }
@@ -174,16 +179,20 @@ extension HomeViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseDetailsViewController") as! CourseDetailsViewController
         if isSearching == true{
-            obj.courseName = filteredArr[indexPath.row].name!
-            obj.courseDescription = filteredArr[indexPath.row].des!
+            obj.courseName = filteredArr[indexPath.row].name ?? ""
+            obj.courseDescription = filteredArr[indexPath.row].des ?? ""
             obj.courseId = filteredArr[indexPath.row].id!
-            obj.coursePrice = filteredArr[indexPath.row].fee!.description
+            if courseArr[indexPath.row].fee != nil{
+                obj.coursePrice = filteredArr[indexPath.row].fee!
+            }
             self.navigationController?.pushViewController(obj, animated: true)
         }else{
-            obj.courseName = courseArr[indexPath.row].name!
-            obj.courseDescription = courseArr[indexPath.row].des!
+            obj.courseName = courseArr[indexPath.row].name ?? ""
+            obj.courseDescription = courseArr[indexPath.row].des ?? ""
             obj.courseId = courseArr[indexPath.row].id!
-            obj.coursePrice = courseArr[indexPath.row].fee!.description
+            if courseArr[indexPath.row].fee != nil{
+                obj.coursePrice = courseArr[indexPath.row].fee!
+            }
             self.navigationController?.pushViewController(obj, animated: true)
         }
     }

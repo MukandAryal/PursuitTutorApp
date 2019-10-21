@@ -46,8 +46,6 @@ class CourseDetailsViewController: BaseClassViewController {
         self.startEnroll_btn.setTitle("Start for tutoring",for: .normal)
         self.startEnroll_btn.addTarget(self, action: #selector(self.startForTutringAction), for: .touchUpInside)
         //courseId = 8
-        syllabusApi()
-        allCourseApi()
     }
     
     override func viewDidLayoutSubviews() {
@@ -56,6 +54,8 @@ class CourseDetailsViewController: BaseClassViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        syllabusApi()
+        allCourseApi()
         self.navigationController?.isNavigationBarHidden = true
         adjustUITextViewHeight(arg: description_textView)
     }
@@ -140,20 +140,23 @@ class CourseDetailsViewController: BaseClassViewController {
     
     // MARK: - Start for enroll Api
     func tutorEnrollApi(){
-        showCustomProgress()
+        //showCustomProgress()
+        LoadingIndicatorView.show()
         let param: [String: String] = [
             "course_id" : "\(courseId)",
         ]
         WebserviceSigleton.shared.POSTServiceWithParameters(urlString: ApiEndPoints.addCourseToTutor, params: param as Dictionary<String, AnyObject>) { (response, error) in
+           // self.stopProgress()
+            LoadingIndicatorView.hide()
             let resultDict = response as NSDictionary?
-            print("resultDict>>>>>>>>",resultDict)
             if let errorDict = resultDict?["error"] as? NSDictionary{
                 print(errorDict)
                 self.showCustomErrorDialog()
             }else{
                 self.showCustomSucessDialog()
             }
-            self.stopProgress()
+           // self.stopProgress()
+            LoadingIndicatorView.hide()
         }
     }
     

@@ -13,7 +13,7 @@ class getAllCourse {
         var id : Int?
         var name : String?
         var des : String?
-        var fee : Int?
+        var fee : String?
         var category_id : Int?
         var status: String?
         var created_at: String?
