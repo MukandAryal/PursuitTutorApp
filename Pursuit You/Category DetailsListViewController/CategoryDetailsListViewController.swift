@@ -63,7 +63,7 @@ class CategoryDetailsListViewController: BaseClassViewController {
                             let course = getAllCourse.course(
                                 id: obj["id"] as? Int,
                                 name: obj["name"] as? String,
-                                des: obj["des"] as? String,
+                                des: obj["description"] as? String,
                                 fee: obj["fee"] as? String,
                                 category_id: obj["category_id"] as? Int,
                                 status: obj["status"] as? String,

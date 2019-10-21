@@ -54,8 +54,14 @@ class CourseDetailsViewController: BaseClassViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        syllabusApi()
-        allCourseApi()
+        if Connectivity.isConnectedToInternet() {
+            syllabusArr.removeAll()
+            allCourseApi()
+            syllabusApi()
+        } else {
+            showAlert(title: "No Internet!", message: "Please check your internet connection")
+        }
+      
         self.navigationController?.isNavigationBarHidden = true
         adjustUITextViewHeight(arg: description_textView)
     }
@@ -108,12 +114,12 @@ class CourseDetailsViewController: BaseClassViewController {
         let urlApi = ApiEndPoints.syllabus +  "?course_id=\(8)"
         print("urlApi>",urlApi)
         WebserviceSigleton.shared.GETService(urlString: urlApi) { (response, error) in
+            LoadingIndicatorView.hide()
             if error == nil{
                 let resultDict = response as NSDictionary?
                 if (resultDict?["success"]) != nil{
                     if let sucessDict = resultDict?["success"] as? [AnyObject]{
                         if sucessDict.count == 0 {
-                            
                         }
                         for obj in sucessDict{
                             let course = getAllCourse.syllabusInfo(

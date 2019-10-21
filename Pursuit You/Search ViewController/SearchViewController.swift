@@ -156,7 +156,6 @@ extension SearchViewController : UITableViewDelegate{
             let obj = self.storyboard?.instantiateViewController(withIdentifier: "CategoryDetailsListViewController") as? CategoryDetailsListViewController
             obj?.categoryId = filteredArr[indexPath.row].id!
             obj?.categoryName = filteredArr[indexPath.row].name!
-            search_txtFld.text = ""
             self.navigationController?.pushViewController(obj!, animated: true)
         }else{
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "CategoryDetailsListViewController") as? CategoryDetailsListViewController

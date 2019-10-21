@@ -23,7 +23,8 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
     
     
     // MARK: - App Life Cycle Method
-    public override func viewDidLoad() {
+     override func viewDidLoad(){
+        super.viewDidLoad()
         if Connectivity.isConnectedToInternet() {
             // courseArr.removeAll()
             tutorCourseApi()
@@ -31,6 +32,7 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
             showAlert(title: "No Internet!", message: "Please check your internet connection")
         }
         categoryTbl_view.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableViewCell")
+        categoryTbl_view.tableFooterView = UIView()
         self.tabBarController?.tabBar.isHidden = false
         search_txtFld.delegate = self
         // Add Refresh Control to Table View
@@ -40,8 +42,12 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
     }
     
     @objc func refresh(sender:AnyObject) {
-        // Code to refresh table view
-        tutorCourseApi()
+        if Connectivity.isConnectedToInternet() {
+            // courseArr.removeAll()
+            tutorCourseApi()
+        } else {
+            showAlert(title: "No Internet!", message: "Please check your internet connection")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +69,7 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
                 LoadingIndicatorView.hide()
                 self.refreshControl.endRefreshing()
                 let resultDict = response as NSDictionary?
+                self.courseArr.removeAll()
                 if (resultDict?["success"]) != nil{
                     if let sucessDict = resultDict?["success"] as? NSDictionary{
                         let dataArr = sucessDict["data"] as? [AnyObject]

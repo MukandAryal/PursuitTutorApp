@@ -31,24 +31,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="development" translatesAutoresizingMaskIntoConstraints="NO" id="qfW-vU-tCA">
-                                <rect key="frame" x="10" y="5" width="140" height="105"/>
+                                <rect key="frame" x="5" y="5" width="140" height="105"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="BxQ-Ve-N7f"/>
                                     <constraint firstAttribute="height" constant="105" id="haX-kn-gBY"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designer fir Beginner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbo-oK-cbn">
-                                <rect key="frame" x="160" y="30.5" width="150" height="19.5"/>
+                                <rect key="frame" x="155" y="30.5" width="160" height="19.5"/>
                                 <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oNh-oX-Z0Q">
-                                <rect key="frame" x="160" y="60" width="150" height="2"/>
+                                <rect key="frame" x="155" y="60" width="160" height="2"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45% Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OyG-J4-giC">
-                                <rect key="frame" x="160" y="72" width="150" height="17"/>
+                                <rect key="frame" x="155" y="72" width="155" height="17"/>
                                 <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -57,12 +57,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="oNh-oX-Z0Q" firstAttribute="leading" secondItem="pbo-oK-cbn" secondAttribute="leading" id="Bzb-sU-jEO"/>
-                            <constraint firstItem="qfW-vU-tCA" firstAttribute="leading" secondItem="mQw-uO-9jN" secondAttribute="leading" constant="10" id="DTE-lW-vUy"/>
-                            <constraint firstAttribute="trailing" secondItem="oNh-oX-Z0Q" secondAttribute="trailing" constant="10" id="ElK-Og-BgT"/>
+                            <constraint firstItem="qfW-vU-tCA" firstAttribute="leading" secondItem="mQw-uO-9jN" secondAttribute="leading" constant="5" id="DTE-lW-vUy"/>
+                            <constraint firstAttribute="trailing" secondItem="oNh-oX-Z0Q" secondAttribute="trailing" constant="5" id="ElK-Og-BgT"/>
                             <constraint firstAttribute="trailing" secondItem="OyG-J4-giC" secondAttribute="trailing" constant="10" id="LsD-pl-Qd8"/>
                             <constraint firstItem="OyG-J4-giC" firstAttribute="leading" secondItem="qfW-vU-tCA" secondAttribute="trailing" constant="10" id="XLG-9s-hxN"/>
                             <constraint firstAttribute="bottom" secondItem="qfW-vU-tCA" secondAttribute="bottom" constant="10" id="Xl3-na-qKQ"/>
-                            <constraint firstAttribute="trailing" secondItem="pbo-oK-cbn" secondAttribute="trailing" constant="10" id="fDc-55-B4d"/>
+                            <constraint firstAttribute="trailing" secondItem="pbo-oK-cbn" secondAttribute="trailing" constant="5" id="fDc-55-B4d"/>
                             <constraint firstItem="qfW-vU-tCA" firstAttribute="top" secondItem="mQw-uO-9jN" secondAttribute="top" constant="5" id="mi8-Cc-fZT"/>
                             <constraint firstItem="OyG-J4-giC" firstAttribute="top" secondItem="oNh-oX-Z0Q" secondAttribute="bottom" constant="10" id="nfv-I7-ibb"/>
                             <constraint firstItem="pbo-oK-cbn" firstAttribute="leading" secondItem="qfW-vU-tCA" secondAttribute="trailing" constant="10" id="o3N-rF-xho"/>

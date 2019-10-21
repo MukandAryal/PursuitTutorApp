@@ -51,6 +51,9 @@
 		BC28D7C4233A297E00DF94B9 /* LoginViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC28D7C3233A297E00DF94B9 /* LoginViewViewController.swift */; };
 		BC3F0061234D9F0A005E1E83 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F0060234D9F0A005E1E83 /* Model.swift */; };
 		BC3F0064234DE4FC005E1E83 /* CategoryDetailsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3F0063234DE4FC005E1E83 /* CategoryDetailsListViewController.swift */; };
+		BC57DA09235DB72D00E029A2 /* AddSyllabusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57DA08235DB72D00E029A2 /* AddSyllabusViewController.swift */; };
+		BC57DA0C235DC3CF00E029A2 /* SyllabusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57DA0A235DC3CF00E029A2 /* SyllabusTableViewCell.swift */; };
+		BC57DA0D235DC3CF00E029A2 /* SyllabusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC57DA0B235DC3CF00E029A2 /* SyllabusTableViewCell.xib */; };
 		BC5918DC233E1A9A003E2ACE /* Disaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5918CC233E1A99003E2ACE /* Disaster.swift */; };
 		BC5918DD233E1A9A003E2ACE /* Hints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5918CE233E1A99003E2ACE /* Hints.swift */; };
 		BC5918DE233E1A9A003E2ACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC5918CF233E1A99003E2ACE /* Assets.xcassets */; };
@@ -200,7 +203,7 @@
 		BC1A75EC234EED9D00DB181B /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		BC1A75EE234F078A00DB181B /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		BC1A75EF234F078A00DB181B /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
-		BC1A75F3234F3E2C00DB181B /* BatchCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BatchCreationViewController.swift; path = "New Group/BatchCreationViewController.swift"; sourceTree = "<group>"; };
+		BC1A75F3234F3E2C00DB181B /* BatchCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BatchCreationViewController.swift; path = "../New Group/BatchCreationViewController.swift"; sourceTree = "<group>"; };
 		BC204B56234B34F4009E99AC /* RewardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsViewController.swift; sourceTree = "<group>"; };
 		BC204B58234B350F009E99AC /* RewardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsTableViewCell.swift; sourceTree = "<group>"; };
 		BC204B59234B350F009E99AC /* RewardsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RewardsTableViewCell.xib; sourceTree = "<group>"; };
@@ -234,6 +237,9 @@
 		BC28D7C3233A297E00DF94B9 /* LoginViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewController.swift; sourceTree = "<group>"; };
 		BC3F0060234D9F0A005E1E83 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		BC3F0063234DE4FC005E1E83 /* CategoryDetailsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailsListViewController.swift; sourceTree = "<group>"; };
+		BC57DA08235DB72D00E029A2 /* AddSyllabusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSyllabusViewController.swift; sourceTree = "<group>"; };
+		BC57DA0A235DC3CF00E029A2 /* SyllabusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyllabusTableViewCell.swift; sourceTree = "<group>"; };
+		BC57DA0B235DC3CF00E029A2 /* SyllabusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyllabusTableViewCell.xib; sourceTree = "<group>"; };
 		BC5918CC233E1A99003E2ACE /* Disaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disaster.swift; sourceTree = "<group>"; };
 		BC5918CE233E1A99003E2ACE /* Hints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hints.swift; sourceTree = "<group>"; };
 		BC5918CF233E1A99003E2ACE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -307,7 +313,7 @@
 		BCF58111233DECB400238D07 /* CityListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
 		BCF8A31623542BBD0065F38D /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		BCF8A31823544A560065F38D /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
-		BCF8A31B23544C850065F38D /* PaymentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsViewController.swift; sourceTree = "<group>"; };
+		BCF8A31B23544C850065F38D /* PaymentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaymentDetailsViewController.swift; path = ../PaymentDetailsViewController.swift; sourceTree = "<group>"; };
 		BCFE39B2233C9E0E0058D176 /* ExampleNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleNavigationController.swift; path = ../ExampleNavigationController.swift; sourceTree = "<group>"; };
 		BCFE39E4233CA3C60058D176 /* ESTabBarController_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ESTabBarController_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFE39EB233CB31B0058D176 /* ESTabBarController_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ESTabBarController_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -402,7 +408,12 @@
 		BC1A75EB234EED6300DB181B /* Help ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BC1A75F3234F3E2C00DB181B /* BatchCreationViewController.swift */,
+				BCF8A31B23544C850065F38D /* PaymentDetailsViewController.swift */,
 				BC1A75EC234EED9D00DB181B /* HelpViewController.swift */,
+				BC57DA08235DB72D00E029A2 /* AddSyllabusViewController.swift */,
+				BC57DA0A235DC3CF00E029A2 /* SyllabusTableViewCell.swift */,
+				BC57DA0B235DC3CF00E029A2 /* SyllabusTableViewCell.xib */,
 			);
 			path = "Help ViewController";
 			sourceTree = "<group>";
@@ -476,8 +487,6 @@
 				BC5918E9233E1EAC003E2ACE /* EmbedContainerViewController.swift */,
 				BCF8A31623542BBD0065F38D /* LoadingIndicatorView.swift */,
 				BC28D7862339D94D00DF94B9 /* Main.storyboard */,
-				BC1A75F3234F3E2C00DB181B /* BatchCreationViewController.swift */,
-				BCF8A31B23544C850065F38D /* PaymentDetailsViewController.swift */,
 				BC1A75EB234EED6300DB181B /* Help ViewController */,
 				BC3F0062234DE496005E1E83 /* Category DetailsListViewController */,
 				BC204B55234B349E009E99AC /* Rewards ViewController */,
@@ -931,6 +940,7 @@
 				BC28D78D2339D94F00DF94B9 /* Assets.xcassets in Resources */,
 				BC10923C2355E74A00F7B5A5 /* MobileRTCResources.bundle in Resources */,
 				BCE4DE6423436498009A435B /* SearchCourseTableViewCell.xib in Resources */,
+				BC57DA0D235DC3CF00E029A2 /* SyllabusTableViewCell.xib in Resources */,
 				BCE4DE60234362CC009A435B /* regular.ttf in Resources */,
 				BCF58114233DECB400238D07 /* AlternativeCityTableViewCell.xib in Resources */,
 				BC221A0E233B4B890044A88B /* Localizable.strings in Resources */,
@@ -1027,6 +1037,7 @@
 				BCF58108233DEA7500238D07 /* PurchasedCourseViewController.swift in Sources */,
 				BCE4DE6D23437384009A435B /* NotifcationViewController.swift in Sources */,
 				BC204B5A234B350F009E99AC /* RewardsTableViewCell.swift in Sources */,
+				BC57DA0C235DC3CF00E029A2 /* SyllabusTableViewCell.swift in Sources */,
 				BCF241472345D982000658F6 /* PresentationController.swift in Sources */,
 				BC5918DC233E1A9A003E2ACE /* Disaster.swift in Sources */,
 				BCF241622345D9BE000658F6 /* TrackingMode.swift in Sources */,
@@ -1059,6 +1070,7 @@
 				BCFE3A13233CD43C0058D176 /* ExampleBackgroundContentView.swift in Sources */,
 				BCF58116233DECB400238D07 /* CityTableViewCell.swift in Sources */,
 				BCF241462345D982000658F6 /* InteractiveTransition.swift in Sources */,
+				BC57DA09235DB72D00E029A2 /* AddSyllabusViewController.swift in Sources */,
 				BCE4DE70234373AC009A435B /* NotificationTableViewCell.swift in Sources */,
 				BC5918EB233E1EAC003E2ACE /* EmbedContainerViewController.swift in Sources */,
 				BC1A75ED234EED9D00DB181B /* HelpViewController.swift in Sources */,

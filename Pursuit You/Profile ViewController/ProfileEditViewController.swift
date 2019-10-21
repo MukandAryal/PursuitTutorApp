@@ -29,9 +29,9 @@ class ProfileEditViewController: BaseClassViewController,UIImagePickerController
         showDatePicker()
         name_txtFld.text = userDetails.name
         organization_txtFld.text = userDetails.Organization
-        dateOfBirth_txtFld.text = userDetails.email_verified_at
-        //let imageStr = Configurator.imageBaseUrl + userDetails.profileImage!
-       // self.profile_imgView.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "demo_icon"))
+        dateOfBirth_txtFld.text = userDetails.dob
+        let imageStr = Configurator.imageBaseUrl + userDetails.profileImage!
+        self.profile_imgView.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "demo_icon"))
     }
     
     override func viewWillAppear(_ animated: Bool) {

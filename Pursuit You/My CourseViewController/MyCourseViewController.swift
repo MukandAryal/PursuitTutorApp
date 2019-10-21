@@ -22,7 +22,7 @@ class MyCourseViewController: BaseClassViewController {
             showAlert(title: "No Internet!", message: "Please check your internet connection")
         }
         myCourse_tblView.register(UINib(nibName: "MyCoursesTableViewCell", bundle: nil), forCellReuseIdentifier: "MyCoursesTableViewCell")
-       
+        myCourse_tblView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +88,7 @@ extension MyCourseViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseProgressViewController") as! CourseProgressViewController
+        obj.courseProgress = tutorCourseArr[indexPath.row]
         self.navigationController?.pushViewController(obj, animated: true)
     }
     

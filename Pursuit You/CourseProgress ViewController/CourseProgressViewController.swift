@@ -11,8 +11,15 @@ import UIKit
 class CourseProgressViewController: UIViewController {
     
     @IBOutlet weak var course_Tblview: UITableView!
-    
+    @IBOutlet weak var course_nameLbl: UILabel!
     @IBOutlet weak var course_progressTblHeightConstrains: NSLayoutConstraint!
+    @IBOutlet weak var course_dateLbl: UILabel!
+    @IBOutlet weak var toturName_lbl: UILabel!
+    @IBOutlet weak var duration_lbl: UILabel!
+    @IBOutlet weak var review_lbl: UILabel!
+    
+    var courseProgress = getAllCourse.allTutorCourse()
+    
     let section = ["lession 1", "Lession 2", "Lession 3"]
     
     let items = [["System Introdution", "System Introdution", "Assigment","Assigment"],["System Introdution", "System Introdution", "Assigment","Assigment"],["System Introdution", "System Introdution", "Assigment","Assigment"]]
@@ -36,6 +43,8 @@ class CourseProgressViewController: UIViewController {
         
         course_Tblview.register(UINib(nibName: "CourseProgressBottomCell", bundle: nil), forCellReuseIdentifier: "CourseProgressBottomCell")
         course_Tblview.reloadData()
+        course_nameLbl.text = courseProgress.course_name
+        //toturName_lbl.text = courseProgress.course_name
     }
     
     override func viewDidLayoutSubviews() {
@@ -52,7 +61,7 @@ class CourseProgressViewController: UIViewController {
     }
     
     @IBAction func actionHelp_btn(_ sender: Any) {
-      let obj = self.storyboard?.instantiateViewController(withIdentifier: "HelpViewController") as! HelpViewController
+      let obj = self.storyboard?.instantiateViewController(withIdentifier: "AddSyllabusViewController") as! AddSyllabusViewController
         self.navigationController?.pushViewController(obj, animated: true)
     }
 }
