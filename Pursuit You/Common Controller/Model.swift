@@ -18,10 +18,18 @@ class getAllCourse {
         var status: String?
         var created_at: String?
         var updated_at: String?
+        var imageProfile : String?
     }
     struct allTutorCourse {
         var course_id : Int?
         var course_name : String?
+        var created_at : String?
+        var id : Int?
+        var status : String?
+        var tutorName : String?
+        var tutor_relation_id :Int?
+        var updated_at : String?
+        var user_id : Int?
     }
     
     struct allCategory {

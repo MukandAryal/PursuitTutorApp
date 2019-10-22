@@ -8,17 +8,19 @@
 
 import UIKit
 
-class CourseProgressViewController: UIViewController {
+class CourseProgressViewController: BaseClassViewController {
     
     @IBOutlet weak var course_Tblview: UITableView!
     @IBOutlet weak var course_nameLbl: UILabel!
     @IBOutlet weak var course_progressTblHeightConstrains: NSLayoutConstraint!
     @IBOutlet weak var course_dateLbl: UILabel!
-    @IBOutlet weak var toturName_lbl: UILabel!
-    @IBOutlet weak var duration_lbl: UILabel!
     @IBOutlet weak var review_lbl: UILabel!
+    @IBOutlet weak var noLession_addedLbl: UILabel!
+    @IBOutlet weak var completeImg_view: UIImageView!
     
+    @IBOutlet weak var courseNotCompleted_heightConstraints: NSLayoutConstraint!
     var courseProgress = getAllCourse.allTutorCourse()
+    var syllabusArr = [getAllCourse.syllabusInfo]()
     
     let section = ["lession 1", "Lession 2", "Lession 3"]
     
@@ -44,7 +46,15 @@ class CourseProgressViewController: UIViewController {
         course_Tblview.register(UINib(nibName: "CourseProgressBottomCell", bundle: nil), forCellReuseIdentifier: "CourseProgressBottomCell")
         course_Tblview.reloadData()
         course_nameLbl.text = courseProgress.course_name
-        //toturName_lbl.text = courseProgress.course_name
+        noLession_addedLbl.isHidden = true
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "dd MMMM yyyy"
+        if let date = dateFormatterGet.date(from:  courseProgress.created_at!) {
+            course_dateLbl.text = dateFormatterPrint.string(from: date)
+        }
+        syllabusApi()
     }
     
     override func viewDidLayoutSubviews() {
@@ -56,35 +66,69 @@ class CourseProgressViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    //  MARK: - Get All Course Api
+    func syllabusApi(){
+        // showCustomProgress()
+        LoadingIndicatorView.show()
+        let urlApi = ApiEndPoints.syllabus +  "?course_id=\(String(describing: courseProgress.course_id))" +  "&&tutor_id=\(String(describing: courseProgress.tutor_relation_id))"
+        print("urlApi>",urlApi)
+        WebserviceSigleton.shared.GETService(urlString: urlApi) { (response, error) in
+            if error == nil{
+                let resultDict = response as NSDictionary?
+                LoadingIndicatorView.hide()
+                if (resultDict?["success"]) != nil{
+                    if let sucessDict = resultDict?["success"] as? [AnyObject]{
+                        if sucessDict.count == 0 {
+                            self.course_progressTblHeightConstrains.constant = 0
+                            self.courseNotCompleted_heightConstraints.constant = 0
+                            self.noLession_addedLbl.isHidden = false
+                            self.completeImg_view.isHidden = true
+                        }
+                        for obj in sucessDict{
+                            let course = getAllCourse.syllabusInfo(
+                                id: obj["id"] as? Int,
+                                course_id: obj["course_id"] as? Int,
+                                title: obj["title"] as? String,
+                                description: obj["description"] as? String,
+                                status: obj["status"] as? String,
+                                created_at: obj["created_at"] as? String,
+                                updated_at: obj["created_at"] as? String)
+                            self.syllabusArr.append(course)
+                            self.course_Tblview.reloadData()
+                        }
+                    }else{
+                        self.course_progressTblHeightConstrains.constant = 0
+                        self.courseNotCompleted_heightConstraints.constant = 0
+                        self.noLession_addedLbl.isHidden = false
+                        self.completeImg_view.isHidden = true
+                    }
+                }else{
+                    self.course_progressTblHeightConstrains.constant = 0
+                    self.courseNotCompleted_heightConstraints.constant = 0
+                    self.noLession_addedLbl.isHidden = false
+                    self.completeImg_view.isHidden = true
+                    
+                }
+            }else{
+                self.showAlert(title: "Alert", message: "No Data Found!")
+            }
+            self.stopProgress()
+        }
+    }
+    
     @IBAction func actionBackBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func actionHelp_btn(_ sender: Any) {
-      let obj = self.storyboard?.instantiateViewController(withIdentifier: "AddSyllabusViewController") as! AddSyllabusViewController
+        let obj = self.storyboard?.instantiateViewController(withIdentifier: "AddSyllabusViewController") as! AddSyllabusViewController
+        obj.courseProgressDetails = courseProgress
         self.navigationController?.pushViewController(obj, animated: true)
     }
 }
 
 extension CourseProgressViewController : UITableViewDataSource{
     
-    //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //
-    //        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CourseProgressHeaderView") as! CourseProgressHeaderView
-    //
-    //        return headerView
-    //    }
-    //
-    //        func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    //            let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CourseProgressFooterView") as! CourseProgressFooterView
-    //    
-    //            return footerView
-    //        }
-    //    
-    //        func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    //            return 150
-    //        }
-    //    
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -92,44 +136,13 @@ extension CourseProgressViewController : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return syllabusArr.count
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//
-//        return sectionTitles[section]
-//    }
-//
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 30
-//    }
-    
-    
-    //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    //
-    //        return self.section[section]
-    //
-    //    }
-    
-    //    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    //        return self.section.count
-    //
-    //    }
-    
-    //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //        // #warning Incomplete implementation, return the number of rows
-    //
-    //        return self.items[section].count
-    //
-    //    }
-    //
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CourseProgressTableViewCell") as! CourseProgressTableViewCell
-        //cell.lession_nameLbl.text = self.items[indexPath.section][indexPath.row]
-       // cell.lession_nameLbl?.text = foodItems[indexPath.section][indexPath.row]
-        
-        
+        cell.lession_nameLbl.text = syllabusArr[indexPath.row].title
+        cell.lession_numberLbl?.text = syllabusArr[indexPath.row].course_id?.description
         return cell
     }
 }

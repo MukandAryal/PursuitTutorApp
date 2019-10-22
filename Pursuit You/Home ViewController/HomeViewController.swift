@@ -12,6 +12,8 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
     
     @IBOutlet weak var categoryTbl_view: UITableView!
     @IBOutlet weak var search_txtFld: UITextField!
+    @IBOutlet weak var noDataImg_view: UIImageView!
+    @IBOutlet weak var noData_lbl: UILabel!
     
     static var index = 0
     let cellSpacingHeight: CGFloat = 20
@@ -23,7 +25,7 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
     
     
     // MARK: - App Life Cycle Method
-     override func viewDidLoad(){
+    override func viewDidLoad(){
         super.viewDidLoad()
         if Connectivity.isConnectedToInternet() {
             // courseArr.removeAll()
@@ -39,6 +41,8 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         categoryTbl_view.addSubview(refreshControl)
+        noDataImg_view.isHidden = true
+        noData_lbl.isHidden = true
     }
     
     @objc func refresh(sender:AnyObject) {
@@ -73,6 +77,11 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
                 if (resultDict?["success"]) != nil{
                     if let sucessDict = resultDict?["success"] as? NSDictionary{
                         let dataArr = sucessDict["data"] as? [AnyObject]
+                        if dataArr?.count == 0{
+                            self.categoryTbl_view.isHidden = true
+                            self.noDataImg_view.isHidden = false
+                            self.noData_lbl.isHidden = false
+                        }
                         for obj in dataArr!{
                             let course = getAllCourse.course(
                                 id: obj["id"] as? Int,
@@ -82,7 +91,8 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
                                 category_id: obj["category_id"] as? Int,
                                 status: obj["status"] as? String,
                                 created_at: obj["created_at"] as? String,
-                                updated_at: obj["created_at"] as? String)
+                                updated_at: obj["created_at"] as? String,
+                                imageProfile: obj["imageProfile"] as? String)
                             self.courseArr.append(course)
                             print(self.courseArr)
                             self.categoryTbl_view.reloadData()
@@ -118,7 +128,6 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {  //delegate method
-        //isSearching = false
         // categoryTbl_view.reloadData()
         return true
     }
@@ -150,8 +159,10 @@ extension HomeViewController : UITableViewDataSource{
         if isSearching == true{
             cell.title_lbl.text = filteredArr[indexPath.row].name
             cell.description_lbl.text = filteredArr[indexPath.row].des
+            let imageStr = Configurator.courseImageBaseUrl + filteredArr[indexPath.row].imageProfile!
+            cell.categoryImg_view.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "development"))
             if filteredArr[indexPath.row].fee != nil{
-                cell.price_lbl.text = "$" + " " + filteredArr[indexPath.row].fee!
+                cell.price_lbl.text = "$" + " " + filteredArr[indexPath.row].fee!.description
             }
             let dateFormatterGet = DateFormatter()
             dateFormatterGet.dateFormat = "dd MMMM yyyy hh:mm aa"
@@ -159,23 +170,24 @@ extension HomeViewController : UITableViewDataSource{
             dateFormatterPrint.dateFormat = "dd MMMM yyyy"
             if let date = dateFormatterGet.date(from:  filteredArr[indexPath.row].created_at!) {
                 cell.date_lbl.text = dateFormatterPrint.string(from: date)
-            } else {
             }
         }else{
             cell.title_lbl.text = courseArr[indexPath.row].name
             cell.description_lbl.text = courseArr[indexPath.row].des
-            if courseArr[indexPath.row].fee != ""{
-              //  cell.price_lbl.text = "$" + " " + courseArr[indexPath.row].fee!
+            let imageStr = Configurator.courseImageBaseUrl + courseArr[indexPath.row].imageProfile!
+            cell.categoryImg_view.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "development"))
+            if courseArr[indexPath.row].fee?.description != ""{
+                cell.price_lbl.text = "$" + " " + courseArr[indexPath.row].fee!.description
             }
             let dateFormatterGet = DateFormatter()
             dateFormatterGet.dateFormat = "dd MMMM yyyy hh:mm aa"
             let dateFormatterPrint = DateFormatter()
             dateFormatterPrint.dateFormat = "dd MMMM yyyy"
             if courseArr[indexPath.row].created_at != nil{
-            if let date = dateFormatterGet.date(from:  courseArr[indexPath.row].created_at!) {
-                cell.date_lbl.text = dateFormatterPrint.string(from: date)
+                if let date = dateFormatterGet.date(from:  courseArr[indexPath.row].created_at!) {
+                    cell.date_lbl.text = dateFormatterPrint.string(from: date)
+                }
             }
-          }
         }
         return cell
     }
@@ -186,20 +198,10 @@ extension HomeViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseDetailsViewController") as! CourseDetailsViewController
         if isSearching == true{
-            obj.courseName = filteredArr[indexPath.row].name ?? ""
-            obj.courseDescription = filteredArr[indexPath.row].des ?? ""
-            obj.courseId = filteredArr[indexPath.row].id!
-            if courseArr[indexPath.row].fee != nil{
-                obj.coursePrice = filteredArr[indexPath.row].fee!
-            }
+            obj.courseDetails = filteredArr[indexPath.row]
             self.navigationController?.pushViewController(obj, animated: true)
         }else{
-            obj.courseName = courseArr[indexPath.row].name ?? ""
-            obj.courseDescription = courseArr[indexPath.row].des ?? ""
-            obj.courseId = courseArr[indexPath.row].id!
-            if courseArr[indexPath.row].fee != nil{
-                obj.coursePrice = courseArr[indexPath.row].fee!
-            }
+            obj.courseDetails = courseArr[indexPath.row]
             self.navigationController?.pushViewController(obj, animated: true)
         }
     }

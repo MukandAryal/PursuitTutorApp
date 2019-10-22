@@ -12,6 +12,7 @@ import Alamofire
 class Configurator: NSObject {
     static let baseURL = "http://krescentglobal.in/pursuit/public/api/"
     static let imageBaseUrl = "http://krescentglobal.in/pursuit/public/uploads/"
+    static let courseImageBaseUrl = "http://krescentglobal.in/pursuit/public/uploads/course/"
     static let tokenBearer = "Bearer "
 }
 

@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pursuit You/Login ViewController/LoginViewViewController.swift"
-            timestampString = "592916917.576169"
+            timestampString = "593431099.57217"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
@@ -26,12 +26,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pursuit You/Login ViewController/LoginViewViewController.swift"
-            timestampString = "592916917.576272"
+            timestampString = "593431099.57224"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
             landmarkName = "isValiadLogin()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/Help ViewController/AddSyllabusViewController.swift"
+            timestampString = "593441741.798851"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "showCustomSucessDialog(animated:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 0 of Pursuit_TutorApp.AddSyllabusViewController.showCustomSucessDialog(animated: Swift.Bool) -&gt; ()"
+                  moduleName = "Pursuit TutorApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/applessd2/Desktop/PursuitTutorApp/Pursuit%20You/Help%20ViewController/AddSyllabusViewController.swift"
+                  timestampString = "593439303.6662771"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "6">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pursuit_TutorApp.AddSyllabusViewController.showCustomSucessDialog(animated: Swift.Bool) -&gt; ()"
+                  moduleName = "Pursuit TutorApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/applessd2/Desktop/PursuitTutorApp/Pursuit%20You/Help%20ViewController/AddSyllabusViewController.swift"
+                  timestampString = "593439303.67141"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "128">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/Help ViewController/AddSyllabusViewController.swift"
+            timestampString = "593441741.799628"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "showCustomSucessDialog(animated:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -9,16 +9,15 @@
 import UIKit
 
 class CourseDetailsViewController: BaseClassViewController {
-
+    
     @IBOutlet weak var courseDetails_Tblview: UITableView!
     @IBOutlet weak var description_textView: UITextView!
     @IBOutlet weak var courseDetails_heightConstrains:
     NSLayoutConstraint!
     @IBOutlet weak var title_course: UILabel!
     @IBOutlet weak var priceEnroll_lbl: UILabel!
-    @IBOutlet weak var durationWeek_lbl: UILabel!
-    @IBOutlet weak var endDate_lbl: UILabel!
     @IBOutlet weak var startEnroll_btn: UIButton!
+    @IBOutlet weak var courseDetails_imgView: UIImageView!
     
     let sectionTitles = ["lession 1", "Lession 2", "Lession 3"]
     let foodItems = [["System Introdution", "System Introdution", "Assigment","Assigment"],["System Introdution", "System Introdution", "Assigment","Assigment"],["System Introdution", "System Introdution", "Assigment","Assigment"]]
@@ -27,11 +26,12 @@ class CourseDetailsViewController: BaseClassViewController {
     var courseId = Int()
     var coursePrice = String()
     var syllabusArr = [getAllCourse.syllabusInfo]()
+    var courseDetails = getAllCourse.course()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         courseDetails_Tblview.tableFooterView = UIView()
-
+        
         let nibHeaderName = UINib(nibName: "CourseProgressHeaderView", bundle: nil)
         courseDetails_Tblview.register(nibHeaderName, forHeaderFooterViewReuseIdentifier: "CourseProgressHeaderView")
         
@@ -40,16 +40,18 @@ class CourseDetailsViewController: BaseClassViewController {
         
         courseDetails_Tblview.register(UINib(nibName: "CourseDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "CourseDetailsTableViewCell")
         courseDetails_Tblview.reloadData()
-        description_textView.text = courseDescription
-        title_course.text = courseName
-        priceEnroll_lbl.text = "$" + " " + coursePrice
-        self.startEnroll_btn.setTitle("Start for tutoring",for: .normal)
+        title_course.text = courseDetails.name
+        description_textView.text = courseDetails.des
+        priceEnroll_lbl.text = "$" + " " + courseDetails.fee!
+        let imageStr = Configurator.courseImageBaseUrl + courseDetails.imageProfile!
+        courseDetails_imgView.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "development"))
+        self.startEnroll_btn.setTitle("Start For Tutoring",for: .normal)
         self.startEnroll_btn.addTarget(self, action: #selector(self.startForTutringAction), for: .touchUpInside)
         //courseId = 8
     }
     
     override func viewDidLayoutSubviews() {
-       // courseDetails_Tblview.frame.size = courseDetails_Tblview.contentSize
+        // courseDetails_Tblview.frame.size = courseDetails_Tblview.contentSize
         courseDetails_heightConstrains.constant = CGFloat(syllabusArr.count*100)
     }
     
@@ -61,7 +63,7 @@ class CourseDetailsViewController: BaseClassViewController {
         } else {
             showAlert(title: "No Internet!", message: "Please check your internet connection")
         }
-      
+        
         self.navigationController?.isNavigationBarHidden = true
         adjustUITextViewHeight(arg: description_textView)
     }
@@ -71,9 +73,6 @@ class CourseDetailsViewController: BaseClassViewController {
         arg.translatesAutoresizingMaskIntoConstraints = true
         arg.sizeToFit()
         arg.isScrollEnabled = false
-        //var frame = self.description_textView.frame
-        //frame.size.height = self.description_textView.contentSize.height
-       // self.description_textView.frame = frame
     }
     
     // MARK: - Get All Course Api
@@ -90,11 +89,18 @@ class CourseDetailsViewController: BaseClassViewController {
                         for obj in dataArr!{
                             let course = getAllCourse.allTutorCourse(
                                 course_id: obj["course_id"] as? Int,
-                                course_name: obj["course_name"] as? String)
-                            if obj["course_id"] as? Int == self.courseId{
-                               print("already enroll>>>>>>>>>")
+                                course_name: obj["course_name"] as? String,
+                                created_at: obj["created_at"] as? String,
+                                id: obj["id"] as? Int,
+                                status: obj["status"] as? String,
+                                tutorName: obj["tutorName"] as? String,
+                                tutor_relation_id: obj["tutor_relation_id"] as? Int,
+                                updated_at: obj["updated_at"] as? String,
+                                user_id: obj["user_id"] as? Int)
+                            if obj["course_id"] as? Int == self.courseDetails.id{
+                                print("already enroll>>>>>>>>>")
                                 self.startEnroll_btn.removeTarget(nil, action: nil, for: .allEvents)
-                                self.startEnroll_btn.setTitle("Contiune",for: .normal)
+                                self.startEnroll_btn.setTitle("Already Enrolled",for: .normal)
                                 self.startEnroll_btn.addTarget(self, action: #selector(self.buttonAction), for: .touchUpInside)
                             }
                         }
@@ -103,13 +109,13 @@ class CourseDetailsViewController: BaseClassViewController {
             }else{
                 self.showAlert(title: "Alert", message: "server issue please try again")
             }
-           // self.stopProgress()
+            LoadingIndicatorView.hide()
         }
     }
     
     //  MARK: - Get All Course Api
     func syllabusApi(){
-       // showCustomProgress()
+        // showCustomProgress()
         LoadingIndicatorView.show()
         let urlApi = ApiEndPoints.syllabus +  "?course_id=\(8)"
         print("urlApi>",urlApi)
@@ -146,13 +152,11 @@ class CourseDetailsViewController: BaseClassViewController {
     
     // MARK: - Start for enroll Api
     func tutorEnrollApi(){
-        //showCustomProgress()
         LoadingIndicatorView.show()
         let param: [String: String] = [
-            "course_id" : "\(courseId)",
+            "course_id" : "\(courseDetails.id!))",
         ]
         WebserviceSigleton.shared.POSTServiceWithParameters(urlString: ApiEndPoints.addCourseToTutor, params: param as Dictionary<String, AnyObject>) { (response, error) in
-           // self.stopProgress()
             LoadingIndicatorView.hide()
             let resultDict = response as NSDictionary?
             if let errorDict = resultDict?["error"] as? NSDictionary{
@@ -161,7 +165,6 @@ class CourseDetailsViewController: BaseClassViewController {
             }else{
                 self.showCustomSucessDialog()
             }
-           // self.stopProgress()
             LoadingIndicatorView.hide()
         }
     }
@@ -222,17 +225,17 @@ class CourseDetailsViewController: BaseClassViewController {
     
     // MARK: - Button Action
     @IBAction func actionStartForTutoring_btn(_ sender: Any) {
-      //  tutorEnrollApi()
+        //  tutorEnrollApi()
     }
     
     @objc func buttonAction(sender: UIButton!) {
-        print("Button tapped")
-        let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseProgressViewController") as! CourseProgressViewController
-        self.navigationController?.pushViewController(obj, animated: true)
+        //print("Button tapped")
+        //        let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseProgressViewController") as! CourseProgressViewController
+        //        self.navigationController?.pushViewController(obj, animated: true)
     }
     
     @objc func startForTutringAction(sender: UIButton!) {
-       tutorEnrollApi()
+        tutorEnrollApi()
     }
     
     
@@ -242,12 +245,12 @@ class CourseDetailsViewController: BaseClassViewController {
     
     @IBAction func actionHelp_btn(_ sender: Any) {
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "HelpViewController") as! HelpViewController
-          self.navigationController?.pushViewController(obj, animated: true)
+        self.navigationController?.pushViewController(obj, animated: true)
     }
 }
 
 extension CourseDetailsViewController : UITableViewDataSource{
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -255,7 +258,7 @@ extension CourseDetailsViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return syllabusArr.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CourseDetailsTableViewCell") as! CourseDetailsTableViewCell
         cell.lession_noLbl.text = "Lesson" + " " + syllabusArr[indexPath.row].id!.description

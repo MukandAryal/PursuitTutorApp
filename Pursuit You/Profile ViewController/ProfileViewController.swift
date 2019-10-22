@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileViewController: BaseClassViewController {
-
+    
     @IBOutlet weak var userName_lbl: UILabel!
     @IBOutlet weak var userEmail_lbl: UILabel!
     @IBOutlet weak var emailVerfication_Icon: UIImageView!
@@ -35,9 +35,9 @@ class ProfileViewController: BaseClassViewController {
         profile_imgView.clipsToBounds = true
     }
     
-      // MARK: - User Profile Api
+    // MARK: - User Profile Api
     func userProfileApi(){
-       // showCustomProgress()
+        // showCustomProgress()
         LoadingIndicatorView.show()
         WebserviceSigleton.shared.GETService(urlString: ApiEndPoints.user) { (response, error) in
             LoadingIndicatorView.hide()
@@ -62,8 +62,14 @@ class ProfileViewController: BaseClassViewController {
                     self.userEmail_lbl.text = userEmail
                 }
                 if let dateOfBirth = resultDict?.object(forKey: "dob") as? String{
-                    self.profileDetails.dob = dateOfBirth
-                    self.dateOfBirth_lbl.text = dateOfBirth
+                    let dateFormatterGet = DateFormatter()
+                    dateFormatterGet.dateFormat = "yyyy-MM-dd"
+                    let dateFormatterPrint = DateFormatter()
+                    dateFormatterPrint.dateFormat = "dd MMM yyyy"
+                    if let date = dateFormatterGet.date(from:  dateOfBirth) {
+                        self.dateOfBirth_lbl.text = dateFormatterPrint.string(from: date)
+                        self.profileDetails.dob = dateOfBirth
+                    }
                 }
                 if let organizationName = resultDict?.object(forKey: "Organization") as? String{
                     self.profileDetails.Organization = organizationName
@@ -81,10 +87,10 @@ class ProfileViewController: BaseClassViewController {
             else { //error
                 let resultDict = response as NSDictionary?
                 if let errorMsg = resultDict?.object(forKey: "message") as? String{
-                   self.showAlert(message: errorMsg)
+                    self.showAlert(message: errorMsg)
                 }
             }
-           // self.stopProgress()
+            // self.stopProgress()
         }
     }
     

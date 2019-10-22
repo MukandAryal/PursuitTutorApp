@@ -10,6 +10,8 @@ import UIKit
 
 class MyCourseViewController: BaseClassViewController {
     @IBOutlet weak var myCourse_tblView: UITableView!
+    @IBOutlet weak var noDataFound_imgView: UIImageView!
+    @IBOutlet weak var noDataFound_lbl: UILabel!
     var tutorCourseArr = [getAllCourse.allTutorCourse]()
     
     // MARK: - App Life Cycle Method
@@ -23,16 +25,18 @@ class MyCourseViewController: BaseClassViewController {
         }
         myCourse_tblView.register(UINib(nibName: "MyCoursesTableViewCell", bundle: nil), forCellReuseIdentifier: "MyCoursesTableViewCell")
         myCourse_tblView.tableFooterView = UIView()
+        noDataFound_imgView.isHidden = true
+        noDataFound_lbl.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-       
+        
     }
     
     // MARK: - Get All Course Api
     func allCourseApi(){
-       // showCustomProgress()
+        // showCustomProgress()
         LoadingIndicatorView.show()
         WebserviceSigleton.shared.GETService(urlString: ApiEndPoints.tutorCourses) { (response, error) in
             LoadingIndicatorView.hide()
@@ -42,10 +46,22 @@ class MyCourseViewController: BaseClassViewController {
                 if (resultDict?["success"]) != nil{
                     if let sucessDict = resultDict?["success"] as? NSDictionary{
                         let dataArr = sucessDict["data"] as? [AnyObject]
+                        if dataArr?.count == 0{
+                            self.myCourse_tblView.isHidden = true
+                            self.noDataFound_imgView.isHidden = false
+                            self.noDataFound_lbl.isHidden = false
+                        }
                         for obj in dataArr!{
                             let course = getAllCourse.allTutorCourse(
                                 course_id: obj["course_id"] as? Int,
-                                course_name: obj["course_name"] as? String)
+                                course_name: obj["course_name"] as? String,
+                                created_at: obj["created_at"] as? String,
+                                id: obj["id"] as? Int,
+                                status: obj["status"] as? String,
+                                tutorName: obj["tutorName"] as? String,
+                                tutor_relation_id: obj["tutor_relation_id"] as? Int,
+                                updated_at: obj["updated_at"] as? String,
+                                user_id: obj["user_id"] as? Int)
                             self.tutorCourseArr.append(course)
                             self.myCourse_tblView.reloadData()
                         }
@@ -79,6 +95,13 @@ extension MyCourseViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCoursesTableViewCell") as! MyCoursesTableViewCell
         cell.course_title.text = tutorCourseArr[indexPath.row].course_name
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "dd MMM yyyy"
+        if let date = dateFormatterGet.date(from:  tutorCourseArr[indexPath.row].created_at!) {
+            cell.courseStart_DateLbl.text = dateFormatterPrint.string(from: date)
+        }
         return cell
     }
 }
@@ -86,7 +109,6 @@ extension MyCourseViewController : UITableViewDataSource{
 // MARK: - UITableView Delegate
 extension MyCourseViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseProgressViewController") as! CourseProgressViewController
         obj.courseProgress = tutorCourseArr[indexPath.row]
         self.navigationController?.pushViewController(obj, animated: true)

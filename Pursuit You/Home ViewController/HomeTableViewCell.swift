@@ -14,6 +14,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var description_lbl: UILabel!
     @IBOutlet weak var price_lbl: UILabel!
     @IBOutlet weak var date_lbl: UILabel!
+    @IBOutlet weak var categoryImg_view: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

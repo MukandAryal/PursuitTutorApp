@@ -38,17 +38,23 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designer fir Beginner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbo-oK-cbn">
-                                <rect key="frame" x="155" y="30.5" width="160" height="19.5"/>
+                                <rect key="frame" x="155" y="19" width="160" height="19.5"/>
                                 <fontDescription key="fontDescription" name="GoogleSans-Medium" family="Google Sans" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oNh-oX-Z0Q">
-                                <rect key="frame" x="155" y="60" width="160" height="2"/>
+                                <rect key="frame" x="155" y="48.5" width="160" height="2"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45% Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OyG-J4-giC">
-                                <rect key="frame" x="155" y="72" width="155" height="17"/>
+                                <rect key="frame" x="155" y="60.5" width="155" height="17"/>
+                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 Oct 2019" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHJ-RW-nbN">
+                                <rect key="frame" x="165" y="89" width="145" height="17"/>
                                 <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -60,13 +66,16 @@
                             <constraint firstItem="qfW-vU-tCA" firstAttribute="leading" secondItem="mQw-uO-9jN" secondAttribute="leading" constant="5" id="DTE-lW-vUy"/>
                             <constraint firstAttribute="trailing" secondItem="oNh-oX-Z0Q" secondAttribute="trailing" constant="5" id="ElK-Og-BgT"/>
                             <constraint firstAttribute="trailing" secondItem="OyG-J4-giC" secondAttribute="trailing" constant="10" id="LsD-pl-Qd8"/>
+                            <constraint firstItem="VHJ-RW-nbN" firstAttribute="leading" secondItem="qfW-vU-tCA" secondAttribute="trailing" constant="20" id="PgO-8o-Wsl"/>
                             <constraint firstItem="OyG-J4-giC" firstAttribute="leading" secondItem="qfW-vU-tCA" secondAttribute="trailing" constant="10" id="XLG-9s-hxN"/>
                             <constraint firstAttribute="bottom" secondItem="qfW-vU-tCA" secondAttribute="bottom" constant="10" id="Xl3-na-qKQ"/>
+                            <constraint firstAttribute="bottom" secondItem="VHJ-RW-nbN" secondAttribute="bottom" constant="14" id="eoz-D8-1kd"/>
                             <constraint firstAttribute="trailing" secondItem="pbo-oK-cbn" secondAttribute="trailing" constant="5" id="fDc-55-B4d"/>
                             <constraint firstItem="qfW-vU-tCA" firstAttribute="top" secondItem="mQw-uO-9jN" secondAttribute="top" constant="5" id="mi8-Cc-fZT"/>
                             <constraint firstItem="OyG-J4-giC" firstAttribute="top" secondItem="oNh-oX-Z0Q" secondAttribute="bottom" constant="10" id="nfv-I7-ibb"/>
                             <constraint firstItem="pbo-oK-cbn" firstAttribute="leading" secondItem="qfW-vU-tCA" secondAttribute="trailing" constant="10" id="o3N-rF-xho"/>
-                            <constraint firstItem="pbo-oK-cbn" firstAttribute="centerY" secondItem="qfW-vU-tCA" secondAttribute="centerY" multiplier="0.7" id="vun-RH-SiH"/>
+                            <constraint firstAttribute="trailing" secondItem="VHJ-RW-nbN" secondAttribute="trailing" constant="10" id="oLy-I1-7z3"/>
+                            <constraint firstItem="pbo-oK-cbn" firstAttribute="centerY" secondItem="qfW-vU-tCA" secondAttribute="centerY" multiplier="0.5" id="vun-RH-SiH"/>
                             <constraint firstItem="oNh-oX-Z0Q" firstAttribute="top" secondItem="pbo-oK-cbn" secondAttribute="bottom" constant="10" id="yIX-5F-z5S"/>
                         </constraints>
                     </view>
@@ -83,6 +92,7 @@
             <connections>
                 <outlet property="courseComplete_lbl" destination="OyG-J4-giC" id="xvH-T2-TKw"/>
                 <outlet property="courseComplete_progressBar" destination="oNh-oX-Z0Q" id="lL1-W0-ris"/>
+                <outlet property="courseStart_DateLbl" destination="VHJ-RW-nbN" id="zdu-6Q-Kfi"/>
                 <outlet property="course_Img" destination="qfW-vU-tCA" id="MJW-MY-kci"/>
                 <outlet property="course_title" destination="pbo-oK-cbn" id="kec-Og-M59"/>
             </connections>
