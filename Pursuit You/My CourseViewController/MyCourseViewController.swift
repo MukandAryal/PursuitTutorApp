@@ -61,8 +61,10 @@ class MyCourseViewController: BaseClassViewController {
                                 tutorName: obj["tutorName"] as? String,
                                 tutor_relation_id: obj["tutor_relation_id"] as? Int,
                                 updated_at: obj["updated_at"] as? String,
-                                user_id: obj["user_id"] as? Int)
+                                user_id: obj["user_id"] as? Int,
+                                imageProfile: obj["imageProfile"] as? String)
                             self.tutorCourseArr.append(course)
+                            print("tutorCourseArr>>>>",self.tutorCourseArr)
                             self.myCourse_tblView.reloadData()
                         }
                     }
@@ -95,12 +97,18 @@ extension MyCourseViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCoursesTableViewCell") as! MyCoursesTableViewCell
         cell.course_title.text = tutorCourseArr[indexPath.row].course_name
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "dd MMM yyyy"
-        if let date = dateFormatterGet.date(from:  tutorCourseArr[indexPath.row].created_at!) {
-            cell.courseStart_DateLbl.text = dateFormatterPrint.string(from: date)
+        if let imgProfile = tutorCourseArr[indexPath.row].imageProfile{
+            let imageStr = Configurator.courseImageBaseUrl + imgProfile
+            cell.course_Img.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "development"))
+        }
+        if let dateStr = tutorCourseArr[indexPath.row].created_at{
+            let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "dd MMM yyyy"
+            if let date = dateFormatterGet.date(from:  dateStr) {
+                cell.courseStart_DateLbl.text = dateFormatterPrint.string(from: date)
+            }
         }
         return cell
     }

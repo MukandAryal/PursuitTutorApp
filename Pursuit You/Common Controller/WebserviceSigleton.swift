@@ -19,11 +19,9 @@ class WebserviceSigleton {
         
         let url =  "\(baseUrl)\(urlString)"
         let token = Configurator.tokenBearer + (userDefault.string(forKey: userDefualtKeys.user_Token.rawValue))!
-        let headers = ["Content-Type": "application/x-www-form-urlencoded","Accept":"application/json","Authorization":token]
+        let headers = ["Accept":"application/json","Authorization":token]
         
-       // let headers = ["Content-Type": "application/json"]
-        
-        print("Request POST URL:\(url) PARAMS:\(params) HEADER: ")
+        print("Request POST URL:\(url) PARAMS:\(params) HEADER:\(headers) ")
         
         manager.request(url, method: .post, parameters: params, encoding:  URLEncoding.default, headers: headers).responseJSON { response in
             
@@ -55,7 +53,7 @@ class WebserviceSigleton {
         
         let url =  "\(baseUrl)\(urlString)"
        // let token = Configurator.tokenBearer + (userDefault.string(forKey: userDefualtKeys.user_Token.rawValue))!
-        let headers = ["Content-Type": "application/x-www-form-urlencoded"]
+        let headers = ["Accept": "application/json"]
         
         // let headers = ["Content-Type": "application/json"]
         

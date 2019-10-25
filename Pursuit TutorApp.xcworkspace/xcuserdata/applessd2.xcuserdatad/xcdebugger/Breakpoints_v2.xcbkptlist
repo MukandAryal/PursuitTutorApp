@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pursuit You/Login ViewController/LoginViewViewController.swift"
-            timestampString = "593431099.57217"
+            filePath = "Pursuit You/New Group/BatchCreationViewController.swift"
+            timestampString = "593696519.603951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "isValiadLogin()"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "doneBtn()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,109 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pursuit You/Login ViewController/LoginViewViewController.swift"
-            timestampString = "593431099.57224"
+            filePath = "Pursuit You/Course DetailsViewController/CourseDetailsViewController.swift"
+            timestampString = "593696519.604046"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "tutorEnrollApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/Course DetailsViewController/CourseDetailsViewController.swift"
+            timestampString = "593696519.604116"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "tutorEnrollApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/Course DetailsViewController/CourseDetailsViewController.swift"
+            timestampString = "593696519.604175"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "showCustomSucessDialog(animated:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/Course DetailsViewController/CourseDetailsViewController.swift"
+            timestampString = "593696519.60423"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "doneBtn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/Course DetailsViewController/CourseDetailsViewController.swift"
+            timestampString = "593696519.604283"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "doneBtn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/Course DetailsViewController/CourseDetailsViewController.swift"
+            timestampString = "593696519.60434"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "doneBtn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/Home ViewController/HomeViewController.swift"
+            timestampString = "593696519.6043921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "isValiadLogin()"
+            landmarkName = "tutorCourseApi()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,44 +137,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pursuit You/Help ViewController/AddSyllabusViewController.swift"
-            timestampString = "593441741.798851"
+            filePath = "Pursuit You/Home ViewController/HomeViewController.swift"
+            timestampString = "593696519.604439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "showCustomSucessDialog(animated:)"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "tutorCourseApi()"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "default argument 0 of Pursuit_TutorApp.AddSyllabusViewController.showCustomSucessDialog(animated: Swift.Bool) -&gt; ()"
+                  symbolName = "Pursuit_TutorApp.HomeViewController.tutorCourseApi() -&gt; ()"
                   moduleName = "Pursuit TutorApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/applessd2/Desktop/PursuitTutorApp/Pursuit%20You/Help%20ViewController/AddSyllabusViewController.swift"
-                  timestampString = "593439303.6662771"
+                  urlString = "file:///Users/applessd2/Desktop/PursuitTutorApp/Pursuit%20You/Home%20ViewController/HomeViewController.swift"
+                  timestampString = "593695642.936883"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "6">
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "57">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Pursuit_TutorApp.AddSyllabusViewController.showCustomSucessDialog(animated: Swift.Bool) -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, Swift.Optional&lt;__C.NSError&gt;) -&gt; () in Pursuit_TutorApp.HomeViewController.tutorCourseApi() -&gt; ()"
                   moduleName = "Pursuit TutorApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/applessd2/Desktop/PursuitTutorApp/Pursuit%20You/Help%20ViewController/AddSyllabusViewController.swift"
-                  timestampString = "593439303.67141"
+                  urlString = "file:///Users/applessd2/Desktop/PursuitTutorApp/Pursuit%20You/Home%20ViewController/HomeViewController.swift"
+                  timestampString = "593695642.9383889"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "128">
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "337">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -89,13 +185,109 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pursuit You/Help ViewController/AddSyllabusViewController.swift"
-            timestampString = "593441741.799628"
+            filePath = "Pursuit You/Home ViewController/HomeViewController.swift"
+            timestampString = "593696519.604486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "showCustomSucessDialog(animated:)"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "tutorCourseApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/New Group/BatchCreationViewController.swift"
+            timestampString = "593696519.604534"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/New Group/BatchCreationViewController.swift"
+            timestampString = "593696519.604578"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/Profile ViewController/ProfileEditViewController.swift"
+            timestampString = "593696519.604624"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/CourseProgress ViewController/CourseProgressViewController.swift"
+            timestampString = "593696519.604673"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "syllabusApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/CourseProgress ViewController/CourseProgressViewController.swift"
+            timestampString = "593696519.604719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "syllabusApi()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pursuit You/CourseProgress ViewController/CourseProgressViewController.swift"
+            timestampString = "593696519.604761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "syllabusApi()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

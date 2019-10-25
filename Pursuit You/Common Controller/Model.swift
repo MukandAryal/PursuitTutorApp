@@ -30,6 +30,7 @@ class getAllCourse {
         var tutor_relation_id :Int?
         var updated_at : String?
         var user_id : Int?
+        var imageProfile : String?
     }
     
     struct allCategory {
@@ -44,6 +45,7 @@ class getAllCourse {
     struct syllabusInfo {
         var id : Int?
         var course_id : Int?
+        var tutor_id : Int?
         var title : String?
         var description : String?
         var status : String?

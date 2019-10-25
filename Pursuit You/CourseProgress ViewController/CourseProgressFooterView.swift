@@ -10,7 +10,8 @@ import UIKit
 
 class CourseProgressFooterView: UITableViewHeaderFooterView {
 
-    @IBOutlet weak var description_lbl: UILabel!
-
-  
+    
+    @IBOutlet weak var syllabusStaus_lbl: UILabel!
+    @IBOutlet weak var syllabus_imgView: UIImageView!
+    @IBOutlet weak var courseStatusImg_leadingContraints: NSLayoutConstraint!
 }

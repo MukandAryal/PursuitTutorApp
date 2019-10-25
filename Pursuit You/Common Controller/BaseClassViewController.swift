@@ -73,6 +73,8 @@ class BaseClassViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    
+    
     func setNavigationBackgroundColor(){
 //        let gradientLayer = CAGradientLayer()
 //        var updatedFrame = self.navigationController!.navigationBar.bounds

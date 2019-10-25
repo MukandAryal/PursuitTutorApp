@@ -25,8 +25,11 @@ class CourseDetailsViewController: BaseClassViewController {
     var courseDescription = String()
     var courseId = Int()
     var coursePrice = String()
+    var enrollId = Int()
     var syllabusArr = [getAllCourse.syllabusInfo]()
     var courseDetails = getAllCourse.course()
+    var courseProgress = getAllCourse.allTutorCourse()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +54,6 @@ class CourseDetailsViewController: BaseClassViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        // courseDetails_Tblview.frame.size = courseDetails_Tblview.contentSize
         courseDetails_heightConstrains.constant = CGFloat(syllabusArr.count*100)
     }
     
@@ -77,7 +79,6 @@ class CourseDetailsViewController: BaseClassViewController {
     
     // MARK: - Get All Course Api
     func allCourseApi(){
-        //showCustomProgress()
         LoadingIndicatorView.show()
         WebserviceSigleton.shared.GETService(urlString: ApiEndPoints.tutorCourses) { (response, error) in
             LoadingIndicatorView.hide()
@@ -96,9 +97,20 @@ class CourseDetailsViewController: BaseClassViewController {
                                 tutorName: obj["tutorName"] as? String,
                                 tutor_relation_id: obj["tutor_relation_id"] as? Int,
                                 updated_at: obj["updated_at"] as? String,
-                                user_id: obj["user_id"] as? Int)
+                                user_id: obj["user_id"] as? Int,
+                                imageProfile: obj["imageProfile"] as? String)
                             if obj["course_id"] as? Int == self.courseDetails.id{
                                 print("already enroll>>>>>>>>>")
+                                self.courseProgress.course_id = obj["course_id"] as? Int
+                                self.courseProgress.course_name = obj["course_name"] as? String
+                                self.courseProgress.created_at = obj["created_at"] as? String
+                                self.courseProgress.id = obj["id"] as? Int
+                                self.courseProgress.status = obj["status"] as? String
+                                self.courseProgress.tutor_relation_id = obj["tutor_relation_id"] as? Int
+                                self.courseProgress.tutorName = obj["tutorName"] as? String
+                                self.courseProgress.updated_at = obj["updated_at"] as? String
+                                self.courseProgress.user_id = obj["user_id"] as? Int
+                                 self.courseProgress.imageProfile = obj["imageProfile"] as? String
                                 self.startEnroll_btn.removeTarget(nil, action: nil, for: .allEvents)
                                 self.startEnroll_btn.setTitle("Already Enrolled",for: .normal)
                                 self.startEnroll_btn.addTarget(self, action: #selector(self.buttonAction), for: .touchUpInside)
@@ -115,7 +127,6 @@ class CourseDetailsViewController: BaseClassViewController {
     
     //  MARK: - Get All Course Api
     func syllabusApi(){
-        // showCustomProgress()
         LoadingIndicatorView.show()
         let urlApi = ApiEndPoints.syllabus +  "?course_id=\(8)"
         print("urlApi>",urlApi)
@@ -131,6 +142,7 @@ class CourseDetailsViewController: BaseClassViewController {
                             let course = getAllCourse.syllabusInfo(
                                 id: obj["id"] as? Int,
                                 course_id: obj["course_id"] as? Int,
+                                tutor_id: obj["tutor_id"] as? Int,
                                 title: obj["title"] as? String,
                                 description: obj["description"] as? String,
                                 status: obj["status"] as? String,
@@ -154,7 +166,7 @@ class CourseDetailsViewController: BaseClassViewController {
     func tutorEnrollApi(){
         LoadingIndicatorView.show()
         let param: [String: String] = [
-            "course_id" : "\(courseDetails.id!))",
+            "course_id" : "\(courseDetails.id!)",
         ]
         WebserviceSigleton.shared.POSTServiceWithParameters(urlString: ApiEndPoints.addCourseToTutor, params: param as Dictionary<String, AnyObject>) { (response, error) in
             LoadingIndicatorView.hide()
@@ -163,7 +175,12 @@ class CourseDetailsViewController: BaseClassViewController {
                 print(errorDict)
                 self.showCustomErrorDialog()
             }else{
-                self.showCustomSucessDialog()
+                if let dataDict = resultDict!["data"] as? NSDictionary{
+                    if let courseId = dataDict.object(forKey: "id")as? Int{
+                        self.enrollId = courseId
+                        self.showCustomSucessDialog()
+                    }
+                }
             }
             LoadingIndicatorView.hide()
         }
@@ -188,13 +205,18 @@ class CourseDetailsViewController: BaseClassViewController {
         exitVc?.msg_lbl.text = "Course Enrolled Successfully"
         exitVc?.ok_btn.addTargetClosure { _ in
             popup.dismiss()
-            self.exitBtn()
+            self.doneBtn()
         }
         present(popup, animated: animated, completion: nil)
     }
     
-    func exitBtn(){
+    func doneBtn(){
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "BatchCreationViewController") as! BatchCreationViewController
+        print("courseProgress>>>",courseProgress)
+        obj.courseProgressDetails = courseProgress
+         print("courseProgress>>>",obj.courseProgressDetails)
+        obj.course_id = enrollId
+        obj.courseName = courseName
         self.navigationController?.pushViewController(obj, animated: true)
     }
     
@@ -229,9 +251,10 @@ class CourseDetailsViewController: BaseClassViewController {
     }
     
     @objc func buttonAction(sender: UIButton!) {
-        //print("Button tapped")
-        //        let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseProgressViewController") as! CourseProgressViewController
-        //        self.navigationController?.pushViewController(obj, animated: true)
+                let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseProgressViewController") as! CourseProgressViewController
+                print("courseProgress>>>>>>>>>",courseProgress)
+                obj.courseProgress = courseProgress
+                self.navigationController?.pushViewController(obj, animated: true)
     }
     
     @objc func startForTutringAction(sender: UIButton!) {

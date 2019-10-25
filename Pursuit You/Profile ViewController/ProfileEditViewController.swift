@@ -30,8 +30,12 @@ class ProfileEditViewController: BaseClassViewController,UIImagePickerController
         name_txtFld.text = userDetails.name
         organization_txtFld.text = userDetails.Organization
         dateOfBirth_txtFld.text = userDetails.dob
-        let imageStr = Configurator.imageBaseUrl + userDetails.profileImage!
-        self.profile_imgView.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "demo_icon"))
+        if let profileImg = userDetails.profileImage{
+            let imageStr = Configurator.imageBaseUrl + profileImg
+            self.profile_imgView.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "demo_icon"))
+        }else{
+            self.profile_imgView.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(named: "demo_icon"))
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -198,7 +202,7 @@ class ProfileEditViewController: BaseClassViewController,UIImagePickerController
             self.showAlert(title: "Alert", message: "Please enter your name!")
         }else if dateOfBirth_txtFld.text == ""{
             self.showAlert(title: "Alert", message: "Please enter date of birth name!")
-        }else if dateOfBirth_txtFld.text == ""{
+        }else if organization_txtFld.text == ""{
             self.showAlert(title: "Alert", message: "Please enter orgazination name!")
         }else{
             let token = Configurator.tokenBearer + userDefault.string(forKey: userDefualtKeys.user_Token.rawValue)!

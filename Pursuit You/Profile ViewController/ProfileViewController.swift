@@ -90,7 +90,7 @@ class ProfileViewController: BaseClassViewController {
                     self.showAlert(message: errorMsg)
                 }
             }
-            // self.stopProgress()
+            LoadingIndicatorView.hide()
         }
     }
     

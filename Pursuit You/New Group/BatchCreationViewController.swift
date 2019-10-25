@@ -17,9 +17,17 @@ class BatchCreationViewController: BaseClassViewController,UITextFieldDelegate {
     let datePicker = UIDatePicker()
     let dateFormatter = DateFormatter()
     let timePicker = UIDatePicker()
+    var titleStr = String()
+    var descriptionStr = String()
+    var courseName = String()
+    var course_id = Int()
+    var courseProgressDetails = getAllCourse.allTutorCourse()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("courseProgressDetails>>>>",courseProgressDetails)
+        print("courseName>>>>",courseName)
+        print("courseName>>>>",courseName)
         // Do any additional setup after loading the view.
         selectStartDate_txfFld.delegate = self
         selectStartDate_txfFld.delegate  = self
@@ -104,21 +112,13 @@ class BatchCreationViewController: BaseClassViewController,UITextFieldDelegate {
     
     // MARK: - Login Api Implement
     func createBatchApi(){
-        //  showCustomProgress()
-        // indicator.startAnimating()
         print(selectStartTime_txtFld.text!)
         let startTime = selectStartTime_txtFld.text?.dropLast(3) ?? ""+":00"
         let startTimeStr = startTime + ":00"
         let endTime = selectEndTime_txtFld.text?.dropLast(3) ?? ""+":00"
         let endTimeStr = endTime + ":00"
-        print("startTimeStr>>>>>>>",startTimeStr)
-        print("endTimeStr>>>>>>",endTimeStr)
         let startDate = selectStartDate_txfFld.text
         let endDate = selectEndDate_txtFld.text
-        print("startDate>>>>>>",startTimeStr)
-        print("startDate>>>>>>",endTimeStr)
-        print("startDate>>>>>>",startDate)
-        print("startDate>>>>>>",endDate)
 
         LoadingIndicatorView.show()
         let param: [String: String] = [
@@ -126,24 +126,22 @@ class BatchCreationViewController: BaseClassViewController,UITextFieldDelegate {
             "end_date" : String(endDate ?? ""),
             "class_start_time" : String(startTimeStr ),
             "class_end_time" : String(endTimeStr ),
-            "relation_tutor_id" : "42",
-            "title" : "Test Class",
-            "description" : "description"
+            "relation_tutor_id" : course_id.description,
+            "title" : titleStr,
+            "description" : descriptionStr
         ]
         print("param>>>>>",param)
         WebserviceSigleton.shared.POSTServiceWithParameters(urlString: ApiEndPoints.createBatch, params: param as Dictionary<String, AnyObject>) { (response, error) in
             LoadingIndicatorView.hide()
             let resultDict = response as NSDictionary?
-            if let error = resultDict?.object(forKey: "error") as? String{//error
-                self.showAlert(title: "Alert", message: error)
+            if let errorDict = resultDict!["error"] as? NSDictionary { //error//error
+                self.showAlert(title: "Alert", message: "Please try again!")
             }else { //sucess
-                let successStr = resultDict?["success"] as! String
+               let successStr = resultDict?["success"] as! String
                 print(successStr)
                 self.showCustomSucessDialog()
             }
-            //  self.stopProgress()
-            //self.indicator.stopAnimating()
-            
+            LoadingIndicatorView.hide()
         }
     }
     
@@ -165,13 +163,15 @@ class BatchCreationViewController: BaseClassViewController,UITextFieldDelegate {
         exitVc?.msg_lbl.text = "Class added successfully"
         exitVc?.ok_btn.addTargetClosure { _ in
             popup.dismiss()
-            self.exitBtn()
+            self.doneBtn()
         }
         present(popup, animated: animated, completion: nil)
     }
     
-    func exitBtn(){
-        let obj = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+    func doneBtn(){
+        let obj = self.storyboard?.instantiateViewController(withIdentifier: "AddSyllabusViewController") as! AddSyllabusViewController
+        print("courseProgressDetails",courseProgressDetails)
+        obj.courseName = courseName
         self.navigationController?.pushViewController(obj, animated: true)
     }
     

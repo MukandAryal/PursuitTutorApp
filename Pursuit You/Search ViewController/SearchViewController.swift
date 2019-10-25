@@ -85,11 +85,14 @@ class SearchViewController: BaseClassViewController,UITextFieldDelegate {
             filteredArr.removeAll()
         
             for filteredName in categroyArr {
-                if filteredName.name!.lowercased().contains(textField.text!.lowercased()){
-                    print("filteredName>>>>>>>",filteredName)
-                    filteredArr.append(filteredName)
-                   }
+                
+                if let name = filteredName.name {
+                    if name.lowercased().contains(textField.text!.lowercased()) {
+                        filteredArr.append(filteredName)
+                    }
+                  }
                 }
+                
                 self.searchTblView.reloadData()
             }
         return true

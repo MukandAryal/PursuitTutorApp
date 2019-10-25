@@ -10,10 +10,12 @@ import UIKit
 
 class CourseProgressTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var complete_syllabusBtn: UIButton!
     @IBOutlet weak var lession_numberLbl: UILabel!
     @IBOutlet weak var lession_nameLbl: UILabel!
-    @IBOutlet weak var lession_videoIcon: UIImageView!
     @IBOutlet weak var lession_readIcon: UIImageView!
+    @IBOutlet weak var lession_descriptionLbl: UILabel!
+    @IBOutlet weak var syllabusLine_lbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

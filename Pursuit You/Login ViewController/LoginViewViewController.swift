@@ -49,14 +49,40 @@ class LoginViewViewController: BaseClassViewController {
     // MARK: - Set Up UIInterFace
     func SetUpUiInterFace(){
          //login view UiInterface
-        emailAddress_txtFld.text = "tutor@mail.com"
-        password_txtFld.text = "1234"
+        //emailAddress_txtFld.text = "tutor@mail.com"
+      //  password_txtFld.text = "1234"
         appLogo_imgView.layer.cornerRadius = appLogo_imgView.frame.height/2
         appLogo_imgView.clipsToBounds = true
         // singIn view UiInterface
         singUpLine_indicator.backgroundColor = UIColor.white
         singUp_view.isHidden = true
         self.view.backgroundColor = appThemeColor
+    }
+    
+    // MARK: - Enroll Sucess View
+    func showCustomErrorDialog(animated: Bool = true) {
+        
+        // Create a custom view controller
+        let exitVc = self.storyboard?.instantiateViewController(withIdentifier: "EnrollSucessView") as? EnrollSucessView
+        
+        
+        
+        // Create the dialog
+        let popup = PopupDialog(viewController: exitVc!,
+                                buttonAlignment: .horizontal,
+                                transitionStyle: .bounceDown,
+                                tapGestureDismissal: true,
+                                panGestureDismissal: true)
+        
+        exitVc?.msg_lbl.text = "Your profile is not verified yet, Please wait until Admin verify it."
+        exitVc?.msg_lbl.textColor = UIColor.red
+        let yourImage: UIImage = UIImage(named: "alert.png")!
+        exitVc?.suceess_imgView.image = yourImage
+        exitVc?.ok_btn.addTargetClosure { _ in
+            popup.dismiss()
+            //self.exitBtn()
+        }
+        present(popup, animated: animated, completion: nil)
     }
     
     // MARK: - Login Validation
@@ -101,8 +127,6 @@ class LoginViewViewController: BaseClassViewController {
     
     // MARK: - Login Api Implement
     func loginApi(){
-      //  showCustomProgress()
-       // indicator.startAnimating()
         LoadingIndicatorView.show()
         let param: [String: String] = [
             "email" : emailAddress_txtFld.text!,
@@ -122,14 +146,19 @@ class LoginViewViewController: BaseClassViewController {
                 }
                 UserDefaults.standard.set(self.emailAddress_txtFld.text, forKey: "loginPhoneNumber")
                 UserDefaults.standard.set(self.password_txtFld.text, forKey: "loginPasswordNumber")
+                let dataStr = resultDict!["data"] as? NSDictionary
+                let emailStr = dataStr?.object(forKey: "verified") as? Int
+                if emailStr == 0 {
+                    print("usernot verified")
+                    self.showCustomErrorDialog()
+                }else{
                 self.window = UIWindow(frame: UIScreen.main.bounds)
                 let tabBarController = customIrregularityStyle(delegate: nil)
                 self.window?.rootViewController = tabBarController
                 self.window?.makeKeyAndVisible()
+                }
+                LoadingIndicatorView.hide()
             }
-          //  self.stopProgress()
-            //self.indicator.stopAnimating()
-
         }
     }
     
@@ -154,7 +183,7 @@ class LoginViewViewController: BaseClassViewController {
               let obj = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewViewController") as! LoginViewViewController
               self.navigationController?.pushViewController(obj, animated: true)
             }
-            //self.stopProgress()
+            LoadingIndicatorView.hide()
         }
     }
     

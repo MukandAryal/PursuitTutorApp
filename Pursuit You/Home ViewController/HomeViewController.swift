@@ -117,13 +117,14 @@ class HomeViewController: BaseClassViewController,UITextFieldDelegate {
         } else {
             filteredArr.removeAll()
             for filteredName in courseArr {
-                if filteredName.name!.lowercased().contains(textField.text!.lowercased())||filteredName.name!.lowercased().contains(textField.text!.lowercased()){
-                    print("filteredName>>>>>>>",filteredName)
-                    filteredArr.append(filteredName)
+                if let name = filteredName.name , let description = filteredName.des {
+                    if name.lowercased().contains(textField.text!.lowercased()) || description.lowercased().contains(textField.text!.lowercased()) {
+                        filteredArr.append(filteredName)
+                    }
                 }
             }
-            self.categoryTbl_view.reloadData()
         }
+        self.categoryTbl_view.reloadData()
         return true
     }
     
@@ -159,35 +160,43 @@ extension HomeViewController : UITableViewDataSource{
         if isSearching == true{
             cell.title_lbl.text = filteredArr[indexPath.row].name
             cell.description_lbl.text = filteredArr[indexPath.row].des
-            let imageStr = Configurator.courseImageBaseUrl + filteredArr[indexPath.row].imageProfile!
-            cell.categoryImg_view.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "development"))
-            if filteredArr[indexPath.row].fee != nil{
-                cell.price_lbl.text = "$" + " " + filteredArr[indexPath.row].fee!.description
+            if let imgProfile = filteredArr[indexPath.row].imageProfile{
+                let imageStr = Configurator.courseImageBaseUrl + imgProfile
+                cell.categoryImg_view.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "development"))
             }
-            let dateFormatterGet = DateFormatter()
-            dateFormatterGet.dateFormat = "dd MMMM yyyy hh:mm aa"
-            let dateFormatterPrint = DateFormatter()
-            dateFormatterPrint.dateFormat = "dd MMMM yyyy"
-            if let date = dateFormatterGet.date(from:  filteredArr[indexPath.row].created_at!) {
-                cell.date_lbl.text = dateFormatterPrint.string(from: date)
+            if let feesStr = filteredArr[indexPath.row].fee{
+               cell.price_lbl.text = "$" + " " + feesStr.description
+            }
+            if let dateStr = filteredArr[indexPath.row].created_at{
+                let dateFormatterGet = DateFormatter()
+                dateFormatterGet.dateFormat = "dd MMMM yyyy hh:mm aa"
+                let dateFormatterPrint = DateFormatter()
+                dateFormatterPrint.dateFormat = "dd MMMM yyyy"
+                if let date = dateFormatterGet.date(from:  dateStr) {
+                    cell.date_lbl.text = dateFormatterPrint.string(from: date)
+                }
             }
         }else{
             cell.title_lbl.text = courseArr[indexPath.row].name
             cell.description_lbl.text = courseArr[indexPath.row].des
-            let imageStr = Configurator.courseImageBaseUrl + courseArr[indexPath.row].imageProfile!
+            if let imagStr = courseArr[indexPath.row].imageProfile{
+            let imageStr = Configurator.courseImageBaseUrl + imagStr
             cell.categoryImg_view.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "development"))
-            if courseArr[indexPath.row].fee?.description != ""{
-                cell.price_lbl.text = "$" + " " + courseArr[indexPath.row].fee!.description
             }
+            if let feesStr = courseArr[indexPath.row].fee{
+               cell.price_lbl.text = "$" + " " + feesStr
+            }
+            if let dateStr = courseArr[indexPath.row].created_at{
             let dateFormatterGet = DateFormatter()
             dateFormatterGet.dateFormat = "dd MMMM yyyy hh:mm aa"
             let dateFormatterPrint = DateFormatter()
             dateFormatterPrint.dateFormat = "dd MMMM yyyy"
             if courseArr[indexPath.row].created_at != nil{
-                if let date = dateFormatterGet.date(from:  courseArr[indexPath.row].created_at!) {
+                if let date = dateFormatterGet.date(from:  dateStr) {
                     cell.date_lbl.text = dateFormatterPrint.string(from: date)
                 }
             }
+           }
         }
         return cell
     }
@@ -199,9 +208,11 @@ extension HomeViewController : UITableViewDelegate{
         let obj = self.storyboard?.instantiateViewController(withIdentifier: "CourseDetailsViewController") as! CourseDetailsViewController
         if isSearching == true{
             obj.courseDetails = filteredArr[indexPath.row]
+            obj.courseName = filteredArr[indexPath.row].name!
             self.navigationController?.pushViewController(obj, animated: true)
         }else{
             obj.courseDetails = courseArr[indexPath.row]
+            obj.courseName = courseArr[indexPath.row].name!
             self.navigationController?.pushViewController(obj, animated: true)
         }
     }

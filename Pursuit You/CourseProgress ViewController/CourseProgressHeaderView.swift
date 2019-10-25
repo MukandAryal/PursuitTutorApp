@@ -7,10 +7,20 @@
 //
 
 import UIKit
+import Cosmos
 
 class CourseProgressHeaderView: UITableViewHeaderFooterView {
 
-//    override func viewDidLoad() {
+    @IBOutlet weak var course_ImgView: UIImageView!
+    @IBOutlet weak var course_nameLbl: UILabel!
+    
+    @IBOutlet weak var duration_lbl: UILabel!
+    @IBOutlet weak var courseDate_lbl: UILabel!
+    @IBOutlet weak var review_starView: CosmosView!
+    
+    @IBOutlet weak var review_lbl: UILabel!
+    
+    //    override func viewDidLoad() {
 //        super.viewDidLoad()
 //
 //        // Do any additional setup after loading the view.
